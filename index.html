@@ -48,6 +48,19 @@
       animation: blink 0.75s step-end infinite;
       border-right: 2px solid #ccc;
     }
+    @media (max-width: 600px) {
+      .typing-line {
+        white-space: normal;
+        word-break: break-word;
+        width: auto;
+        overflow: visible;
+        border-right: none;
+        animation: none;
+      }
+      .blink {
+        display: none;
+      }
+    }
     .offers {
       display: flex;
       flex-wrap: wrap;

@@ -18,47 +18,43 @@
       text-align: center;
     }
 
+    .banner-wrapper {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
     .banner-video {
       width: 100%;
-      height: 180px;
+      height: 100%;
       object-fit: cover;
+      object-position: center 55%;
       opacity: 0.3;
+    }
+
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f2f2f2;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0 1rem;
+      text-shadow: 0 0 8px #000000cc;
+    }
+
+    .banner-text h1 {
+      margin: 0 0 1rem;
+      font-size: 1.8rem;
+      color: #00ffe5;
     }
 
     .container {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 1rem;
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: #ffffff;
-      animation: fadeInDown 1s ease-out;
-    }
-
-    .typing-line {
-      font-size: 1rem;
-      color: #ccc;
-      margin: 1rem auto;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-    }
-    .line1 {
-      animation: typing 2.5s steps(50, end) 1s forwards;
-    }
-    .line2 {
-      animation: typing 2.5s steps(60, end) 3.8s forwards;
-    }
-    .blink {
-      animation: blink 0.75s step-end infinite;
-      border-right: 2px solid #ccc;
-    }
-    .highlight {
-      color: #00ffe5;
-      animation: blinkHighlight 1.2s infinite;
     }
 
     .offers {
@@ -68,6 +64,7 @@
       gap: 1.5rem;
       margin: 3rem 0;
     }
+
     .offer {
       flex: 1 1 280px;
       background: linear-gradient(145deg, #1a1a1a, #121212);
@@ -80,12 +77,14 @@
       position: relative;
       overflow: hidden;
     }
+
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
       box-shadow: 0 0 20px #00ffe566;
       color: #ffffff;
     }
+
     .offer h3 {
       color: #00ffe5;
       margin-bottom: 0.5rem;
@@ -93,10 +92,12 @@
       z-index: 2;
       position: relative;
     }
+
     .offer:hover h3 {
       text-shadow: 0 0 5px #00ffe5;
       color: #ffffff;
     }
+
     .offer p {
       font-size: 0.85rem;
       color: #bbb;
@@ -129,47 +130,23 @@
       opacity: 0.25;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.9; }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
+
     @keyframes blinkHighlight {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
 
     @media (max-width: 600px) {
-      .typing-line {
-        white-space: normal;
-        word-break: break-word;
-        width: auto;
-        overflow: visible;
-        border-right: none;
-        animation: none;
+      .banner-text {
+        font-size: 0.9rem;
+        line-height: 1.4;
       }
-      .blink {
-        display: none;
-      }
-      h1 {
+      .banner-text h1 {
         font-size: 1.4rem;
-      }
-      .typing-line {
-        font-size: 1rem;
       }
       .video-preview {
         opacity: 1 !important;
@@ -182,17 +159,20 @@
 </head>
 <body>
 
-  <video class="banner-video" autoplay muted loop playsinline>
-    <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
-  </video>
+  <div class="banner-wrapper">
+    <video class="banner-video" autoplay muted loop playsinline>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
+    </video>
+    <div class="banner-text">
+      <h1>Ghost Music Production Service</h1>
+      <p>Exclusive <span style="color:#00ffe5;">hip-hop</span>, <span style="color:#00ffe5;">drill</span> & <span style="color:#00ffe5;">trap</span> beats for artists and creators.<br><br>
+      Buyout only. Yours forever. Delivered in 72h — just tell me what you want.</p>
+    </div>
+  </div>
 
   <div class="container">
-    <h1>Ghost Music Production Service</h1>
-    <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
-    <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
-
     <div class="offers">
-      <!-- Artist Offer -->
+      <!-- Artist Offer with video -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -203,7 +183,7 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <!-- Content Creator Offer -->
+      <!-- Content Creator Offer with video -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -214,7 +194,7 @@
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>
 
-      <!-- Visual Offer -->
+      <!-- Cyberpunk Visual Offer -->
       <div class="offer">
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
         <p>Your personalized cyberpunk action figures.</p>

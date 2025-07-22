@@ -7,9 +7,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
@@ -17,45 +15,14 @@
       color: #f2f2f2;
       text-align: center;
     }
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    .logo {
-      width: 160px;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      animation: pulse 3s infinite;
-    }
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: #ffffff;
-      animation: fadeInDown 1s ease-out;
-    }
-    .typing-line {
-      font-size: 1rem;
-      color: #ccc;
-      margin: 1rem auto;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-    }
-    .line1 {
-      animation: typing 2.5s steps(50, end) 1s forwards;
-    }
-    .line2 {
-      animation: typing 2.5s steps(60, end) 3.8s forwards;
-    }
-    .blink {
-      animation: blink 0.75s step-end infinite;
-      border-right: 2px solid #ccc;
-    }
-    .highlight {
-      color: #00ffe5;
-      animation: blinkHighlight 1.2s infinite;
-    }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 1rem; }
+    .logo { width: 160px; border-radius: 8px; margin-bottom: 1rem; animation: pulse 3s infinite; }
+    h1 { font-size: 1.8rem; margin-bottom: 1.5rem; color: #fff; animation: fadeInDown 1s ease-out; }
+    .typing-line { font-size: 1rem; color: #ccc; margin: 1rem auto; white-space: nowrap; overflow: hidden; width: 0; }
+    .line1 { animation: typing 2.5s steps(50, end) 1s forwards; }
+    .line2 { animation: typing 2.5s steps(60, end) 3.8s forwards; }
+    .blink { animation: blink 0.75s step-end infinite; border-right: 2px solid #ccc; }
+    .highlight { color: #00ffe5; animation: blinkHighlight 1.2s infinite; }
 
     .offers {
       display: flex;
@@ -64,7 +31,6 @@
       gap: 1.5rem;
       margin: 3rem 0;
     }
-
     .offer {
       flex: 1 1 280px;
       background: linear-gradient(145deg, #1a1a1a, #121212);
@@ -76,15 +42,14 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      height: 300px;
     }
-
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
       box-shadow: 0 0 20px #00ffe566;
-      color: #ffffff;
+      color: #fff;
     }
-
     .offer h3 {
       color: #00ffe5;
       margin-bottom: 0.5rem;
@@ -92,12 +57,10 @@
       z-index: 2;
       position: relative;
     }
-
     .offer:hover h3 {
       text-shadow: 0 0 5px #00ffe5;
-      color: #ffffff;
+      color: #fff;
     }
-
     .offer p {
       font-size: 0.85rem;
       color: #bbb;
@@ -107,77 +70,51 @@
 
     .video-preview {
       position: absolute;
-      top: 15%;
-      left: 0;
-      width: 100%;
-      height: 70%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.3s ease;
       z-index: 1;
     }
-
-    .offer:hover .video-preview {
-      opacity: 0.4;
-    }
+    .offer:hover .video-preview { opacity: 0.3; }
 
     .video-preview video {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      border-radius: 10px;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.9; }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-
-    @keyframes blinkHighlight {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
+      object-position: center 30%;
     }
 
     @media (max-width: 600px) {
       .typing-line {
-        white-space: normal;
-        word-break: break-word;
-        width: auto;
-        overflow: visible;
-        border-right: none;
-        animation: none;
+        white-space: normal; word-break: break-word;
+        width: auto; overflow: visible;
+        border-right: none; animation: none;
       }
-      .blink {
-        display: none;
-      }
-      h1 {
-        font-size: 1.4rem;
-      }
-      .typing-line {
-        font-size: 1rem;
-      }
-      .video-preview {
-        top: 25%;
+      .blink { display: none; }
+      h1 { font-size: 1.4rem; }
+      .typing-line { font-size: 1rem; }
+      .video-preview,
+      .video-preview video {
         opacity: 0.2 !important;
       }
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity:1 }
+      50% { transform: scale(1.05); opacity:0.9 }
+    }
+    @keyframes fadeInDown {
+      from { opacity:0; transform: translateY(-20px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(20px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+    @keyframes typing { from { width:0 } to { width:100% } }
+    @keyframes blink { 50% { border-color:transparent } }
+    @keyframes blinkHighlight {
+      0%,100%{ opacity:1 } 50%{ opacity:0.6 }
     }
   </style>
 </head>
@@ -187,31 +124,25 @@
     <h1>Ghost Music Production Service</h1>
     <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
-
     <div class="offers">
-      <!-- Artist Button -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
-            <source src="artist-preview.mp4" type="video/mp4" />
+            <source src="artist-preview.mp4" type="video/mp4"/>
           </video>
         </div>
         <h3>🎵 BEAT for ARTIST – £149</h3>
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
-
-      <!-- Content Creator Button -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
-            <source src="creator-preview.mp4" type="video/mp4" />
+            <source src="creator-preview.mp4" type="video/mp4"/>
           </video>
         </div>
         <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>
-
-      <!-- Cyberpunk Visual Offer -->
       <div class="offer">
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
         <p>Your personalized cyberpunk action figures.</p>

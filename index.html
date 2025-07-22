@@ -52,6 +52,14 @@
       animation: blink 0.75s step-end infinite;
       border-right: 2px solid #ccc;
     }
+    .highlight {
+      color: #00ffe5;
+      animation: blinkHighlight 1.2s infinite;
+    }
+    @keyframes blinkHighlight {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
     @media (max-width: 600px) {
       .typing-line {
         white-space: normal;
@@ -107,34 +115,6 @@
       font-size: 0.85rem;
       color: #bbb;
     }
-    form {
-      background-color: #1e1e1e;
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 3rem auto 4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      animation: fadeIn 2s ease-out;
-    }
-    input, textarea, select, button {
-      padding: 0.75rem;
-      border-radius: 5px;
-      border: none;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    button {
-      background-color: #00ffe5;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #00ddd2;
-    }
-
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.05); opacity: 0.9; }
@@ -155,53 +135,30 @@
       50% { border-color: transparent }
     }
   </style>
-  <script>
-    function scrollToForm(optionText) {
-      document.getElementById('package').value = optionText;
-      document.getElementById('formSection').scrollIntoView({ behavior: 'smooth' });
-    }
-  </script>
 </head>
 <body>
   <div class="container">
     <img src="https://i.imgur.com/e6zLrJf.png" alt="Ghost Logo" class="logo">
     <h1>Ghost Music Production Service</h1>
-    <p class="typing-line line1">Exclusive hip-hop, drill & trap beats for artists and creators.</p>
+    <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
 
     <div class="offers">
-      <div class="offer" onclick="scrollToForm('Beat Only – £99 (2 revisions)')">
-        <h3>🎵 Beat Only – £99</h3>
-        <p>Custom urban track tailored to your sound. Two revisions included.<br><em>Offer ends August 15</em></p>
+      <div class="offer">
+        <h3>🎵 BEAT for ARTIST – £149</h3>
+        <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <div class="offer" onclick="scrollToForm('Beat + Visual Loop – £149 (custom visual loop)')">
-        <h3>🔁 Beat + Ghost Visual – £149</h3>
-        <p>Includes beat + matching cyberpunk visual loop. Ideal for TikTok, Reels & Canvas.<br><a href="#" style="color:#00ffe5; text-decoration:underline;">See examples</a></p>
-      </div>
-
-      <div class="offer" onclick="scrollToForm('Podcast Pack – £149 (intro/outro/loop)')">
-        <h3>🎙️ Podcast Pack – £149</h3>
+      <div class="offer">
+        <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>
-    </div>
 
-    <form id="formSection">
-      <h2>Start Your Order</h2>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <select id="package" required>
-        <option value="">Select Your Package</option>
-        <option>Beat Only – £99 (2 revisions)</option>
-        <option>Beat + Visual Loop – £149 (custom visual loop)</option>
-        <option>Podcast Pack – £149 (intro/outro/loop)</option>
-      </select>
-      <textarea rows="4" placeholder="Describe what you’re looking for (genre, mood, tempo, etc)"></textarea>
-      <input type="url" placeholder="Reference Track 1 (URL)">
-      <input type="url" placeholder="Reference Track 2 (URL)">
-      <input type="url" placeholder="Reference Track 3 (URL)">
-      <button type="submit">ORDER</button>
-    </form>
+      <div class="offer">
+        <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
+        <p>Your personalized cyberpunk action figures.</p>
+      </div>
+    </div>
   </div>
 </body>
 </html>

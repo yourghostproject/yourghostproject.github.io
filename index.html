@@ -28,6 +28,13 @@
       margin-bottom: 1rem;
       animation: pulse 3s infinite;
     }
+    .neon-glow {
+      filter: drop-shadow(0 0 6px #00ffe5) drop-shadow(0 0 12px #00ffe5);
+      transition: filter 0.3s ease;
+    }
+    .neon-glow:hover {
+      filter: drop-shadow(0 0 8px #00ffe5) drop-shadow(0 0 18px #00ffe5);
+    }
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
@@ -98,7 +105,6 @@
       z-index: 2;
       position: relative;
     }
-
     .video-preview {
       position: absolute;
       top: 0;
@@ -110,11 +116,9 @@
       z-index: 1;
       pointer-events: none;
     }
-
     .offer:hover .video-preview {
       opacity: 1;
     }
-
     .video-preview video {
       width: 100%;
       height: 100%;
@@ -148,7 +152,6 @@
       50% { opacity: 0.6; }
     }
 
-    /* Mobile adjustments */
     @media (max-width: 600px) {
       .typing-line {
         white-space: normal;
@@ -178,7 +181,7 @@
 </head>
 <body>
   <div class="container">
-    <img src="https://i.imgur.com/e6zLrJf.png" alt="Ghost Logo" class="logo">
+    <img src="https://yourghostproject.github.io/Logo.png" alt="Ghost Logo" class="logo neon-glow">
     <h1>Ghost Music Production Service</h1>
     <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
@@ -195,16 +198,17 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-    <!-- Content Creator Offer with video -->
-<div class="offer">
-  <div class="video-preview">
-    <video muted loop autoplay playsinline>
-      <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
-    </video>
-  </div>
-  <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
-  <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-</div>
+      <!-- Content Creator Offer with video -->
+      <div class="offer">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
+        <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
+      </div>
+
       <!-- Cyberpunk Visual Offer -->
       <div class="offer">
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>

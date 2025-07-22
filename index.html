@@ -56,6 +56,7 @@
       color: #00ffe5;
       animation: blinkHighlight 1.2s infinite;
     }
+
     .offers {
       display: flex;
       flex-wrap: wrap;
@@ -63,6 +64,7 @@
       gap: 1.5rem;
       margin: 3rem 0;
     }
+
     .offer {
       flex: 1 1 280px;
       background: linear-gradient(145deg, #1a1a1a, #121212);
@@ -75,12 +77,14 @@
       position: relative;
       overflow: hidden;
     }
+
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
       box-shadow: 0 0 20px #00ffe566;
       color: #ffffff;
     }
+
     .offer h3 {
       color: #00ffe5;
       margin-bottom: 0.5rem;
@@ -88,10 +92,12 @@
       z-index: 2;
       position: relative;
     }
+
     .offer:hover h3 {
       text-shadow: 0 0 5px #00ffe5;
       color: #ffffff;
     }
+
     .offer p {
       font-size: 0.85rem;
       color: #bbb;
@@ -101,54 +107,55 @@
 
     .video-preview {
       position: absolute;
-      top: 0;
+      top: 15%;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 70%;
       opacity: 0;
       transition: opacity 0.4s ease;
       z-index: 1;
-      pointer-events: none;
     }
 
     .offer:hover .video-preview {
-      opacity: 1;
+      opacity: 0.4;
     }
 
     .video-preview video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 35%;
       border-radius: 10px;
-      opacity: 0.25;
     }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.05); opacity: 0.9; }
     }
+
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
+
     @keyframes blink {
       50% { border-color: transparent }
     }
+
     @keyframes blinkHighlight {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
 
-    /* Mobile adjustments */
     @media (max-width: 600px) {
       .typing-line {
         white-space: normal;
@@ -168,10 +175,8 @@
         font-size: 1rem;
       }
       .video-preview {
-        opacity: 1 !important;
-      }
-      .video-preview video {
-        opacity: 0.25 !important;
+        top: 25%;
+        opacity: 0.2 !important;
       }
     }
   </style>
@@ -184,19 +189,24 @@
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
 
     <div class="offers">
-      <!-- Artist Offer with video -->
+      <!-- Artist Button -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
-            <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
+            <source src="artist-preview.mp4" type="video/mp4" />
           </video>
         </div>
         <h3>🎵 BEAT for ARTIST – £149</h3>
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <!-- Content Creator Offer -->
+      <!-- Content Creator Button -->
       <div class="offer">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="creator-preview.mp4" type="video/mp4" />
+          </video>
+        </div>
         <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Ghost Project</title>
+  <title>Your Ghost Project</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
@@ -13,31 +13,9 @@
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
-      background-color: #121212;
+      background-color: #101010;
       color: #f2f2f2;
       text-align: center;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 1.2rem;
-      color: #ffffff;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      z-index: 100;
-      animation: glitch 2.5s infinite;
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
-      20% { text-shadow: -2px -1px #00ffff, 2px 1px #ff00ff; }
-      40% { text-shadow: 2px 1px #ffffff, -2px -1px #00ffff; }
-      60% { text-shadow: 0px 0px #ffffff; }
-      80% { text-shadow: 2px 0px #ff00ff, -2px 1px #00ffff; }
-      100% { text-shadow: -2px 0px #00ffff, 2px 0px #ffffff; }
     }
 
     .banner-wrapper {
@@ -52,7 +30,26 @@
       height: 100%;
       object-fit: cover;
       object-position: center 55%;
-      opacity: 0.25;
+      opacity: 0.3;
+    }
+
+    .site-title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.2rem;
+      color: white;
+      font-weight: bold;
+      z-index: 2;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
     .banner-text {
@@ -60,7 +57,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #ffffff;
+      color: #f2f2f2;
       font-size: 1rem;
       line-height: 1.6;
       padding: 0 1rem;
@@ -68,17 +65,45 @@
     }
 
     .banner-text h1 {
-      margin: 0 0 0.5rem;
-      font-size: 1.6rem;
-      font-weight: bold;
+      margin: 0 0 1rem;
+      font-size: 1.8rem;
       color: #ffffff;
     }
 
-    .banner-text p {
-      margin: 0;
-      font-size: 0.9rem;
-      font-weight: normal;
-      color: #ccc;
+    .typed-container {
+      margin-top: 3rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #f2f2f2;
+      font-family: 'Share Tech Mono', monospace;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    #typed-text {
+      display: inline;
+    }
+
+    .cursor {
+      display: inline-block;
+      color: #00ffe5;
+      font-weight: bold;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .section-title {
+      margin-top: 2.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #00ffe5;
+      font-family: 'Share Tech Mono', monospace;
     }
 
     .container {
@@ -171,7 +196,7 @@
         line-height: 1.4;
       }
       .banner-text h1 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
       }
       .video-preview {
         opacity: 1 !important;
@@ -184,21 +209,25 @@
 </head>
 <body>
 
-  <div class="logo">Your Ghost Project</div>
-
   <div class="banner-wrapper">
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
+    <div class="site-title">Your Ghost Project</div>
     <div class="banner-text">
       <h1>Signature Urban Beats. Made for Artists & Content Creators</h1>
       <p>Buyout only. Yours forever. Delivered in 72h.</p>
     </div>
   </div>
 
+  <div class="typed-container">
+    <p id="typed-text"></p><span class="cursor">|</span>
+  </div>
+
+  <h2 class="section-title">Who are you?</h2>
+
   <div class="container">
     <div class="offers">
-
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -223,9 +252,27 @@
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
         <p>Your personalized cyberpunk action figures.</p>
       </div>
-
     </div>
   </div>
 
+  <script>
+    const text = "We help Artists and Content Creators break free from generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats — buyout only. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.";
+    const typedText = document.getElementById("typed-text");
+    const cursor = document.querySelector(".cursor");
+
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typedText.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 25);
+      }
+    }
+
+    window.onload = () => {
+      type();
+    };
+  </script>
 </body>
 </html>

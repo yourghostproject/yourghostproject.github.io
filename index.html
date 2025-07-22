@@ -13,8 +13,8 @@
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
-      background-color: #1a1a1a;
-      color: #ffffff;
+      background-color: #121212;
+      color: #f2f2f2;
       text-align: center;
     }
 
@@ -33,12 +33,23 @@
       opacity: 0.3;
     }
 
+    .banner-brand {
+      position: absolute;
+      top: 20px;
+      left: 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+      z-index: 10;
+      text-shadow: 0 0 5px #000000;
+    }
+
     .banner-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #ffffff;
+      color: #f2f2f2;
       font-size: 1rem;
       line-height: 1.6;
       padding: 0 1rem;
@@ -67,8 +78,8 @@
 
     .offer {
       flex: 1 1 280px;
-      background: linear-gradient(145deg, #222, #111);
-      border: 1px solid #333;
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      border: 1px solid #2d2d2d;
       border-radius: 10px;
       padding: 1.5rem;
       transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
@@ -78,27 +89,10 @@
       overflow: hidden;
     }
 
-    .offer::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, #00ffe522 0%, transparent 70%);
-      z-index: 0;
-      transition: opacity 0.3s ease;
-      opacity: 0;
-    }
-
-    .offer:hover::before {
-      opacity: 1;
-    }
-
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
-      box-shadow: 0 0 30px #00ffe5cc;
+      box-shadow: 0 0 20px #00ffe566;
       color: #ffffff;
     }
 
@@ -117,7 +111,7 @@
 
     .offer p {
       font-size: 0.85rem;
-      color: #dddddd;
+      color: #bbb;
       z-index: 2;
       position: relative;
     }
@@ -175,6 +169,11 @@
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
+
+    <div class="banner-brand">
+      Your Ghost Project
+    </div>
+
     <div class="banner-text">
       <h1>Ghost Music Production Service</h1>
       <p>Exclusive <span style="color:#00ffe5;">hip-hop</span>, <span style="color:#00ffe5;">drill</span> & <span style="color:#00ffe5;">trap</span> beats for artists and creators.<br><br>
@@ -208,8 +207,8 @@
 
       <!-- Cyberpunk Visual Offer -->
       <div class="offer">
-        <h3>🌌 Limited Edition Cyberpunk Visual <em>by The Ghost</em></h3>
-        <p>Your personalized cyberpunk action figures. Unique. Styled. Futuristic.</p>
+        <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
+        <p>Your personalized cyberpunk action figures.</p>
       </div>
     </div>
   </div>

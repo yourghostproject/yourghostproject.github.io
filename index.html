@@ -13,8 +13,8 @@
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
-      background-color: #101010;
-      color: #f2f2f2;
+      background-color: #1a1a1a;
+      color: #ffffff;
       text-align: center;
     }
 
@@ -38,7 +38,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #f2f2f2;
+      color: #ffffff;
       font-size: 1rem;
       line-height: 1.6;
       padding: 0 1rem;
@@ -67,8 +67,8 @@
 
     .offer {
       flex: 1 1 280px;
-      background: linear-gradient(145deg, #1a1a1a, #121212);
-      border: 1px solid #2d2d2d;
+      background: linear-gradient(145deg, #222, #111);
+      border: 1px solid #333;
       border-radius: 10px;
       padding: 1.5rem;
       transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
@@ -78,10 +78,27 @@
       overflow: hidden;
     }
 
+    .offer::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, #00ffe522 0%, transparent 70%);
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .offer:hover::before {
+      opacity: 1;
+    }
+
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
-      box-shadow: 0 0 20px #00ffe566;
+      box-shadow: 0 0 30px #00ffe5cc;
       color: #ffffff;
     }
 
@@ -100,7 +117,7 @@
 
     .offer p {
       font-size: 0.85rem;
-      color: #bbb;
+      color: #dddddd;
       z-index: 2;
       position: relative;
     }
@@ -133,11 +150,6 @@
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes blinkHighlight {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
     }
 
     @media (max-width: 600px) {
@@ -196,8 +208,8 @@
 
       <!-- Cyberpunk Visual Offer -->
       <div class="offer">
-        <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
-        <p>Your personalized cyberpunk action figures.</p>
+        <h3>🌌 Limited Edition Cyberpunk Visual <em>by The Ghost</em></h3>
+        <p>Your personalized cyberpunk action figures. Unique. Styled. Futuristic.</p>
       </div>
     </div>
   </div>

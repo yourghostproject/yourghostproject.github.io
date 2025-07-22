@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Ghost Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Ghost Project</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
@@ -18,215 +20,185 @@
       text-align: center;
     }
 
-    .banner-wrapper {
-      position: relative;
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-    }
 
-    .banner-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 55%;
-      opacity: 0.3;
-    }
+.banner-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
 
-    .site-title {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 1.2rem;
-      color: white;
-      font-weight: bold;
-      z-index: 2;
-      animation: glitch 1s infinite;
-    }
+.banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  opacity: 0.3;
+}
 
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
-      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
-      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
-      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-    }
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f2f2f2;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 1rem;
+  text-shadow: 0 0 8px #000000cc;
+}
 
-    .banner-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #f2f2f2;
-      font-size: 1rem;
-      line-height: 1.6;
-      padding: 0 1rem;
-      text-shadow: 0 0 8px #000000cc;
-    }
+.banner-text h1 {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
 
-    .banner-text h1 {
-      margin: 0 0 1rem;
-      font-size: 1.8rem;
-      color: #ffffff;
-    }
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
 
-    .typed-container {
-      margin-top: 3rem;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #f2f2f2;
-      font-family: 'Share Tech Mono', monospace;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
 
-    #typed-text {
-      display: inline;
-    }
+.offer {
+  flex: 1 1 280px;
+  background: linear-gradient(145deg, #1a1a1a, #121212);
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+  animation: fadeInUp 1.5s ease-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
 
-    .cursor {
-      display: inline-block;
-      color: #00ffe5;
-      font-weight: bold;
-      animation: blink 0.8s infinite;
-    }
+.offer:hover {
+  transform: translateY(-5px);
+  border-color: #00ffe5;
+  box-shadow: 0 0 20px #00ffe566;
+  color: #ffffff;
+}
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+.offer h3 {
+  color: #00ffe5;
+  margin-bottom: 0.5rem;
+  transition: text-shadow 0.3s, color 0.3s;
+  z-index: 2;
+  position: relative;
+}
 
-    .section-title {
-      margin-top: 2.5rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #00ffe5;
-      font-family: 'Share Tech Mono', monospace;
-    }
+.offer:hover h3 {
+  text-shadow: 0 0 5px #00ffe5;
+  color: #ffffff;
+}
 
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+.offer p {
+  font-size: 0.85rem;
+  color: #bbb;
+  z-index: 2;
+  position: relative;
+}
 
-    .offers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
+.video-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
 
-    .offer {
-      flex: 1 1 280px;
-      background: linear-gradient(145deg, #1a1a1a, #121212);
-      border: 1px solid #2d2d2d;
-      border-radius: 10px;
-      padding: 1.5rem;
-      transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-      animation: fadeInUp 1.5s ease-out;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
+.offer:hover .video-preview {
+  opacity: 1;
+}
 
-    .offer:hover {
-      transform: translateY(-5px);
-      border-color: #00ffe5;
-      box-shadow: 0 0 20px #00ffe566;
-      color: #ffffff;
-    }
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 10px;
+  opacity: 0.25;
+}
 
-    .offer h3 {
-      color: #00ffe5;
-      margin-bottom: 0.5rem;
-      transition: text-shadow 0.3s, color 0.3s;
-      z-index: 2;
-      position: relative;
-    }
+.typed-container {
+  margin-top: 3rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffffff;
+  padding: 0 1rem;
+}
 
-    .offer:hover h3 {
-      text-shadow: 0 0 5px #00ffe5;
-      color: #ffffff;
-    }
+.cursor {
+  display: inline-block;
+  animation: blinkHighlight 1s infinite;
+  color: #00ffe5;
+}
 
-    .offer p {
-      font-size: 0.85rem;
-      color: #bbb;
-      z-index: 2;
-      position: relative;
-    }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .video-preview {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-      pointer-events: none;
-    }
+@keyframes blinkHighlight {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
 
-    .offer:hover .video-preview {
-      opacity: 1;
-    }
+@media (max-width: 600px) {
+  .banner-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .banner-text h1 {
+    font-size: 1.4rem;
+  }
+  .video-preview {
+    opacity: 1 !important;
+  }
+  .video-preview video {
+    opacity: 0.25 !important;
+  }
+}
 
-    .video-preview video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      border-radius: 10px;
-      opacity: 0.25;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .banner-text {
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-      .banner-text h1 {
-        font-size: 1.4rem;
-      }
-      .video-preview {
-        opacity: 1 !important;
-      }
-      .video-preview video {
-        opacity: 0.25 !important;
-      }
-    }
   </style>
 </head>
 <body>
+
 
   <div class="banner-wrapper">
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
-    <div class="site-title">Your Ghost Project</div>
     <div class="banner-text">
       <h1>Signature Urban Beats. Made for Artists & Content Creators</h1>
       <p>Buyout only. Yours forever. Delivered in 72h.</p>
     </div>
   </div>
 
+
   <div class="typed-container">
-    <p id="typed-text"></p><span class="cursor">|</span>
+    <span id="typed-text"></span><span class="cursor">|</span>
   </div>
 
-  <h2 class="section-title">Who are you?</h2>
 
   <div class="container">
+    <h2>Who are you?</h2>
     <div class="offers">
       <div class="offer">
         <div class="video-preview">
@@ -238,41 +210,43 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <div class="offer">
-        <div class="video-preview">
-          <video muted loop autoplay playsinline>
-            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
-        <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-      </div>
 
-      <div class="offer">
-        <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
-        <p>Your personalized cyberpunk action figures.</p>
-      </div>
+  <div class="offer">
+    <div class="video-preview">
+      <video muted loop autoplay playsinline>
+        <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
+      </video>
     </div>
+    <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
+    <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
   </div>
 
+  <div class="offer">
+    <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
+    <p>Your personalized cyberpunk action figures.</p>
+  </div>
+</div>
+
+  </div>
+
+
   <script>
-    const text = "We help Artists and Content Creators break free from generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats — buyout only. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.";
-    const typedText = document.getElementById("typed-text");
-    const cursor = document.querySelector(".cursor");
+    const text = "We help Artists and Content Creators break free from generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats — buyout only.<br><br>Send us up to 3 references,<br>and we’ll deliver your custom track within 72 hours, with 2 revisions included.";
 
-    let index = 0;
+    let i = 0;
+    const speed = 20;
 
-    function type() {
-      if (index < text.length) {
-        typedText.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(type, 25);
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typed-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
       }
     }
 
-    window.onload = () => {
-      type();
-    };
+    window.onload = typeWriter;
   </script>
+
+
 </body>
 </html>

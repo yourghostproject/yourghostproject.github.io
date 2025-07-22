@@ -17,30 +17,27 @@
       color: #f2f2f2;
       text-align: center;
     }
+
+    .banner-video {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+
     .container {
       max-width: 1000px;
       margin: 2rem auto;
       padding: 1rem;
     }
-    .logo {
-      width: 160px;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      animation: pulse 3s infinite;
-    }
-    .neon-glow {
-      filter: drop-shadow(0 0 6px #00ffe5) drop-shadow(0 0 12px #00ffe5);
-      transition: filter 0.3s ease;
-    }
-    .neon-glow:hover {
-      filter: drop-shadow(0 0 8px #00ffe5) drop-shadow(0 0 18px #00ffe5);
-    }
+
     h1 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
       color: #ffffff;
       animation: fadeInDown 1s ease-out;
     }
+
     .typing-line {
       font-size: 1rem;
       color: #ccc;
@@ -63,6 +60,7 @@
       color: #00ffe5;
       animation: blinkHighlight 1.2s infinite;
     }
+
     .offers {
       display: flex;
       flex-wrap: wrap;
@@ -105,6 +103,7 @@
       z-index: 2;
       position: relative;
     }
+
     .video-preview {
       position: absolute;
       top: 0;
@@ -116,9 +115,11 @@
       z-index: 1;
       pointer-events: none;
     }
+
     .offer:hover .video-preview {
       opacity: 1;
     }
+
     .video-preview video {
       width: 100%;
       height: 100%;
@@ -180,14 +181,18 @@
   </style>
 </head>
 <body>
+
+  <video class="banner-video" autoplay muted loop playsinline>
+    <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
+  </video>
+
   <div class="container">
-    <img src="https://yourghostproject.github.io/Logo.png" alt="Ghost Logo" class="logo neon-glow">
     <h1>Ghost Music Production Service</h1>
     <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
 
     <div class="offers">
-      <!-- Artist Offer with video -->
+      <!-- Artist Offer -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -198,7 +203,7 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <!-- Content Creator Offer with video -->
+      <!-- Content Creator Offer -->
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -209,7 +214,7 @@
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>
 
-      <!-- Cyberpunk Visual Offer -->
+      <!-- Visual Offer -->
       <div class="offer">
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
         <p>Your personalized cyberpunk action figures.</p>

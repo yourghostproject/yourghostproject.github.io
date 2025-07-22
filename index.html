@@ -98,7 +98,6 @@
       z-index: 2;
       position: relative;
     }
-
     .video-preview {
       position: absolute;
       top: 0;
@@ -116,7 +115,31 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       border-radius: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .typing-line {
+        white-space: normal;
+        word-break: break-word;
+        width: auto;
+        overflow: visible;
+        border-right: none;
+        animation: none;
+      }
+      .blink {
+        display: none;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      .typing-line {
+        font-size: 1rem;
+      }
+      .offer .video-preview {
+        opacity: 1 !important;
+      }
     }
 
     @keyframes pulse {
@@ -142,59 +165,57 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.6; }
     }
-
-    @media (max-width: 600px) {
-      .typing-line {
-        white-space: normal;
-        word-break: break-word;
-        width: auto;
-        overflow: visible;
-        border-right: none;
-        animation: none;
-      }
-      .blink {
-        display: none;
-      }
-      h1 {
-        font-size: 1.4rem;
-      }
-      .typing-line {
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://i.imgur.com/e6zLrJf.png" alt="Ghost Logo" class="logo">
+    <img src="https://i.imgur.com/e6zLrJf.png" alt="Ghost Logo" class="logo" />
     <h1>Ghost Music Production Service</h1>
     <p class="typing-line line1">Exclusive <span class="highlight">hip-hop</span>, <span class="highlight">drill</span> & <span class="highlight">trap</span> beats for artists and creators.</p>
     <p class="typing-line line2">Buyout only. Yours forever. Delivered in 72h — just tell me what you want.<span class="blink"></span></p>
 
     <div class="offers">
-      <!-- Artist Offer with video -->
-      <div class="offer">
+      <!-- Artist Offer -->
+      <div class="offer" id="artist-offer">
         <div class="video-preview">
-          <video muted loop autoplay playsinline>
-            <source src="https://raw.githubusercontent.com/yourghostproject/yourghostproject.github.io/refs/heads/main/artist-preview.mp4" type="video/mp4">
+          <video muted loop playsinline>
+            <source src="artist-preview.mp4" type="video/mp4">
           </video>
         </div>
         <h3>🎵 BEAT for ARTIST – £149</h3>
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
       </div>
 
-      <!-- Content Creator Offer -->
+      <!-- Content Creator -->
       <div class="offer">
         <h3>🎧 BEAT for CONTENT CREATOR – £149</h3>
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
       </div>
 
-      <!-- Cyberpunk Visual Offer -->
+      <!-- Cyberpunk Visual -->
       <div class="offer">
         <h3>🌌 Limited Edition Cyberpunk visual <em>by The Ghost</em></h3>
         <p>Your personalized cyberpunk action figures.</p>
       </div>
     </div>
   </div>
+
+  <script>
+    // Play/pause video only when the artist offer is visible on screen
+    document.addEventListener('DOMContentLoaded', () => {
+      const artistOffer = document.getElementById('artist-offer');
+      const video = artistOffer.querySelector('video');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.6 });
+      observer.observe(artistOffer);
+    });
+  </script>
 </body>
 </html>

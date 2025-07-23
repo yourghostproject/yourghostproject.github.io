@@ -21,8 +21,8 @@
       width: 100%;
       height: 270px;
       overflow: hidden;
-      border-bottom: 2px solid #9d00ff;
-      box-shadow: 0 0 8px #9d00ff;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
     }
 
     .banner-video {
@@ -59,12 +59,12 @@
       margin-left: 15px;
       text-decoration: none;
       color: white;
-      animation: subtle-glitch 2s infinite;
+      animation: subtle-glitch-soft 2s infinite;
     }
 
     .banner-text {
       position: absolute;
-      top: 50%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #f2f2f2;
@@ -80,7 +80,7 @@
     .banner-main {
       font-size: 1.8rem;
       color: #ffffff;
-      margin-bottom: 0.5rem;
+      margin: 0.5rem 0;
     }
 
     .banner-sub {
@@ -89,7 +89,7 @@
     }
 
     .typed-container {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       font-size: 1rem;
       font-weight: 400;
       color: #f2f2f2;
@@ -120,14 +120,14 @@
 
     .section-title {
       margin-top: 2.5rem;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
       color: #00ffe5;
     }
 
     .container {
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 1rem auto;
       padding: 1rem;
     }
 
@@ -136,7 +136,7 @@
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 1.5rem;
-      margin: 3rem 0 1rem;
+      margin: 2rem 0 1rem;
     }
 
     .offer {
@@ -159,7 +159,7 @@
     }
 
     .offer h3 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       margin-bottom: 0.5rem;
       color: #00ffe5;
     }
@@ -198,36 +198,27 @@
     }
 
     .credit-section {
-      margin-top: 3rem;
+      margin-top: 2rem;
       color: white;
     }
 
     .credit-section h3 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: white;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .credit-logos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.2rem;
       font-size: 1.1rem;
     }
 
-    .credit-logos span {
-      animation: text-shine 6s infinite;
-    }
-
-    @keyframes text-shine {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
-
     .footer {
-      border-top: 2px solid #9d00ff;
-      box-shadow: 0 0 8px #9d00ff;
+      border-top: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
       margin-top: 3rem;
       padding: 1rem;
       font-size: 0.8rem;
@@ -249,13 +240,13 @@
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
-    @keyframes subtle-glitch {
-      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
+    @keyframes subtle-glitch-soft {
+      0%, 100% { text-shadow: 0.5px 0.5px #00ffe5, -0.5px -0.5px #9d00ff; }
+      50% { text-shadow: -0.5px 0.5px #00ffe5, 0.5px -0.5px #9d00ff; }
     }
 
     @media (max-width: 600px) {
-      .banner-wrapper { height: 300px; }
+      .banner-wrapper { height: 320px; }
       .banner-main { display: none; }
       .banner-sub::before {
         content: "Urban Beats for Artists & Content Creators";
@@ -265,7 +256,6 @@
         margin-bottom: 0.5rem;
         text-shadow: 0 0 4px #000;
       }
-
       .site-title { font-size: 1rem; top: 10px; left: 12px; }
       .contact-links { font-size: 1rem; top: 10px; right: 12px; }
       .credit-logos { flex-direction: column; gap: 0.5rem; }
@@ -297,7 +287,7 @@
   <p id="typed-text"></p><span class="cursor">|</span>
 </div>
 
-<h2 class="section-title">Who are you?</h2>
+<h2 class="section-title">Who are you?<span class="cursor">|</span></h2>
 
 <div class="container">
   <div class="offers">
@@ -325,7 +315,7 @@
 </div>
 
 <div class="credit-section">
-  <h3>We worked with creators from</h3>
+  <h3 style="color:white">We worked with creators from</h3>
   <div class="credit-logos">
     <span>NETFLIX</span>
     <span>BBC 1</span>

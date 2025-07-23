@@ -128,6 +128,18 @@
       min-height: 2rem;
     }
 
+    .indicator-arrows {
+      margin-top: 0.5rem;
+      animation: bounce 1.8s infinite;
+      font-size: 1.5rem;
+      color: #00ffe5;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
     .container {
       max-width: 1000px;
       margin: 2rem auto;
@@ -274,8 +286,9 @@
   </div>
 
   <div class="typed-container">
-    <p id="typed-intro">We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.</p>
+    <p id="typed-intro">We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats.<br>Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.</p>
     <p class="section-title" id="typed-who"></p>
+    <div class="indicator-arrows">⬇⬇</div>
   </div>
 
   <div class="container">

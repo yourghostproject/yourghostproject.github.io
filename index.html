@@ -147,27 +147,33 @@
       background: linear-gradient(145deg, #1a1a1a, #121212);
       border: 1px solid #2d2d2d;
       border-radius: 10px;
-      padding: 2rem;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      height: 200px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .offer h3 {
+      font-size: 2rem;
+      color: #00ffe5;
+      z-index: 2;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      text-shadow: 0 0 6px rgba(0, 255, 229, 0.4);
     }
 
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
-      box-shadow: 0 0 20px #00ffe566;
+      box-shadow: 0 0 25px #00ffe580;
     }
 
     .offer:hover h3 {
       color: #ffffff;
-    }
-
-    .offer h3 {
-      font-size: 1.8rem;
-      margin-top: 0.5rem;
-      color: #00ffe5;
+      text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
     }
 
     .video-preview {
@@ -190,7 +196,7 @@
     }
 
     .offer:hover .video-preview video {
-      opacity: 0.4;
+      opacity: 0.5;
     }
 
     .credit-section {
@@ -214,7 +220,7 @@
 
     .credit-logos span {
       animation: glitch 3s infinite alternate;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .footer {

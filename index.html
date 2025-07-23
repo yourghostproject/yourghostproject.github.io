@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -89,7 +91,7 @@
     }
     .section-title {
       margin-top: 2.5rem;
-      font-size: 1.2rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: #00ffe5;
       font-family: 'Share Tech Mono', monospace;
@@ -117,6 +119,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      min-height: 240px;
     }
     .offer:hover {
       transform: translateY(-5px);
@@ -125,24 +128,25 @@
       color: #ffffff;
     }
     .offer h3 {
+      font-size: 1.5rem;
       color: #00ffe5;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       transition: text-shadow 0.3s, color 0.3s;
       z-index: 2;
       position: relative;
     }
-    .offer:hover h3 {
-      text-shadow: 0 0 5px #00ffe5;
-      color: #ffffff;
-    }
     .offer p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #bbb;
       z-index: 2;
       position: relative;
+      margin-top: 2rem;
     }
     .offer .price {
-      margin-top: 1rem;
+      position: absolute;
+      bottom: 1rem;
+      left: 0;
+      right: 0;
       font-size: 0.9rem;
       color: #00ffe5;
       font-weight: bold;
@@ -153,13 +157,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
+      z-index: 0;
       pointer-events: none;
-    }
-    .offer:hover .video-preview {
-      opacity: 1;
+      opacity: 0.25;
     }
     .video-preview video {
       width: 100%;
@@ -167,18 +167,23 @@
       object-fit: cover;
       object-position: center 35%;
       border-radius: 10px;
-      opacity: 0.25;
     }
     .credits {
       margin-top: 3rem;
-      font-size: 0.85rem;
+      font-size: 1.2rem;
       color: #f2f2f2;
       font-family: 'Share Tech Mono', monospace;
     }
     .credits span {
       display: inline-block;
       margin: 0.5rem 1rem;
-      animation: glitch 1.5s infinite;
+      font-size: 1rem;
+      animation: glitch 2.5s infinite;
+    }
+    .credits .subtitle {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #888;
     }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -191,12 +196,6 @@
       }
       .banner-text h1 {
         font-size: 1.4rem;
-      }
-      .video-preview {
-        opacity: 1 !important;
-      }
-      .video-preview video {
-        opacity: 0.25 !important;
       }
     }
   </style>
@@ -212,13 +211,10 @@
       <p>Buyout only. Yours forever. Delivered in 72h.</p>
     </div>
   </div>
-
   <div class="typed-container">
     <p id="typed-text"></p><span class="cursor">|</span>
   </div>
-
   <h2 class="section-title">Who are you?</h2>
-
   <div class="container">
     <div class="offers">
       <div class="offer">
@@ -231,7 +227,6 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
         <div class="price">£149 per beat</div>
       </div>
-
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -240,12 +235,11 @@
         </div>
         <h3>CONTENT CREATOR</h3>
         <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-        <div class="price">£99 – £149</div>
+        <div class="price">£99 – £149 per beat/bundle</div>
       </div>
     </div>
-
     <div class="credits">
-      <p>WE WORKED WITH CREATORS FROM</p>
+      <div class="section-title">WE WORKED WITH CREATORS FROM</div>
       <span>NETFLIX</span>
       <span>BBC 1</span>
       <span>UNIVERSAL MUSIC</span>
@@ -253,9 +247,9 @@
       <span>SONY MUSIC</span>
       <span>BMG</span>
       <span>ADIDAS</span>
+      <div class="subtitle">and more ...</div>
     </div>
   </div>
-
   <script>
     const lines = [
       "We help Creators break free from licensing and generic royalty-free music",

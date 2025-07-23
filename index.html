@@ -127,23 +127,40 @@
       border: 1px solid #2d2d2d;
       border-radius: 10px;
       padding: 1.5rem;
-      transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-      animation: fadeInUp 1.5s ease-out;
-      cursor: pointer;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, color 0.3s, border-color 0.3s;
+      animation: fadeInUp 1.5s ease-out;
+      cursor: pointer;
+    }
+
+    .offer:hover {
+      transform: translateY(-5px);
+      border-color: #00ffe5;
+      box-shadow: 0 0 20px #00ffe566;
+      color: #ffffff;
+    }
+
+    .offer:hover h3 {
+      text-shadow: 0 0 5px #00ffe5;
+      color: #ffffff;
     }
 
     .offer h3 {
       font-size: 1.6rem;
       color: #00ffe5;
       margin-bottom: 1rem;
+      transition: text-shadow 0.3s, color 0.3s;
+      z-index: 2;
+      position: relative;
     }
 
     .offer p {
       font-size: 0.9rem;
       color: #bbb;
       margin-bottom: 2rem;
+      z-index: 2;
+      position: relative;
     }
 
     .price-tag {
@@ -154,6 +171,7 @@
       font-size: 1rem;
       font-weight: bold;
       color: #00ffe5;
+      z-index: 2;
     }
 
     .video-preview {
@@ -163,7 +181,7 @@
       width: 100%;
       height: 100%;
       opacity: 0.25;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -181,19 +199,19 @@
     }
 
     .credits-section {
-      margin-top: 4rem;
+      margin-top: 5rem;
     }
 
     .credits-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #00ffe5;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     .credits-list {
       font-size: 1.1rem;
       color: #f2f2f2;
-      animation: glitchLight 1.5s infinite;
+      animation: glitchLight 2s infinite;
     }
 
     .credits-list span {
@@ -273,7 +291,7 @@
       <span>BMG</span>
       <span>ADIDAS</span>
     </div>
-    <p style="margin-top: 1rem; color: #aaa;">... and more</p>
+    <p style="margin-top: 1.2rem; color: #aaa;">... and more</p>
   </div>
 
   <script>

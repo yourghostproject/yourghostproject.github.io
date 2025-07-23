@@ -9,7 +9,9 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
@@ -17,190 +19,206 @@
       color: #f2f2f2;
       text-align: center;
     }
-    .banner-wrapper {
-      position: relative;
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-    }
-    .banner-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 55%;
-      opacity: 0.3;
-    }
-    .site-title {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 1.2rem;
-      color: white;
-      font-weight: bold;
-      z-index: 2;
-      animation: glitch 1s infinite;
-    }
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
-      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
-      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
-      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-    }
-    .banner-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #f2f2f2;
-      font-size: 1rem;
-      line-height: 1.6;
-      padding: 0 1rem;
-      text-shadow: 0 0 8px #000000cc;
-    }
-    .banner-text h1 {
-      margin: 0 0 1rem;
-      font-size: 1.8rem;
-      color: #ffffff;
-    }
-    .typed-container {
-      margin-top: 3rem;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #f2f2f2;
-      font-family: 'Share Tech Mono', monospace;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-      line-height: 1.6;
-    }
-    #typed-text {
-      display: inline;
-      white-space: pre-line;
-    }
-    .cursor {
-      display: inline-block;
-      color: #00ffe5;
-      font-weight: bold;
-      animation: blink 0.8s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .section-title {
-      margin-top: 2.5rem;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #00ffe5;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    .offers {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
-    .offer {
-      flex: 1 1 280px;
-      background: linear-gradient(145deg, #1a1a1a, #121212);
-      border: 1px solid #2d2d2d;
-      border-radius: 10px;
-      padding: 1.5rem;
-      transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
-      animation: fadeInUp 1.5s ease-out;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      min-height: 240px;
-    }
-    .offer:hover {
-      transform: translateY(-5px);
-      border-color: #00ffe5;
-      box-shadow: 0 0 20px #00ffe566;
-      color: #ffffff;
-    }
-    .offer h3 {
-      font-size: 1.5rem;
-      color: #00ffe5;
-      margin-bottom: 1rem;
-      transition: text-shadow 0.3s, color 0.3s;
-      z-index: 2;
-      position: relative;
-    }
-    .offer p {
-      font-size: 0.9rem;
-      color: #bbb;
-      z-index: 2;
-      position: relative;
-      margin-top: 2rem;
-    }
-    .offer .price {
-      position: absolute;
-      bottom: 1rem;
-      left: 0;
-      right: 0;
-      font-size: 0.9rem;
-      color: #00ffe5;
-      font-weight: bold;
-    }
-    .video-preview {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.25;
-    }
-    .video-preview video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
-      border-radius: 10px;
-    }
-    .credits {
-      margin-top: 3rem;
-      font-size: 1.2rem;
-      color: #f2f2f2;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    .credits span {
-      display: inline-block;
-      margin: 0.5rem 1rem;
-      font-size: 1rem;
-      animation: glitch 2.5s infinite;
-    }
-    .credits .subtitle {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #888;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media (max-width: 600px) {
-      .banner-text {
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-      .banner-text h1 {
-        font-size: 1.4rem;
-      }
-    }
+
+
+.banner-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.banner-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  opacity: 0.3;
+}
+
+.site-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+  25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+  50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+  75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+  100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+}
+
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #f2f2f2;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 1rem;
+  text-shadow: 0 0 8px #000000cc;
+}
+
+.banner-text h1 {
+  margin: 0 0 1rem;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.typed-container {
+  margin-top: 3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #f2f2f2;
+  font-family: 'Share Tech Mono', monospace;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 1.6;
+}
+
+#typed-text {
+  display: inline;
+  white-space: pre-line;
+}
+
+.cursor {
+  display: inline-block;
+  color: #00ffe5;
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.section-title {
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ffe5;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.offer {
+  flex: 1 1 280px;
+  background: linear-gradient(145deg, #1a1a1a, #121212);
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+  animation: fadeInUp 1.5s ease-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.offer:hover {
+  transform: translateY(-5px);
+  border-color: #00ffe5;
+  box-shadow: 0 0 20px #00ffe566;
+  color: #ffffff;
+}
+
+.offer h3 {
+  color: #00ffe5;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.offer p {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin: 1.5rem 0;
+}
+
+.price {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  color: #00ffe5;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.video-preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 10px;
+  opacity: 0.25;
+}
+
+.glitch-text {
+  animation: glitch 1.8s infinite;
+}
+
+.credits-title {
+  margin-top: 4rem;
+  font-size: 1.4rem;
+  color: #00ffe5;
+}
+
+.credits {
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.credits span {
+  animation: glitch 3s infinite;
+  text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff;
+}
+
+.and-more {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
   </style>
 </head>
 <body>
+
+
   <div class="banner-wrapper">
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
@@ -211,15 +229,21 @@
       <p>Buyout only. Yours forever. Delivered in 72h.</p>
     </div>
   </div>
+
+
   <div class="typed-container">
     <p id="typed-text"></p><span class="cursor">|</span>
   </div>
+
+
   <h2 class="section-title">Who are you?</h2>
+
+
   <div class="container">
     <div class="offers">
       <div class="offer">
         <div class="video-preview">
-          <video muted loop autoplay playsinline>
+          <video muted autoplay loop playsinline>
             <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
           </video>
         </div>
@@ -227,39 +251,48 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
         <div class="price">£149 per beat</div>
       </div>
-      <div class="offer">
-        <div class="video-preview">
-          <video muted loop autoplay playsinline>
-            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h3>CONTENT CREATOR</h3>
-        <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-        <div class="price">£99 – £149 per beat/bundle</div>
-      </div>
+
+
+  <div class="offer">
+    <div class="video-preview">
+      <video muted autoplay loop playsinline>
+        <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
+      </video>
     </div>
-    <div class="credits">
-      <div class="section-title">WE WORKED WITH CREATORS FROM</div>
-      <span>NETFLIX</span>
-      <span>BBC 1</span>
-      <span>UNIVERSAL MUSIC</span>
-      <span>NINJA TUNES</span><br/>
-      <span>SONY MUSIC</span>
-      <span>BMG</span>
-      <span>ADIDAS</span>
-      <div class="subtitle">and more ...</div>
-    </div>
+    <h3>CONTENT CREATOR</h3>
+    <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
+    <div class="price">£99 - £149 per beat/bundle</div>
   </div>
+</div>
+
+<div class="credits-title">WE WORKED WITH CREATORS FROM</div>
+<div class="credits">
+  <span>NETFLIX</span>
+  <span>BBC 1</span>
+  <span>UNIVERSAL MUSIC</span>
+  <span>NINJA TUNES</span>
+  <span>SONY MUSIC</span>
+  <span>BMG</span>
+  <span>ADIDAS</span>
+</div>
+<div class="and-more">and more ...</div>
+
+  </div>
+
+
   <script>
     const lines = [
       "We help Creators break free from licensing and generic royalty-free music",
       "by crafting original, hand-made Hip-Hop, Drill, and Trap beats for them.",
       "Send us up to 3 references, and we’ll deliver within 72 hours."
     ];
+
     const typedText = document.getElementById("typed-text");
     const cursor = document.querySelector(".cursor");
+
     let lineIndex = 0;
     let charIndex = 0;
+
     function typeLine() {
       if (lineIndex < lines.length) {
         if (charIndex < lines[lineIndex].length) {
@@ -274,7 +307,12 @@
         }
       }
     }
-    window.onload = () => { typeLine(); };
+
+    window.onload = () => {
+      typeLine();
+    };
   </script>
+
+
 </body>
 </html>

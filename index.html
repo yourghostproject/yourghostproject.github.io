@@ -21,13 +21,8 @@
       width: 100%;
       height: 270px;
       overflow: hidden;
-      border-bottom: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 8px rgba(255,255,255,0.1);
-      transition: 0.4s ease;
-    }
-
-    .banner-wrapper:hover {
-      box-shadow: 0 0 16px rgba(255,255,255,0.2);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
     }
 
     .banner-video {
@@ -36,6 +31,11 @@
       object-fit: cover;
       object-position: center 55%;
       opacity: 0.3;
+      transition: 0.3s ease;
+    }
+
+    .banner-wrapper:hover .banner-video {
+      opacity: 0.45;
     }
 
     .site-title {
@@ -64,7 +64,7 @@
       margin-left: 15px;
       text-decoration: none;
       color: white;
-      animation: subtle-glitch 4s infinite;
+      animation: subtle-glitch 2s infinite;
     }
 
     .banner-text {
@@ -104,22 +104,11 @@
       margin-right: auto;
       text-align: center;
       line-height: 1.6;
-    }
-
-    .cursor {
-      display: inline-block;
-      color: #00ffe5;
-      font-weight: bold;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+      min-height: 5rem;
     }
 
     .section-title {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       font-size: 1.2rem;
       font-weight: bold;
       color: #00ffe5;
@@ -127,7 +116,7 @@
 
     .container {
       max-width: 1000px;
-      margin: 1rem auto;
+      margin: 2rem auto;
       padding: 1rem;
     }
 
@@ -155,23 +144,17 @@
       transform: translateY(-5px);
       border-color: #00ffe5;
       box-shadow: 0 0 20px #00ffe566;
+    }
+
+    .offer:hover h3, .offer:hover p, .offer:hover .price-tag {
       color: #ffffff;
-    }
-
-    .offer:hover .price-tag,
-    .offer:hover h3,
-    .offer:hover p {
-      color: white;
-    }
-
-    .offer:hover .video-preview video {
-      opacity: 0.5;
     }
 
     .offer h3 {
       font-size: 1.6rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       color: #00ffe5;
+      margin-top: 0.25rem;
     }
 
     .offer p {
@@ -187,6 +170,7 @@
       width: 100%;
       font-size: 1rem;
       color: #00ffe5;
+      text-align: center;
     }
 
     .video-preview {
@@ -213,9 +197,9 @@
     }
 
     .credit-section h3 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: white;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .credit-logos {
@@ -227,26 +211,16 @@
     }
 
     .credit-logos span {
-      animation: text-glitch 4s infinite;
-    }
-
-    @keyframes text-glitch {
-      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: none; }
+      animation: glitch 3s infinite;
     }
 
     .footer {
-      border-top: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      border-top: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
       margin-top: 3rem;
       padding: 1rem;
       font-size: 0.8rem;
       color: #aaa;
-      transition: 0.4s ease;
-    }
-
-    .footer:hover {
-      box-shadow: 0 0 12px rgba(255,255,255,0.2);
     }
 
     .footer-logo {
@@ -266,95 +240,104 @@
 
     @keyframes subtle-glitch {
       0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: none; }
-    }
-
-    @media (max-width: 600px) {
-      .banner-wrapper { height: 300px; }
-      .banner-main { display: none; }
-      .banner-sub::before {
-        content: "Urban Beats for Artists & Content Creators";
-        display: block;
-        font-size: 1rem;
-        color: white;
-        margin-bottom: 0.5rem;
-        text-shadow: 0 0 4px #000;
-      }
-
-      .site-title { font-size: 1rem; top: 10px; left: 12px; }
-      .contact-links { font-size: 1rem; top: 10px; right: 12px; }
-      .credit-logos { flex-direction: column; gap: 0.5rem; }
+      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
     }
   </style>
 </head>
 <body>
-
-<div class="banner-wrapper">
-  <video class="banner-video" autoplay muted loop playsinline>
-    <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
-  </video>
-  <div class="site-title">
-    <span>YOUR</span>
-    <span>GHOST</span>
-    <span>PROJECT</span>
-  </div>
-  <div class="contact-links">
-    <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
-    <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
-  </div>
-  <div class="banner-text">
-    <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
-    <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
-  </div>
-</div>
-
-<div class="typed-container">
-  <p style="margin-bottom: 1rem;">We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.</p>
-  <span style="color:#00ffe5;">Who are you?<span class="cursor">|</span></span>
-</div>
-
-<div class="container">
-  <div class="offers">
-    <div class="offer">
-      <div class="video-preview">
-        <video muted loop autoplay playsinline>
-          <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
-        </video>
-      </div>
-      <h3>ARTIST</h3>
-      <p>On-demand custom made beat, buy out with 2 revisions included.</p>
-      <div class="price-tag">£149 per beat</div>
+  <div class="banner-wrapper">
+    <video class="banner-video" autoplay muted loop playsinline>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
+    </video>
+    <div class="site-title">
+      <span>YOUR</span>
+      <span>GHOST</span>
+      <span>PROJECT</span>
     </div>
-    <div class="offer">
-      <div class="video-preview">
-        <video muted loop autoplay playsinline>
-          <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
-        </video>
-      </div>
-      <h3>CONTENT CREATOR</h3>
-      <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-      <div class="price-tag">£99 - £149 per beat/bundle</div>
+    <div class="contact-links">
+      <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
+      <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
+    </div>
+    <div class="banner-text">
+      <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
+      <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
     </div>
   </div>
-</div>
 
-<div class="credit-section">
-  <h3>We worked with creators from</h3>
-  <div class="credit-logos">
-    <span>NETFLIX</span>
-    <span>BBC 1</span>
-    <span>UNIVERSAL MUSIC</span>
-    <span>NINJA TUNE</span>
-    <span>SONY MUSIC</span>
-    <span>BMG</span>
-    <span>ADIDAS</span>
+  <div class="typed-container">
+    <p id="typed-intro"></p>
+    <p id="typed-who"></p><span class="cursor" id="cursor">|</span>
   </div>
-  <p style="margin-top: 1rem; font-size: 0.95rem;">and more...</p>
-</div>
 
-<div class="footer">
-  <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
-  <div class="footer-logo">Your Ghost Project</div>
-</div>
+  <div class="container">
+    <div class="offers">
+      <div class="offer">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3>ARTIST</h3>
+        <p>On-demand custom made beat, buy out with 2 revisions included.</p>
+        <div class="price-tag">£149 per beat</div>
+      </div>
+      <div class="offer">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3>CONTENT CREATOR</h3>
+        <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
+        <div class="price-tag">£99 - £149 per beat/bundle</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="credit-section">
+    <h3>We worked with creators from</h3>
+    <div class="credit-logos">
+      <span>NETFLIX</span>
+      <span>BBC 1</span>
+      <span>UNIVERSAL MUSIC</span>
+      <span>NINJA TUNE</span>
+      <span>SONY MUSIC</span>
+      <span>BMG</span>
+      <span>ADIDAS</span>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.95rem;">and more...</p>
+  </div>
+
+  <div class="footer">
+    <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
+    <div class="footer-logo">Your Ghost Project</div>
+  </div>
+
+  <script>
+    function typeEffect(element, text, speed, callback) {
+      let i = 0;
+      function typeChar() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeChar, speed);
+        } else if (callback) {
+          callback();
+        }
+      }
+      typeChar();
+    }
+
+    window.onload = () => {
+      typeEffect(
+        document.getElementById("typed-intro"),
+        "We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.",
+        10,
+        () => {
+          typeEffect(document.getElementById("typed-who"), "Who are you?", 100);
+        }
+      );
+    };
+  </script>
 </body>
 </html>

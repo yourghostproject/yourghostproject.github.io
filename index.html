@@ -16,21 +16,18 @@
       text-align: center;
     }
 
-    .banner-wrapper, .footer {
+    .banner-wrapper {
       position: relative;
       width: 100%;
-      overflow: hidden;
-      border-bottom: 2px solid rgba(157, 0, 255, 0.4);
-      box-shadow: 0 0 8px rgba(157, 0, 255, 0.4);
-      transition: filter 0.3s ease;
-    }
-
-    .banner-wrapper:hover, .footer:hover {
-      filter: brightness(1.2);
-    }
-
-    .banner-wrapper {
       height: 270px;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      transition: 0.4s ease;
+    }
+
+    .banner-wrapper:hover {
+      box-shadow: 0 0 16px rgba(255,255,255,0.2);
     }
 
     .banner-video {
@@ -67,7 +64,7 @@
       margin-left: 15px;
       text-decoration: none;
       color: white;
-      animation: subtle-glitch 2s infinite;
+      animation: subtle-glitch 4s infinite;
     }
 
     .banner-text {
@@ -99,15 +96,14 @@
     .typed-container {
       margin-top: 2rem;
       font-size: 1rem;
+      font-weight: 400;
       color: #f2f2f2;
+      font-family: 'Share Tech Mono', monospace;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    #typed-text, #followup-text {
-      display: inline-block;
-      white-space: pre-line;
+      text-align: center;
+      line-height: 1.6;
     }
 
     .cursor {
@@ -123,15 +119,15 @@
     }
 
     .section-title {
-      margin-top: 2rem;
-      font-size: 1.1rem;
+      margin-top: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
       color: #00ffe5;
     }
 
     .container {
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 1rem auto;
       padding: 1rem;
     }
 
@@ -140,7 +136,7 @@
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 1.5rem;
-      margin: 2rem 0 1rem;
+      margin: 1.5rem 0 1rem;
     }
 
     .offer {
@@ -162,28 +158,32 @@
       color: #ffffff;
     }
 
-    .offer:hover h3, .offer:hover p, .offer:hover .price-tag {
-      color: #ffffff;
+    .offer:hover .price-tag,
+    .offer:hover h3,
+    .offer:hover p {
+      color: white;
     }
 
-    .offer:hover video {
-      opacity: 0.45 !important;
+    .offer:hover .video-preview video {
+      opacity: 0.5;
     }
 
     .offer h3 {
       font-size: 1.6rem;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       color: #00ffe5;
     }
 
     .offer p {
       font-size: 0.85rem;
       color: #bbb;
+      margin: 0.5rem 0 1rem;
     }
 
     .price-tag {
       position: absolute;
       bottom: 10px;
+      left: 0;
       width: 100%;
       font-size: 1rem;
       color: #00ffe5;
@@ -208,40 +208,45 @@
     }
 
     .credit-section {
-      margin-top: 2rem;
+      margin-top: 3rem;
       color: white;
     }
 
     .credit-section h3 {
       font-size: 1.3rem;
-      margin-bottom: 1rem;
       color: white;
+      margin-bottom: 1.5rem;
     }
 
     .credit-logos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
       font-size: 1.1rem;
     }
 
     .credit-logos span {
-      animation: text-shine 6s infinite;
+      animation: text-glitch 4s infinite;
     }
 
-    @keyframes text-shine {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
+    @keyframes text-glitch {
+      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
+      50% { text-shadow: none; }
     }
 
     .footer {
-      border-top: 2px solid rgba(157, 0, 255, 0.4);
-      box-shadow: 0 0 8px rgba(157, 0, 255, 0.4);
+      border-top: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
       margin-top: 3rem;
       padding: 1rem;
       font-size: 0.8rem;
       color: #aaa;
+      transition: 0.4s ease;
+    }
+
+    .footer:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.2);
     }
 
     .footer-logo {
@@ -261,97 +266,95 @@
 
     @keyframes subtle-glitch {
       0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
+      50% { text-shadow: none; }
+    }
+
+    @media (max-width: 600px) {
+      .banner-wrapper { height: 300px; }
+      .banner-main { display: none; }
+      .banner-sub::before {
+        content: "Urban Beats for Artists & Content Creators";
+        display: block;
+        font-size: 1rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 0 4px #000;
+      }
+
+      .site-title { font-size: 1rem; top: 10px; left: 12px; }
+      .contact-links { font-size: 1rem; top: 10px; right: 12px; }
+      .credit-logos { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
 <body>
-  <div class="banner-wrapper">
-    <video class="banner-video" autoplay muted loop playsinline>
-      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
-    </video>
-    <div class="site-title">
-      <span>YOUR</span>
-      <span>GHOST</span>
-      <span>PROJECT</span>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
-      <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
-    </div>
-    <div class="banner-text">
-      <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
-      <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
-    </div>
+
+<div class="banner-wrapper">
+  <video class="banner-video" autoplay muted loop playsinline>
+    <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
+  </video>
+  <div class="site-title">
+    <span>YOUR</span>
+    <span>GHOST</span>
+    <span>PROJECT</span>
   </div>
-
-  <div class="typed-container">
-    <p id="typed-text">We help Creators break free from licensing and generic royalty-free music\nby crafting original, hand-made Hip-Hop, Drill, and Trap beats for them.\nSend us up to 3 references, and we’ll deliver within 72 hours.</p>
-    <br><span id="followup-text"></span><span class="cursor">|</span>
+  <div class="contact-links">
+    <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
+    <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
   </div>
+  <div class="banner-text">
+    <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
+    <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
+  </div>
+</div>
 
-  <h2 class="section-title" style="margin-top: 1rem">So, who are you?</h2>
+<div class="typed-container">
+  <p style="margin-bottom: 1rem;">We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.</p>
+  <span style="color:#00ffe5;">Who are you?<span class="cursor">|</span></span>
+</div>
 
-  <div class="container">
-    <div class="offers">
-      <div class="offer">
-        <div class="video-preview">
-          <video muted loop autoplay playsinline>
-            <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h3>ARTIST</h3>
-        <p>On-demand custom made beat, buy out with 2 revisions included.</p>
-        <div class="price-tag">£149 per beat</div>
+<div class="container">
+  <div class="offers">
+    <div class="offer">
+      <div class="video-preview">
+        <video muted loop autoplay playsinline>
+          <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
+        </video>
       </div>
-      <div class="offer">
-        <div class="video-preview">
-          <video muted loop autoplay playsinline>
-            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
-          </video>
-        </div>
-        <h3>CONTENT CREATOR</h3>
-        <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
-        <div class="price-tag">£99 - £149 per beat/bundle</div>
+      <h3>ARTIST</h3>
+      <p>On-demand custom made beat, buy out with 2 revisions included.</p>
+      <div class="price-tag">£149 per beat</div>
+    </div>
+    <div class="offer">
+      <div class="video-preview">
+        <video muted loop autoplay playsinline>
+          <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
+        </video>
       </div>
+      <h3>CONTENT CREATOR</h3>
+      <p>Intro, loop, and outro beat — custom-crafted for performance and sport-style podcasts.</p>
+      <div class="price-tag">£99 - £149 per beat/bundle</div>
     </div>
   </div>
+</div>
 
-  <div class="credit-section">
-    <h3 style="color: white;">We worked with creators from</h3>
-    <div class="credit-logos">
-      <span>NETFLIX</span>
-      <span>BBC 1</span>
-      <span>UNIVERSAL MUSIC</span>
-      <span>NINJA TUNE</span>
-      <span>SONY MUSIC</span>
-      <span>BMG</span>
-      <span>ADIDAS</span>
-    </div>
-    <p style="margin-top: 1rem; font-size: 0.95rem;">and more...</p>
+<div class="credit-section">
+  <h3>We worked with creators from</h3>
+  <div class="credit-logos">
+    <span>NETFLIX</span>
+    <span>BBC 1</span>
+    <span>UNIVERSAL MUSIC</span>
+    <span>NINJA TUNE</span>
+    <span>SONY MUSIC</span>
+    <span>BMG</span>
+    <span>ADIDAS</span>
   </div>
+  <p style="margin-top: 1rem; font-size: 0.95rem;">and more...</p>
+</div>
 
-  <div class="footer">
-    <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
-    <div class="footer-logo">Your Ghost Project</div>
-  </div>
-
-<script>
-  const followUp = "So, who are you?";
-  let idx = 0;
-  const followupText = document.getElementById("followup-text");
-
-  function typeFollowup() {
-    if (idx < followUp.length) {
-      followupText.innerHTML += followUp.charAt(idx);
-      idx++;
-      setTimeout(typeFollowup, 80);
-    }
-  }
-
-  window.onload = () => {
-    setTimeout(typeFollowup, 1000);
-  };
-</script>
+<div class="footer">
+  <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
+  <div class="footer-logo">Your Ghost Project</div>
+</div>
 </body>
 </html>

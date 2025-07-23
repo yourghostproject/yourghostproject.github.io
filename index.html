@@ -7,9 +7,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Share Tech Mono', monospace;
@@ -17,14 +15,13 @@
       color: #f2f2f2;
       text-align: center;
     }
-
     .banner-wrapper {
       position: relative;
       width: 100%;
       height: 250px;
       overflow: hidden;
+      border-bottom: 1px solid #2d2d2d;
     }
-
     .banner-video {
       width: 100%;
       height: 100%;
@@ -32,7 +29,6 @@
       object-position: center 55%;
       opacity: 0.3;
     }
-
     .site-title {
       position: absolute;
       top: 20px;
@@ -43,7 +39,19 @@
       z-index: 2;
       animation: glitch 1s infinite;
     }
-
+    .contact-links {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+    .contact-links a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: white;
+      animation: glitch 1s infinite;
+    }
     @keyframes glitch {
       0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
       25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
@@ -51,10 +59,9 @@
       75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
-
     .banner-text {
       position: absolute;
-      top: 50%;
+      top: 46%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: #f2f2f2;
@@ -63,17 +70,14 @@
       padding: 0 1rem;
       text-shadow: 0 0 8px #000000cc;
     }
-
     .banner-text h1 {
       margin: 0 0 1rem;
       font-size: 1.8rem;
       color: #ffffff;
     }
-
     .typed-container {
       margin-top: 3rem;
       font-size: 1rem;
-      font-weight: 400;
       color: #f2f2f2;
       font-family: 'Share Tech Mono', monospace;
       max-width: 800px;
@@ -82,70 +86,56 @@
       text-align: center;
       line-height: 1.6;
     }
-
     #typed-text {
       display: inline;
       white-space: pre-line;
     }
-
     .cursor {
       display: inline-block;
       color: #00ffe5;
       font-weight: bold;
       animation: blink 0.8s infinite;
     }
-
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-
     .section-title {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       font-size: 1.2rem;
       font-weight: bold;
       color: #00ffe5;
     }
-
     .container {
       max-width: 1000px;
-      margin: 2rem auto;
+      margin: 1.5rem auto 0;
       padding: 1rem;
     }
-
     .offers {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
       gap: 1.5rem;
-      margin: 3rem 0;
+      margin: 2rem 0 1.5rem;
     }
-
     .offer {
       flex: 1 1 280px;
       background: linear-gradient(145deg, #1a1a1a, #121212);
       border: 1px solid #2d2d2d;
       border-radius: 10px;
       padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s, color 0.3s, border-color 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
       animation: fadeInUp 1.5s ease-out;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
-
     .offer:hover {
       transform: translateY(-5px);
       border-color: #00ffe5;
       box-shadow: 0 0 20px #00ffe566;
       color: #ffffff;
     }
-
-    .offer:hover h3 {
-      text-shadow: 0 0 5px #00ffe5;
-      color: #ffffff;
-    }
-
     .offer h3 {
       font-size: 1.6rem;
       color: #00ffe5;
@@ -154,84 +144,73 @@
       z-index: 2;
       position: relative;
     }
-
     .offer p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #bbb;
-      margin-bottom: 2rem;
-      z-index: 2;
-      position: relative;
+      margin-bottom: 1.5rem;
     }
-
     .price-tag {
-      position: absolute;
-      bottom: 1rem;
-      left: 0;
-      right: 0;
-      font-size: 1rem;
-      font-weight: bold;
       color: #00ffe5;
-      z-index: 2;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: auto;
     }
-
     .video-preview {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.25;
       z-index: 1;
       pointer-events: none;
     }
-
     .video-preview video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 35%;
       border-radius: 10px;
+      opacity: 0.15;
     }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    .credits-section {
-      margin-top: 5rem;
+    .credits {
+      margin-top: 2rem;
     }
-
-    .credits-title {
+    .credit-title {
       font-size: 1.3rem;
       color: #00ffe5;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.2rem;
     }
-
-    .credits-list {
-      font-size: 1.1rem;
-      color: #f2f2f2;
-      animation: glitchLight 2s infinite;
+    .credit-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      font-size: 1rem;
+      animation: glitch 2s infinite;
     }
-
-    .credits-list span {
-      margin: 0 0.8rem;
-      display: inline-block;
+    .footer-line {
+      border-top: 1px solid #2d2d2d;
+      margin: 2rem auto 0.5rem;
+      width: 90%;
     }
-
-    @keyframes glitchLight {
-      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: none; }
+    .footer-text {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 0.5rem;
     }
-
+    .glitch-logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      animation: glitch 1s infinite;
+    }
     @media (max-width: 600px) {
-      .banner-text h1 {
-        font-size: 1.4rem;
-      }
-      .credits-list {
-        font-size: 1rem;
-        line-height: 1.6;
-      }
+      .banner-text h1 { font-size: 1.4rem; }
+      .offer h3 { font-size: 1.2rem; }
+      .credit-logos { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -242,6 +221,10 @@
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
     <div class="site-title">Your Ghost Project</div>
+    <div class="contact-links">
+      <a href="mailto:yourghostproject@gmail.com">📧</a>
+      <a href="https://www.tiktok.com/@yourghostproject" target="_blank">🎵</a>
+    </div>
     <div class="banner-text">
       <h1>Signature Urban Beats for Artists & Content Creators</h1>
       <p>Buyout only. Yours forever. Delivered in 72h.</p>
@@ -266,7 +249,6 @@
         <p>On-demand custom made beat, buy out with 2 revisions included.</p>
         <div class="price-tag">£149 per beat</div>
       </div>
-
       <div class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
@@ -278,21 +260,19 @@
         <div class="price-tag">£99 – £149 per beat/bundle</div>
       </div>
     </div>
+
+    <div class="credits">
+      <div class="credit-title">We worked with creators from</div>
+      <div class="credit-logos">
+        NETFLIX · BBC 1 · UNIVERSAL MUSIC · NINJA TUNE · SONY MUSIC · BMG · ADIDAS
+      </div>
+      <div style="margin-top: 1rem; font-size: 0.9rem; color: #aaa;">and more ...</div>
+    </div>
   </div>
 
-  <div class="credits-section">
-    <div class="credits-title">We worked with creators from</div>
-    <div class="credits-list">
-      <span>NETFLIX</span>
-      <span>BBC 1</span>
-      <span>UNIVERSAL MUSIC</span>
-      <span>NINJA TUNE</span>
-      <span>SONY MUSIC</span>
-      <span>BMG</span>
-      <span>ADIDAS</span>
-    </div>
-    <p style="margin-top: 1.2rem; color: #aaa;">... and more</p>
-  </div>
+  <div class="footer-line"></div>
+  <div class="footer-text">© 2025 Your Ghost Project – All rights reserved · yourghostproject@gmail.com</div>
+  <div class="glitch-logo">Your Ghost Project</div>
 
   <script>
     const lines = [
@@ -300,13 +280,10 @@
       "by crafting original, hand-made Hip-Hop, Drill, and Trap beats for them.",
       "Send us up to 3 references, and we’ll deliver within 72 hours."
     ];
-
     const typedText = document.getElementById("typed-text");
     const cursor = document.querySelector(".cursor");
-
     let lineIndex = 0;
     let charIndex = 0;
-
     function typeLine() {
       if (lineIndex < lines.length) {
         if (charIndex < lines[lineIndex].length) {
@@ -321,10 +298,10 @@
         }
       }
     }
-
     window.onload = () => {
       typeLine();
     };
   </script>
+
 </body>
 </html>

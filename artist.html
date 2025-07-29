@@ -67,12 +67,17 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #00ffe5;
-      font-size: 2rem;
+      color: #fff;
+      font-size: 2.4rem;
       font-weight: bold;
       line-height: 1.4;
       padding: 0 2rem;
-      text-shadow: 0 0 15px #00ffe5, 0 0 10px #000;
+      text-shadow: 0 0 20px #000;
+      text-transform: uppercase;
+    }
+
+    .banner-text span {
+      display: block;
     }
 
     .container {
@@ -81,17 +86,27 @@
       padding: 1rem;
     }
 
+    .offer-section {
+      background-color: #101010;
+      padding: 3rem 1rem;
+    }
+
     .offer-title {
-      font-size: 1.6rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #00ffe5;
       margin-bottom: 1rem;
     }
 
     .offer-details {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      color: #ddd;
+      font-size: 1.3rem;
+      line-height: 2;
+      color: #ffffff;
+    }
+
+    .form-section {
+      background-color: #1a1a1a;
+      padding: 3rem 1rem;
     }
 
     .two-column {
@@ -99,7 +114,8 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 3rem;
-      margin-top: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .column-box {
@@ -109,7 +125,7 @@
     }
 
     .column-box h3 {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       color: #00ffe5;
       margin-bottom: 1rem;
     }
@@ -131,7 +147,7 @@
       padding: 0.8rem;
       font-size: 1rem;
       background: #1a1a1a;
-      border: 1px solid #333;
+      border: 1px solid #444;
       color: #fff;
       border-radius: 4px;
     }
@@ -191,11 +207,13 @@
       <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
     </div>
     <div class="banner-text">
-      Why license overused instrumentals<br/>when you can own your sound — fully custom, fully yours?
+      <span>Why license overused instrumentals</span>
+      <span>when you can own your sound —</span>
+      <span>fully custom, fully yours.</span>
     </div>
   </div>
 
-  <section class="container">
+  <section class="offer-section">
     <div class="offer-title">Our current unbeatable offer</div>
     <div class="offer-details">
       Custom Beat · £149<br />
@@ -205,26 +223,28 @@
     </div>
   </section>
 
-  <section class="container two-column">
-    <div class="column-box">
-      <h3>The Ghost Formula</h3>
-      <p>
-        1. Complete the form<br />
-        2. Receive an email confirmation, pay 50% upfront<br />
-        3. Receive the beat within 72 hours — request up to 2 revisions<br />
-        4. Pay the rest, own it. No splits. No royalties. Yours forever. Just credit: Your Ghost Project.
-      </p>
-    </div>
+  <section class="form-section">
+    <div class="two-column">
+      <div class="column-box">
+        <h3>The Ghost Formula</h3>
+        <p>
+          1. Complete the form<br />
+          2. Receive an email confirmation, pay 50% upfront<br />
+          3. Receive the beat within 72 hours — request up to 2 revisions<br />
+          4. Pay the rest, own it. No splits. No royalties. Yours forever. Just credit: Your Ghost Project.
+        </p>
+      </div>
 
-    <div class="column-box">
-      <h3>Start Your Track</h3>
-      <form action="mailto:yourghostproject@gmail.com" method="POST" enctype="text/plain">
-        <input type="text" name="artistname" placeholder="Your artist name" required />
-        <textarea name="references" rows="3" placeholder="Paste 2–3 links (YouTube / Spotify / Dropbox)" required></textarea>
-        <textarea name="mood" rows="4" placeholder="Tell us the mood, vibe, story or keywords" required></textarea>
-        <input type="email" name="email" placeholder="Your email (to receive the beat)" required />
-        <button type="submit">🔒 Send Brief</button>
-      </form>
+      <div class="column-box">
+        <h3>Start Your Track</h3>
+        <form action="mailto:yourghostproject@gmail.com" method="POST" enctype="text/plain">
+          <input type="text" name="artistname" placeholder="Your artist name" required />
+          <textarea name="references" rows="3" placeholder="Paste 2–3 links (YouTube / Spotify / Dropbox)" required></textarea>
+          <textarea name="mood" rows="4" placeholder="Tell us the mood, vibe, story or keywords" required></textarea>
+          <input type="email" name="email" placeholder="Your email (to receive the beat)" required />
+          <button type="submit">🔒 Send Brief</button>
+        </form>
+      </div>
     </div>
   </section>
 

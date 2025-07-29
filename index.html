@@ -177,8 +177,8 @@
       text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
     }
 
-    .offer.pressed {
-      transform: scale(0.92);
+    .offer:active {
+      transform: scale(0.95);
       box-shadow: 0 0 20px #00ffe5;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
@@ -287,23 +287,22 @@
 
   <div class="container">
     <div class="offers">
-      <div class="offer" onclick="animateAndRedirect(this, 'artist.html')">
+      <a href="artist.html" class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
             <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
           </video>
         </div>
         <h3>ARTIST</h3>
-      </div>
-
-      <div class="offer" onclick="animateAndRedirect(this, 'creator.html')">
+      </a>
+      <a href="creator.html" class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
             <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
           </video>
         </div>
         <h3>CONTENT CREATOR</h3>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -343,13 +342,6 @@
       const target = document.getElementById("typed-who");
       typeEffect(target, "Select your profile", 100);
     };
-
-    function animateAndRedirect(element, url) {
-      element.classList.add("pressed");
-      setTimeout(() => {
-        window.location.href = url;
-      }, 300);
-    }
   </script>
 </body>
 </html>

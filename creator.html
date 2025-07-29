@@ -15,6 +15,7 @@
       color: #f2f2f2;
       text-align: center;
     }
+
     .banner-wrapper {
       position: relative;
       width: 100%;
@@ -23,13 +24,20 @@
       border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
     }
+
     .banner-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 55%;
       opacity: 0.3;
+      transition: 0.3s ease;
     }
+
+    .banner-wrapper:hover .banner-video {
+      opacity: 0.45;
+    }
+
     .site-title {
       position: absolute;
       top: 10px;
@@ -41,7 +49,9 @@
       animation: glitch 1s infinite;
       line-height: 1.2;
     }
+
     .site-title span { display: block; }
+
     .contact-links {
       position: absolute;
       top: 10px;
@@ -49,12 +59,14 @@
       font-size: 1.2rem;
       z-index: 2;
     }
+
     .contact-links a {
       margin-left: 15px;
       text-decoration: none;
       color: white;
       animation: subtle-glitch 2s infinite;
     }
+
     .banner-text {
       position: absolute;
       top: 50%;
@@ -68,16 +80,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: 0.3s ease;
     }
+
+    .banner-wrapper:hover .banner-main {
+      color: #00ffe5;
+      font-size: 2.2rem;
+      text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
+    }
+
     .banner-main {
       font-size: 1.8rem;
       color: #ffffff;
       margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
     }
+
     .banner-sub {
       font-size: 1rem;
       line-height: 1.4;
     }
+
     .footer {
       border-top: 2px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
@@ -86,12 +109,14 @@
       font-size: 0.8rem;
       color: #aaa;
     }
+
     .footer-logo {
       margin-top: 1rem;
       font-weight: bold;
       font-size: 1.2rem;
       animation: glitch 1s infinite;
     }
+
     @keyframes glitch {
       0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
       25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
@@ -99,6 +124,7 @@
       75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
+
     @keyframes subtle-glitch {
       0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
       50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
@@ -124,6 +150,7 @@
       <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
     </div>
   </div>
+
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
     <div class="footer-logo">Your Ghost Project</div>

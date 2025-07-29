@@ -155,6 +155,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
     }
 
     .offer h3 {
@@ -174,6 +175,12 @@
     .offer:hover h3 {
       color: #ffffff;
       text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
+    }
+
+    .offer:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 20px #00ffe5;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .video-preview {
@@ -280,22 +287,22 @@
 
   <div class="container">
     <div class="offers">
-      <div class="offer">
+      <a href="artist.html" class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
             <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4">
           </video>
         </div>
         <h3>ARTIST</h3>
-      </div>
-      <div class="offer">
+      </a>
+      <a href="creator.html" class="offer">
         <div class="video-preview">
           <video muted loop autoplay playsinline>
             <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4">
           </video>
         </div>
         <h3>CONTENT CREATOR</h3>
-      </div>
+      </a>
     </div>
   </div>
 

@@ -29,6 +29,10 @@
       object-fit: cover;
       object-position: center 55%;
       opacity: 0.3;
+      transition: 0.3s ease;
+    }
+    .banner-wrapper:hover .banner-video {
+      opacity: 0.45;
     }
     .site-title {
       position: absolute;
@@ -68,11 +72,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: 0.3s ease;
+    }
+    .banner-wrapper:hover .banner-main {
+      color: #00ffe5;
+      font-size: 2.2rem;
+      text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
     }
     .banner-main {
       font-size: 1.8rem;
       color: #ffffff;
       margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
     }
     .banner-sub {
       font-size: 1rem;

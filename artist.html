@@ -48,7 +48,7 @@
     .banner-wrapper {
       position: relative;
       width: 100%;
-      height: 400px;
+      height: 100vh;
       overflow: hidden;
       border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
@@ -368,6 +368,27 @@
   color: #00ffe5;
   text-shadow: 0 0 8px white;
 }
+
+.glitch-logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  z-index: 10;
+  animation: glitch 1s infinite;
+}
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red; }
+  20% { text-shadow: -2px 0 blue; }
+  40% { text-shadow: 2px 2px green; }
+  60% { text-shadow: -1px -1px red; }
+  80% { text-shadow: 1px -2px blue; }
+  100% { text-shadow: -2px 2px green; }
+}
+
 </style>
 </head>
 <body>
@@ -385,10 +406,20 @@
 <video autoplay="" class="banner-video" loop="" muted="" playsinline="">
 <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
 </video>
-<div class="banner-overlay"></div>
+<div class="banner-overlay">
+<div style="position:absolute; top:20px; right:30px; z-index:10;">
+  <nav style="display:flex; gap:20px; font-size:1rem; font-weight:bold; color:white;">
+    <a href="index.html" style="color:white; text-decoration:none;">HOME</a>
+    <a href="artist.html" style="color:white; text-decoration:none;">ARTIST</a>
+    <a href="https://yourghostproject.github.io/creator.html" style="color:white; text-decoration:none;">CONTENT CREATOR</a>
+    <a href="#contact-section" style="color:white; text-decoration:none;">CONTACT US</a>
+  </nav>
+</div>
+</div>
+<a href="index.html" class="glitch-logo">YGP</a>
 <div class="banner-content">
 <h1>Own Your Sound</h1>
-<p>Never license overused instrumentals again – get a fully custom beat that's yours forever.</p>
+<p>Never license overused instrumentals again<br/>get a fully custom beat that's yours forever.</p>
 <a class="btn-primary" href="#form">Get Your Custom Beat – £149</a>
 <ul class="benefit-list">
 <li><span>🎵</span>Exclusive sound</li>
@@ -529,5 +560,28 @@
 <a href="index.html">Home</a>
 </nav>
 </div>
+
+<!-- Contact Section -->
+<section class="section" id="contact-section">
+  <h2>Contact Us</h2>
+  <div class="form-wrapper">
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <label>
+        Your Name
+        <input type="text" name="name" placeholder="Your name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" placeholder="Your email" required />
+      </label>
+      <label>
+        Message
+        <textarea name="message" rows="5" placeholder="Type your message here" required></textarea>
+      </label>
+      <button type="submit">📩 Send Message</button>
+    </form>
+  </div>
+</section>
 </body>
 </html>
+

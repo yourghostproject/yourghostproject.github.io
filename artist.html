@@ -25,6 +25,10 @@
       box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
     }
 
+    .banner-wrapper:hover .banner-video {
+      opacity: 0.5;
+    }
+
     .banner-video {
       width: 100%;
       height: 100%;
@@ -42,17 +46,11 @@
       color: white;
       font-weight: bold;
       z-index: 2;
-      animation: glitch 1s infinite;
       line-height: 1.2;
       cursor: pointer;
     }
 
     .site-title span { display: block; }
-
-    .site-title:hover {
-      color: #00ffe5;
-      text-shadow: 0 0 8px #00ffe5;
-    }
 
     .contact-links {
       position: absolute;
@@ -74,12 +72,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: bold;
       line-height: 1.4;
       padding: 0 2rem;
       color: white;
-      text-shadow: 0 0 20px white;
+      text-shadow: none;
+      transition: 0.3s ease;
     }
 
     .banner-text span {
@@ -88,7 +87,6 @@
 
     .banner-text .artist-label {
       color: white;
-      text-shadow: 0 0 12px white;
       font-size: 2.4rem;
       margin-bottom: 1rem;
     }
@@ -140,7 +138,7 @@
     .column-box p {
       font-size: 1rem;
       line-height: 1.7;
-      color: white;
+      color: #ffffff;
     }
 
     form {
@@ -182,20 +180,6 @@
       margin-top: 1rem;
       font-weight: bold;
       font-size: 1.2rem;
-      animation: glitch 1s infinite;
-    }
-
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
-      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
-      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
-      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-    }
-
-    @keyframes subtle-glitch {
-      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
     }
   </style>
 </head>
@@ -204,7 +188,7 @@
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
-    <div class="site-title" onclick="window.location.href='index.html';">
+    <div class="site-title" onclick="window.location.href='index.html'">
       <span>YOUR</span>
       <span>GHOST</span>
       <span>PROJECT</span>
@@ -221,7 +205,13 @@
     </div>
   </div>
 
-  <a href="#form" class="offer-button">Custom Beat – £149 | ⏩ Delivered in 72h |</a>
+  <a href="#form" class="offer-button">
+    Your custom Ghost Beat – £149<br />
+    🎛️ Full beat + all stems<br />
+    🛠️ Ready to mix & arrange<br />
+    ⏩ Delivered in 72h<br />
+    📝 Just send us your brief
+  </a>
 
   <section id="form" class="form-section">
     <div class="two-column">

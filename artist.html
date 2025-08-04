@@ -44,6 +44,7 @@
       z-index: 2;
       animation: glitch 1s infinite;
       line-height: 1.2;
+      cursor: pointer;
     }
 
     .site-title span { display: block; }
@@ -70,57 +71,46 @@
       transform: translate(-50%, -50%);
       font-size: 2.2rem;
       font-weight: bold;
-      line-height: 1.3;
+      line-height: 1.4;
       padding: 0 2rem;
-      color: #00ffe5;
-      text-shadow: 0 0 12px #00ffe5;
+      color: white;
+      text-shadow: 0 0 10px #000;
     }
 
     .banner-text span {
       display: block;
     }
 
-    .artist-label {
-      font-size: 2.6rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .scroll-down {
-      margin-top: 1.5rem;
-      display: inline-block;
-      font-size: 1rem;
-      color: #00ffe5;
-      border: 1px solid #00ffe5;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
-
-    .scroll-down:hover {
-      background-color: #00ffe5;
-      color: #101010;
-    }
-
-    .section {
-      padding: 3rem 1rem;
-    }
-
-    .section-dark {
-      background-color: #111111;
-    }
-
-    .offer-title {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: #00ffe5;
+    .banner-text .artist-label {
+      color: white;
+      font-size: 2.4rem;
       margin-bottom: 1rem;
     }
 
-    .offer-details {
-      font-size: 1.4rem;
-      line-height: 2;
-      color: #ffffff;
+    .cta-button {
+      display: inline-block;
+      margin: 3rem auto 1.5rem;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: 2px solid #00ffe5;
+      color: #00ffe5;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 15px #00ffe550;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #00ffe5;
+      color: #101010;
+      box-shadow: 0 0 25px #00ffe580;
+    }
+
+    .form-section {
+      background-color: #1a1a1a;
+      padding: 3rem 1rem;
     }
 
     .two-column {
@@ -147,7 +137,7 @@
     .column-box p {
       font-size: 1rem;
       line-height: 1.7;
-      color: #ccc;
+      color: #ffffff;
     }
 
     form {
@@ -178,7 +168,8 @@
     }
 
     form button:hover {
-      background: #00e6ce;
+      box-shadow: 0 0 20px #00ffe5;
+      transform: scale(1.03);
     }
 
     .footer {
@@ -205,17 +196,9 @@
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
-    @media (max-width: 768px) {
-      .banner-text {
-        font-size: 1.4rem;
-        line-height: 1.4;
-      }
-      .artist-label {
-        font-size: 2rem;
-      }
-      .offer-details {
-        font-size: 1.2rem;
-      }
+    @keyframes subtle-glitch {
+      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
+      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
     }
   </style>
 </head>
@@ -224,7 +207,7 @@
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
-    <div class="site-title">
+    <div class="site-title" onclick="window.location.href='index.html'">
       <span>YOUR</span>
       <span>GHOST</span>
       <span>PROJECT</span>
@@ -236,23 +219,14 @@
     <div class="banner-text">
       <div class="artist-label">ARTIST</div>
       <span>Why license overused instrumentals</span>
-      <span>when you can own your sound —</span>
-      <span>fully custom, fully yours.</span>
-      <a href="#start-form" class="scroll-down">🎵 Start Your Track</a>
+      <span>when you can own your sound</span>
+      <span>— fully custom, fully yours.</span>
     </div>
   </div>
 
-  <section class="section section-dark">
-    <div class="offer-title">Our current unbeatable offer</div>
-    <div class="offer-details">
-      Custom Beat · £149<br />
-      🎧 Delivered in 72h<br />
-      🎛️ Full beat + all stems<br />
-      🛠️ Ready to mix & arrange
-    </div>
-  </section>
+  <a href="#start-form" class="cta-button">🎵 Our Current Unbeatable Offer</a>
 
-  <section class="section" id="start-form">
+  <section class="form-section" id="start-form">
     <div class="two-column">
       <div class="column-box">
         <h3>The Ghost Formula</h3>

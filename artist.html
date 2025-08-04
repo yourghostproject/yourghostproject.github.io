@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artist | Your Ghost Project</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
@@ -16,28 +17,33 @@
       text-align: center;
     }
 
-    /* Glitch Logo */
-    .glitch-logo {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-      cursor: pointer;
+    /* Global styles */
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
-    .glitch-logo img {
-      width: 60px;
-      height: auto;
-      animation: glitch 1.5s infinite;
+    .section {
+      padding: 4rem 1rem;
     }
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-1px, 1px); }
-      40% { transform: translate(-1px, -1px); }
-      60% { transform: translate(1px, 1px); }
-      80% { transform: translate(1px, -1px); }
-      100% { transform: translate(0); }
+    .btn-primary {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      color: #101010;
+      background-color: #00ffe5;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease;
     }
-
+    .btn-primary:hover {
+      background-color: #00ffe510;
+      color: #00ffe5;
+      box-shadow: 0 0 15px #00ffe5;
+    }
+    /* Banner */
     .banner-wrapper {
       position: relative;
       width: 100%;
@@ -79,28 +85,9 @@
     }
     .banner-content p {
       font-size: 1.4rem;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       line-height: 1.5;
-      color: #ffffff;
-      white-space: pre-line;
-    }
-    .btn-primary {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      color: #101010;
-      background-color: #00ffe5;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s ease;
-    }
-    .btn-primary:hover {
-      background-color: #00ffe510;
-      color: #00ffe5;
-      box-shadow: 0 0 15px #00ffe5;
+      color: #cccccc;
     }
     .benefit-list {
       display: flex;
@@ -121,10 +108,8 @@
       margin-right: 0.5rem;
     }
 
-    .section {
-      padding: 4rem 1rem;
-    }
-    .features, .steps {
+    /* Benefits Section */
+    .features {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -132,7 +117,7 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    .feature-card, .step {
+    .feature-card {
       background-color: #1a1a1a;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
@@ -142,20 +127,41 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     }
-    .icon {
+    .feature-card .icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #00ffe5;
     }
-    .feature-card h3, .step h3 {
+    .feature-card h3 {
       font-size: 1.4rem;
       color: #00ffe5;
       margin-bottom: 0.5rem;
     }
-    .feature-card p, .step p {
+    .feature-card p {
       font-size: 0.9rem;
       color: #cccccc;
       line-height: 1.5;
+    }
+
+    /* Process Section */
+    .process {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .step {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 2rem;
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     .step .circle {
       width: 40px;
@@ -169,7 +175,18 @@
       margin: 0 auto 1rem;
       font-weight: bold;
     }
+    .step h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #00ffe5;
+    }
+    .step p {
+      font-size: 0.9rem;
+      color: #cccccc;
+      line-height: 1.5;
+    }
 
+    /* Form Section */
     .form-wrapper {
       max-width: 700px;
       margin: 0 auto;
@@ -190,8 +207,10 @@
       color: #cccccc;
       text-align: left;
     }
-    .form-wrapper input, .form-wrapper textarea {
+    .form-wrapper input,
+    .form-wrapper textarea {
       margin-top: 0.5rem;
+      width: 100%;
       padding: 0.8rem;
       font-size: 1rem;
       background: #1a1a1a;
@@ -214,7 +233,8 @@
       box-shadow: 0 0 10px #00ffe5;
     }
 
-    .faq, .testimonials {
+    /* FAQ Section */
+    .faq {
       max-width: 800px;
       margin: 0 auto;
       text-align: left;
@@ -230,6 +250,19 @@
       cursor: pointer;
       font-size: 1rem;
       color: #00ffe5;
+      outline: none;
+    }
+    details p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #cccccc;
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .testimonial {
       background-color: #1a1a1a;
@@ -239,12 +272,21 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     .testimonial p {
-      color: #ccc;
       font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #cccccc;
     }
-    .author { font-weight: bold; color: #00ffe5; }
-    .role { font-size: 0.9rem; color: #888; }
+    .testimonial .author {
+      font-weight: bold;
+      color: #00ffe5;
+    }
+    .testimonial .role {
+      font-size: 0.9rem;
+      color: #888;
+    }
 
+    /* Footer */
     .footer {
       padding: 2rem 1rem;
       border-top: 2px solid rgba(255,255,255,0.1);
@@ -252,14 +294,27 @@
       font-size: 0.8rem;
       color: #aaa;
     }
-    .footer nav a {
+    .footer nav {
+      margin-top: 1rem;
+    }
+    .footer a {
       margin: 0 0.5rem;
       color: #00ffe5;
       text-decoration: none;
     }
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
-      .features, .steps, .benefit-list {
+      .benefit-list {
+        flex-direction: column;
+      }
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+      .steps {
         flex-direction: column;
         align-items: center;
       }
@@ -267,11 +322,6 @@
   </style>
 </head>
 <body>
-
-  <div class="glitch-logo" onclick="window.location.href='index.html'">
-    <img src="logo.png" alt="Logo" />
-  </div>
-
   <div class="banner-wrapper">
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
@@ -279,7 +329,7 @@
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <h1>Own Your Sound</h1>
-      <p>Never license overused instrumentals again<br>get a fully custom beat that's yours forever.</p>
+      <p>Never license overused instrumentals again – get a fully custom beat that's yours forever.</p>
       <a href="#form" class="btn-primary">Get Your Custom Beat – £149</a>
       <ul class="benefit-list">
         <li><span>🎵</span>Exclusive sound</li>
@@ -290,56 +340,134 @@
     </div>
   </div>
 
+  <!-- Features / Benefits Section -->
   <section class="section" id="features">
     <h2>What You Get</h2>
     <div class="features">
-      <div class="feature-card"><div class="icon">🎵</div><h3>Exclusive Sound</h3><p>One-of-a-kind beat created only for you.</p></div>
-      <div class="feature-card"><div class="icon">📂</div><h3>Stems Included</h3><p>All stems and multitracks ready to mix.</p></div>
-      <div class="feature-card"><div class="icon">🔒</div><h3>Full Ownership</h3><p>No royalties, no license fees, yours forever.</p></div>
-      <div class="feature-card"><div class="icon">⚡</div><h3>Fast Turnaround</h3><p>Delivered in 72 hours with revisions included.</p></div>
+      <div class="feature-card">
+        <div class="icon">🎵</div>
+        <h3>Exclusive Sound</h3>
+        <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📂</div>
+        <h3>All Stems Included</h3>
+        <p>Get full multi‑track stems and project files for complete control over the mix and arrangement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>100% Ownership</h3>
+        <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔄</div>
+        <h3>Fast Turnaround</h3>
+        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
+      </div>
     </div>
   </section>
 
+  <!-- Process / Formula Section -->
   <section class="section" id="process">
     <h2>The Ghost Formula</h2>
-    <div class="steps">
-      <div class="step"><div class="circle">1</div><h3>Brief</h3><p>Tell us the vibe and share some references.</p></div>
-      <div class="step"><div class="circle">2</div><h3>50% Upfront</h3><p>Secure your custom slot with an initial payment.</p></div>
-      <div class="step"><div class="circle">3</div><h3>Delivery</h3><p>Your beat arrives within 72 hours.</p></div>
-      <div class="step"><div class="circle">4</div><h3>Own It</h3><p>Pay the rest and get full rights and all files.</p></div>
+    <div class="process">
+      <div class="steps">
+        <div class="step">
+          <div class="circle">1</div>
+          <h3>Submit Your Brief</h3>
+          <p>Tell us who you are, share a few references and describe the mood or story you want to tell.</p>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <h3>Secure Your Spot</h3>
+          <p>Receive a confirmation email and pay 50% upfront to get us started.</p>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <h3>Receive &amp; Refine</h3>
+          <p>Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect.</p>
+        </div>
+        <div class="step">
+          <div class="circle">4</div>
+          <h3>Own It</h3>
+          <p>Pay the balance, receive all stems and full ownership rights. Your music, your way.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Start Form Section -->
   <section class="section" id="form">
     <h2>Start Your Track</h2>
     <div class="form-wrapper">
       <form action="https://formspree.io/f/yourformid" method="POST">
-        <label>Artist Name<input type="text" name="artistname" required /></label>
-        <label>Reference Links<textarea name="references" rows="3" required></textarea></label>
-        <label>Mood & Vibe<textarea name="mood" rows="4" required></textarea></label>
-        <label>Email<input type="email" name="email" required /></label>
+        <label>
+          Artist Name
+          <input type="text" name="artistname" placeholder="Your artist name" required />
+        </label>
+        <label>
+          Reference Links
+          <textarea name="references" rows="3" placeholder="Paste 2–3 YouTube / Spotify links" required></textarea>
+        </label>
+        <label>
+          Mood &amp; Vibe
+          <textarea name="mood" rows="4" placeholder="Tell us the mood, vibe, story or keywords" required></textarea>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Your email (to receive the beat)" required />
+        </label>
         <button type="submit">🔒 Send Brief</button>
       </form>
     </div>
   </section>
 
+  <!-- FAQ Section -->
   <section class="section" id="faq">
-    <h2>FAQ</h2>
+    <h2>Frequently Asked Questions</h2>
     <div class="faq">
-      <details><summary>What’s the price?</summary><p>£149 — 50% upfront, 50% on delivery.</p></details>
-      <details><summary>How long does it take?</summary><p>Delivery is within 72 hours, with 2 revisions included.</p></details>
-      <details><summary>What’s included?</summary><p>Full beat, stems, no royalties, full copyright.</p></details>
+      <details>
+        <summary>How much does a custom beat cost?</summary>
+        <p>The total price is £149: pay 50% upfront to start, and the remaining balance after you approve the final beat.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Your custom beat will be delivered within 72 hours. If revisions are requested, please allow a little extra time.</p>
+      </details>
+      <details>
+        <summary>Can I request specific samples?</summary>
+        <p>Yes – share any samples or influences in your brief. We’ll use them creatively, but you’re responsible for any sample clearance.</p>
+      </details>
+      <details>
+        <summary>What if I’m not satisfied?</summary>
+        <p>We include two free revisions. If you’re still unhappy, we’ll work with you to find a solution or offer a refund.</p>
+      </details>
     </div>
   </section>
 
+  <!-- Testimonials Section -->
   <section class="section" id="testimonials">
     <h2>What Artists Say</h2>
     <div class="testimonials">
-      <div class="testimonial"><p>"It felt tailored just for me. This is next level."</p><div class="author">– Jordan T.</div><div class="role">Trap Artist</div></div>
-      <div class="testimonial"><p>"Quick turnaround, great communication, full control over my sound."</p><div class="author">– Meera S.</div><div class="role">Indie Artist</div></div>
+      <div class="testimonial">
+        <p>“I’ve never felt more heard as an artist. My custom beat captured the exact mood I was going for and elevated my song to another level.”</p>
+        <div class="author">– Léo M.</div>
+        <div class="role">Indie Rapper, Paris</div>
+      </div>
+      <div class="testimonial">
+        <p>“The turnaround time was incredible. Within 3 days I had a beat that sounded like it was made just for me, and the stems gave me full creative control.”</p>
+        <div class="author">– Sarah A.</div>
+        <div class="role">Singer/Songwriter, London</div>
+      </div>
+      <div class="testimonial">
+        <p>“I used to license beats that everyone else used. This service changed everything – owning my sound feels empowering and professional.”</p>
+        <div class="author">– Marcel G.</div>
+        <div class="role">Trap Artist, Berlin</div>
+      </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
     <nav>

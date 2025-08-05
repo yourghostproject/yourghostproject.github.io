@@ -326,7 +326,7 @@
     justify-content: space-between;
     align-items: center;
     background: transparent; /* Changed from #101010 to transparent */
-    padding: 1rem 2rem;
+    padding: 1rem 3rem; /* Increased right padding to prevent cutting off */
     border-bottom: none;    /* Removed bottom border */
   }
   .logo {
@@ -378,10 +378,9 @@
     <a href="artist.html"> ARTIST </a>
     |
     <a href="contentcreator.html"> CONTENT CREATOR </a>
-    |
    </div>
   </div>
-  <video autoplay="" class="banner-video" loop="" muted="" playsinline="">
+  <video autoplay class="banner-video" loop muted playsinline>
    <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
   </video>
   <div class="banner-overlay"></div>
@@ -409,7 +408,7 @@
    <div class="feature-card">
     <div class="icon"> 📂 </div>
     <h3> All Stems Included </h3>
-    <p> Get full multi‑track stems and project files for complete control over the mix and arrangement. </p>
+    <p> Get full multi-track stems and project files for complete control over the mix and arrangement. </p>
    </div>
    <div class="feature-card">
     <div class="icon"> 🔒 </div>
@@ -419,7 +418,7 @@
    <div class="feature-card">
     <div class "icon"> 🔄 </div>
     <h3> Fast Turnaround </h3>
-    <p> Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval. </p>
+    <p> Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval. </p>
    </div>
   </div>
  </section>
@@ -441,7 +440,7 @@
     <div class="step">
      <div class="circle"> 3 </div>
      <h3> Receive & Refine </h3>
-     <p> Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect. </p>
+     <p> Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect. </p>
     </div>
     <div class="step">
      <div class="circle"> 4 </div>
@@ -458,19 +457,19 @@
    <form action="https://formspree.io/f/yourformid" method="POST">
     <label>
      Artist Name
-     <input name="artistname" placeholder="Your artist name" required="" type="text"/>
+     <input name="artistname" placeholder="Your artist name" required type="text"/>
     </label>
     <label>
      Reference Links
-     <textarea name="references" placeholder="Paste 2–3 YouTube / Spotify links" required="" rows="3"></textarea>
+     <textarea name="references" placeholder="Paste 2–3 YouTube / Spotify links" required rows="3"></textarea>
     </label>
     <label>
      Mood & Vibe
-     <textarea name="mood" placeholder="Tell us the mood, vibe, story or keywords" required="" rows="4"></textarea>
+     <textarea name="mood" placeholder="Tell us the mood, vibe, story or keywords" required rows="4"></textarea>
     </label>
     <label>
      Email
-     <input name="email" placeholder="Your email (to receive the beat)" required="" type="email"/>
+     <input name="email" placeholder="Your email (to receive the beat)" required type="email"/>
     </label>
     <button type="submit"> 🔒 Send Brief </button>
    </form>
@@ -486,7 +485,7 @@
    </details>
    <details>
     <summary> How long does it take? </summary>
-    <p> Your custom beat will be delivered within 72 hours. If revisions are requested, please allow a little extra time. </p>
+    <p> Your custom beat will be delivered within 72 hours. If revisions are requested, please allow a little extra time. </p>
    </details>
    <details>
     <summary> Can I request specific samples? </summary>

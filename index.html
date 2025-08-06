@@ -54,7 +54,8 @@
 
     .contact-links {
       position: absolute;
-      top: 10px;
+      /* Move the contact icons down to make space for the new menu button */
+      top: 4rem;
       right: 20px;
       font-size: 1.2rem;
       z-index: 2;
@@ -258,10 +259,92 @@
       0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
       50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
     }
+
+    /* Navigation styles for the hamburger menu (copied from artist page) */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 0;
+      background: transparent;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0;
+    }
+
+    .menu-toggle .bar {
+      width: 20px;
+      height: 2px;
+      background-color: #101010;
+      margin: 3px 0;
+      border-radius: 1px;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 3rem;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      z-index: 100;
+    }
+
+    .navbar.open .nav-links {
+      display: flex;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+    }
   </style>
 </head>
 <body>
   <div class="banner-wrapper">
+    <!-- Navigation bar with hamburger menu -->
+    <div class="navbar">
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="nav-links">
+        <a href="index.html" class="active">HOME</a>
+        <a href="artist.html">ARTIST</a>
+        <a href="creator.html">CONTENT CREATOR</a>
+      </div>
+    </div>
+
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
@@ -342,6 +425,15 @@
       const target = document.getElementById("typed-who");
       typeEffect(target, "Select your profile", 100);
     };
+    // Toggle the navigation menu when the hamburger icon is clicked
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          document.querySelector('.navbar').classList.toggle('open');
+        });
+      }
+    });
   </script>
 </body>
 </html>

@@ -35,21 +35,32 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      color: white;
       z-index: 201;
+    }
+    .logo-letter-y,
+    .logo-letter-g,
+    .logo-letter-p {
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+      animation: glitch 1s infinite linear alternate-reverse;
     }
     .logo-letter-y { font-size: 2.5rem; margin-right: 4rem; }
     .logo-letter-g { font-size: 1.8rem; margin-right: 4rem; }
     .logo-letter-p { font-size: 2.5rem; }
+
     @keyframes glitch {
-      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
-      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
-      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
-      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      0%   { clip: rect(0,9999px,0,0); }
+      5%   { clip: rect(0,9999px,5px,0); }
+      10%  { clip: rect(0,9999px,10px,0); }
+      15%  { clip: rect(0,9999px,5px,0); }
+      20%  { clip: rect(0,9999px,0,0); }
+      100% { clip: rect(0,9999px,0,0); }
     }
 
     .menu-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 4rem;
       background: white;
       border: none;
       border-radius: 50%;
@@ -60,7 +71,6 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      margin-left: auto;
       z-index: 201;
     }
     .menu-toggle .bar {
@@ -122,7 +132,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       color: #f2f2f2;
       font-size: 1rem;
       line-height: 1.6;

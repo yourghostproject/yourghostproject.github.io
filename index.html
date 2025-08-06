@@ -327,6 +327,27 @@
       color: #00ffe5;
       text-shadow: 0 0 8px #00ffe5;
     }
+
+    /* Logo styles for YGP glitch text on home page */
+    .logo-mixed {
+      position: relative;
+      display: inline-block;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5, 0 0 12px #9d00ff;
+      margin-bottom: 0.5rem;
+    }
+    .logo-mixed::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: inherit;
+      text-shadow: -2px 0 #9d00ff;
+      animation: glitch 1s infinite linear alternate-reverse;
+    }
   </style>
 </head>
 <body>
@@ -348,16 +369,8 @@
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
-    <div class="site-title">
-      <span>YOUR</span>
-      <span>GHOST</span>
-      <span>PROJECT</span>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
-      <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
-    </div>
     <div class="banner-text">
+      <div class="logo-mixed glitch" data-text="YGP">YGP</div>
       <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
       <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
     </div>

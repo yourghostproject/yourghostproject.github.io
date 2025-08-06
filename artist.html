@@ -119,6 +119,11 @@
       overflow: hidden;
       border-bottom: 2px solid rgba(255,255,255,0.2);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .banner-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #00ffe5;
     }
     .banner-video {
       width: 100%;
@@ -162,6 +167,7 @@
     /* Global */
     h2 { font-size: 2rem; margin-bottom: 1rem; }
     .section { padding: 4rem 1rem; }
+
     .btn-primary {
       display: inline-block;
       margin-top: 1.5rem;
@@ -173,11 +179,10 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s ease;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .btn-primary:hover {
-      background-color: #00ffe510;
-      color: #00ffe5;
+      transform: scale(1.05);
       box-shadow: 0 0 15px #00ffe5;
     }
 
@@ -189,10 +194,17 @@
     .feature-card {
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px; padding: 2rem;
-      flex: 1 1 250px; max-width: 280px;
+      border-radius: 10px;
+      padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 280px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
     }
     .feature-card .icon {
       font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
@@ -216,6 +228,11 @@
       flex: 1 1 200px; max-width: 220px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
     }
     .step .circle {
       width: 40px; height: 40px; border-radius: 50%;
@@ -235,6 +252,11 @@
       max-width: 700px; margin: 0 auto;
       background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .form-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px #00ffe5;
     }
     .form-wrapper form {
       display: flex; flex-direction: column; gap: 1.5rem;
@@ -252,6 +274,7 @@
     .form-wrapper button {
       padding: 1rem; background: #00ffe5; color: #101010;
       font-weight: bold; border: none; cursor: pointer; border-radius: 4px;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
     .form-wrapper button:hover {
       background-color: #00ffe510; color: #00ffe5;
@@ -268,7 +291,8 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     }
     summary {
-      font-size: 1rem; color: #00ffe5; cursor: pointer; outline: none;
+      font-size: 1rem; color: #00ffe5; cursor:
+pointer; outline: none;
     }
     details p {
       margin-top: 0.5rem; font-size: 0.9rem; color: #ccc; line-height: 1.5;
@@ -345,7 +369,6 @@
     </div>
   </div>
 
-  <!-- Features Section -->
   <section class="section" id="features">
     <h2>What You Get</h2>
     <div class="features">
@@ -372,7 +395,6 @@
     </div>
   </section>
 
-  <!-- Process Section -->
   <section class="section" id="process">
     <h2>The Ghost Formula</h2>
     <div class="process">
@@ -401,7 +423,6 @@
     </div>
   </section>
 
-  <!-- Form Section -->
   <section class="section" id="form">
     <h2>Start Your Track</h2>
     <div class="form-wrapper">
@@ -427,7 +448,6 @@
     </div>
   </section>
 
-  <!-- FAQ Section -->
   <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
@@ -450,7 +470,6 @@
     </div>
   </section>
 
-  <!-- Testimonials Section -->
   <section class="section" id="testimonials">
     <h2>What Artists Say</h2>
     <div class="testimonials">
@@ -472,7 +491,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
     <nav>

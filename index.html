@@ -19,148 +19,185 @@
     /* Navigation Bar */
     .navbar {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; z-index: 200;
-      padding: 1rem 0;
-      background: transparent;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 200;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-end;
     }
     .logo {
       position: absolute;
-      top: 1rem; left: 50%;
+      top: 1rem;
+      left: 50%;
       transform: translateX(-50%);
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 2rem;
-      color: white;
+      display: flex;
+      align-items: center;
       text-decoration: none;
+      color: white;
       z-index: 201;
     }
-    .logo::before {
-      content: attr(data-text);
-      position: absolute; left: 2px; top: 0;
-      text-shadow: -2px 0 red;
-      color: white;
-      animation: glitch 1s infinite linear alternate-reverse;
-    }
+    .logo-letter-y { font-size: 2.5rem; margin-right: 4rem; }
+    .logo-letter-g { font-size: 1.8rem; margin-right: 4rem; }
+    .logo-letter-p { font-size: 2.5rem; }
     @keyframes glitch {
-      0%   { clip: rect(0,9999px,0,0); }
-      5%   { clip: rect(0,9999px,5px,0); }
-      10%  { clip: rect(0,9999px,10px,0); }
-      15%  { clip: rect(0,9999px,5px,0); }
-      20%  { clip: rect(0,9999px,0,0); }
-      100% { clip: rect(0,9999px,0,0); }
+      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
     .menu-toggle {
-      position: absolute; top: 1rem; right: 3rem;
-      width: 40px; height: 40px;
-      background: white; border: none; border-radius: 50%;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      cursor: pointer; z-index: 201; padding: 0;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-left: auto;
+      z-index: 201;
     }
     .menu-toggle .bar {
-      width: 20px; height: 2px; background-color: #101010;
-      margin: 3px 0; border-radius: 1px;
+      width: 20px;
+      height: 2px;
+      background-color: #101010;
+      margin: 3px 0;
+      border-radius: 1px;
     }
+
     .nav-links {
-      display: none; position: absolute;
-      top: 60px; right: 3rem;
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
       flex-direction: column;
-      background-color: #1a1a1a; border-radius: 8px;
-      padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       z-index: 200;
     }
     .navbar.open .nav-links { display: flex; }
     .nav-links a {
-      color: white; text-decoration: none;
-      font-size: 0.95rem; font-weight: bold;
-      margin: 0.5rem 0; transition: 0.3s;
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      transition: 0.3s;
     }
     .nav-links a:hover,
     .nav-links a.active {
-      color: #00ffe5; text-shadow: 0 0 8px #00ffe5;
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
     }
 
     /* Banner */
     .banner-wrapper {
-      position: relative; width: 100%; height: 270px;
+      position: relative;
+      width: 100%;
+      height: 270px;
       overflow: hidden;
       border-bottom: 2px solid rgba(255,255,255,0.2);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
     }
     .banner-video {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 55%;
-      opacity: 0.3; transition: 0.3s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      opacity: 0.3;
+      transition: 0.3s ease;
     }
     .banner-wrapper:hover .banner-video { opacity: 0.45; }
 
-    /* Contact links */
-    .contact-links {
-      position: absolute;
-      top: 1rem; right: 6rem;
-      font-size: 1.2rem; z-index: 201;
-    }
-    .contact-links a {
-      margin-left: 15px;
-      text-decoration: none; color: white;
-      animation: subtle-glitch 2s infinite;
-    }
-
     /* Banner text */
     .banner-text {
-      position: absolute; top: 50%; left: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%,-50%);
-      color: #f2f2f2; font-size: 1rem; line-height: 1.6;
+      color: #f2f2f2;
+      font-size: 1rem;
+      line-height: 1.6;
       padding: 0 1rem;
       text-shadow: 0 0 8px #000000cc;
-      display: flex; flex-direction: column; align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .banner-main {
-      font-size: 1.8rem; color: #ffffff; margin-bottom: 0.5rem;
-    }
-    .banner-sub {
-      font-size: 1rem; line-height: 1.4;
-    }
+    .banner-main { font-size: 1.8rem; color: #ffffff; margin-bottom: 0.5rem; }
+    .banner-sub  { font-size: 1rem; line-height: 1.4; }
 
     /* Typed intro */
     .typed-container {
-      margin-top: 2.5rem; font-size: 1rem; font-weight: 400;
-      color: #f2f2f2; font-family: 'Share Tech Mono', monospace;
-      max-width: 800px; margin-left: auto; margin-right: auto;
-      text-align: center; line-height: 1.6; min-height: 6rem;
+      margin-top: 2.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #f2f2f2;
+      font-family: 'Share Tech Mono', monospace;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      line-height: 1.6;
+      min-height: 6rem;
     }
     #typed-intro {
-      opacity: 0; transform: translateY(10px);
+      opacity: 0;
+      transform: translateY(10px);
       animation: fadeInUp 1.2s ease-out forwards;
     }
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Sections & offers */
+    /* Offers */
     .section-title {
-      margin-top: 2rem; font-size: 1.4rem; font-weight: bold;
-      color: #00ffe5; min-height: 2rem;
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #00ffe5;
+      min-height: 2rem;
     }
     .container {
-      max-width: 1000px; margin: 2rem auto; padding: 1rem;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
     .offers {
-      display: flex; flex-wrap: wrap; justify-content: space-around;
-      gap: 1.5rem; margin: 1.5rem 0 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1.5rem;
+      margin: 1.5rem 0 1rem;
     }
     .offer {
-      flex: 1 1 280px; background: linear-gradient(145deg, #1a1a1a, #121212);
-      border: 1px solid #2d2d2d; border-radius: 10px; height: 200px;
-      position: relative; overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      flex: 1 1 280px;
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      border: 1px solid #2d2d2d;
+      border-radius: 10px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
     }
     .offer h3 {
-      font-size: 2rem; color: #00ffe5; z-index: 2;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+      font-size: 2rem;
+      color: #00ffe5;
+      z-index: 2;
+      transition: color 0.3s, text-shadow 0.3s;
       text-shadow: 0 0 6px rgba(0,255,229,0.4);
     }
     .offer:hover {
@@ -178,57 +215,69 @@
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
     .video-preview {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%; z-index: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
     .video-preview video {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 35%;
-      border-radius: 10px; opacity: 0.25; transition: opacity 0.3s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 10px;
+      opacity: 0.25;
+      transition: opacity 0.3s ease;
     }
     .offer:hover .video-preview video { opacity: 0.5; }
 
     /* Credits */
     .credit-section {
-      margin-top: 3rem; color: white;
+      margin-top: 3rem;
+      color: white;
     }
     .credit-section h3 {
-      font-size: 1.4rem; color: white; margin-bottom: 1rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
     }
     .credit-logos {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
       font-size: 1.1rem;
     }
-    .credit-logos span {
-      animation: glitch 3s infinite alternate; opacity: 0.85;
-    }
+    .credit-logos span { animation: glitch 3s infinite alternate; opacity: 0.85; }
 
     /* Footer */
     .footer {
       border-top: 2px solid rgba(255,255,255,0.2);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
-      margin-top: 3rem; padding: 1rem;
-      font-size: 0.8rem; color: #aaa;
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #aaa;
     }
     .footer-logo {
-      margin-top: 1rem; font-weight: bold; font-size: 1.2rem;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
       animation: glitch 1s infinite;
     }
 
-    @keyframes subtle-glitch {
-      0%,100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
-    }
-
-    @media (max-width: 768px) {
-      .navbar { padding: 1rem; }
-    }
+    @media (max-width: 768px) { .navbar { padding: 1rem; } }
   </style>
 </head>
 <body>
   <div class="banner-wrapper">
     <div class="navbar">
-      <a class="logo glitch" data-text="YGP" href="index.html">YGP</a>
+      <a class="logo glitch" href="index.html">
+        <span class="logo-letter-y">Y</span>
+        <span class="logo-letter-g">G</span>
+        <span class="logo-letter-p">P</span>
+      </a>
       <button class="menu-toggle" aria-label="Toggle menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -243,10 +292,6 @@
     <video class="banner-video" autoplay muted loop playsinline>
       <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
     </video>
-    <div class="contact-links">
-      <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
-      <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
-    </div>
     <div class="banner-text">
       <div class="banner-main">Signature Urban Beats for Artists & Content Creators</div>
       <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
@@ -303,18 +348,16 @@
       document.querySelector('.menu-toggle').addEventListener('click', function() {
         document.querySelector('.navbar').classList.toggle('open');
       });
-      function typeEffect(element, text, speed) {
+      function typeEffect(el, text, speed) {
         let i = 0;
-        function typeChar() {
+        (function typeChar() {
           if (i < text.length) {
-            element.innerHTML += text.charAt(i++);
+            el.innerHTML += text.charAt(i++);
             setTimeout(typeChar, speed);
           }
-        }
-        typeChar();
+        })();
       }
-      const target = document.getElementById("typed-who");
-      typeEffect(target, "Select your profile", 100);
+      typeEffect(document.getElementById('typed-who'), 'Select your profile', 100);
     });
   </script>
 </body>

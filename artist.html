@@ -1,421 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="utf-8"/>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <title>Artist | Your Ghost Project</title>
- <link href="favicon.ico" rel="icon" type="image/x-icon"/>
- <!-- Google Font -->
- <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
- <style>
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: 'Share Tech Mono', monospace;
-    background-color: #101010;
-    color: #f2f2f2;
-    text-align: center;
-  }
-  /* Global styles */
-  h2 { font-size: 2rem; margin-bottom: 1rem; }
-  .section { padding: 4rem 1rem; }
-  .btn-primary {
-    display: inline-block; margin-top: 1.5rem;
-    padding: 1rem 2rem; font-size: 1.2rem;
-    color: #101010; background-color: #00ffe5;
-    border: none; border-radius: 8px;
-    text-decoration: none; font-weight: bold;
-    transition: 0.3s ease;
-  }
-  .btn-primary:hover {
-    background-color: #00ffe510;
-    color: #00ffe5;
-    box-shadow: 0 0 15px #00ffe5;
-  }
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist | Your Ghost Project</title>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #101010;
+      color: #f2f2f2;
+      text-align: center;
+    }
 
-  /* Banner */
-  .banner-wrapper {
-    position: relative; width: 100%; height: 400px;
-    overflow: hidden;
-    border-bottom: 2px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 8px rgba(255,255,255,0.1);
-  }
-  .banner-video {
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 55%;
-    opacity: 0.3;
-  }
-  .banner-overlay {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5); z-index: 1;
-  }
-  .banner-content {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 2; max-width: 800px; padding: 0 2rem;
-  }
-  .banner-content h1 {
-    margin: 0; font-size: 3rem; color: #fff;
-  }
-  .banner-content p {
-    margin-top: 0.5rem; font-size: 1.4rem;
-    line-height: 1.5; color: #ccc;
-  }
-  .benefit-list {
-    display: flex; flex-wrap: wrap; justify-content: center;
-    list-style: none; padding: 0; margin-top: 1rem;
-  }
-  .benefit-list li {
-    margin: 0.5rem 1rem; font-size: 0.9rem; color: #00ffe5;
-    display: flex; align-items: center;
-  }
-  .benefit-list li span { margin-right: 0.5rem; }
+    /* Global styles */
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .section { padding: 4rem 1rem; }
+    .btn-primary {
+      display: inline-block; margin-top: 1.5rem;
+      padding: 1rem 2rem; font-size: 1.2rem;
+      color: #101010; background-color: #00ffe5;
+      border: none; border-radius: 8px;
+      text-decoration: none; font-weight: bold;
+      transition: 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #00ffe510;
+      color: #00ffe5;
+      box-shadow: 0 0 15px #00ffe5;
+    }
 
-  /* Navigation Bar */
-  .navbar {
-    position: absolute; top: 0; left: 0;
-    width: 100%; z-index: 3;
-    display: flex; justify-content: space-between; align-items: center;
-    background: transparent; padding: 1rem 3rem;
-  }
-  .logo {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.8rem; color: white; text-decoration: none;
-    position: relative;
-  }
-  .logo::before {
-    content: attr(data-text);
-    position: absolute; left: 2px; top: 0;
-    text-shadow: -2px 0 red; color: white;
-    overflow: hidden;
-    animation: glitch 1s infinite linear alternate-reverse;
-  }
-  @keyframes glitch {
-    0%   { clip: rect(0,9999px,0,0); }
-    5%   { clip: rect(0,9999px,5px,0); }
-    10%  { clip: rect(0,9999px,10px,0); }
-    15%  { clip: rect(0,9999px,5px,0); }
-    20%  { clip: rect(0,9999px,0,0); }
-    100% { clip: rect(0,9999px,0,0); }
-  }
-  .nav-links {
-    display: flex; gap: 2rem;
-  }
-  .nav-links a {
-    color: white; text-decoration: none;
-    font-size: 0.95rem; font-weight: bold;
-    transition: 0.3s;
-  }
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: #00ffe5;
-    text-shadow: 0 0 8px #00ffe5;
-  }
+    /* Banner */
+    .banner-wrapper {
+      position: relative; width: 100%; height: 400px;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+    }
+    .banner-video {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 55%;
+      opacity: 0.3;
+    }
+    .banner-overlay {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5); z-index: 1;
+    }
+    .banner-content {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      z-index: 2; max-width: 800px; padding: 0 2rem;
+    }
+    .banner-content h1 {
+      margin: 0; font-size: 3rem; color: #fff;
+    }
+    .banner-content p {
+      margin-top: 0.5rem; font-size: 1.4rem;
+      line-height: 1.5; color: #ccc;
+    }
+    .benefit-list {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      list-style: none; padding: 0; margin-top: 1rem;
+    }
+    .benefit-list li {
+      margin: 0.5rem 1rem; font-size: 0.9rem; color: #00ffe5;
+      display: flex; align-items: center;
+    }
+    .benefit-list li span { margin-right: 0.5rem; }
 
-  /* Features Section */
-  .features {
-    display: flex; flex-wrap: wrap;
-    justify-content: center; gap: 2rem;
-    max-width: 1200px; margin: 0 auto;
-  }
-  .feature-card {
-    background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px; padding: 2rem;
-    flex: 1 1 250px; max-width: 280px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    text-align: center;
-  }
-  .feature-card .icon {
-    font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
-  }
-  .feature-card h3 {
-    font-size: 1.4rem; color: #00ffe5; margin-bottom: 0.5rem;
-  }
-  .feature-card p {
-    font-size: 0.9rem; color: #ccc; line-height: 1.5;
-  }
+    /* Navigation Bar */
+    .navbar {
+      position: absolute; top: 0; left: 0;
+      width: 100%; z-index: 3;
+      display: flex; align-items: center;
+      background: transparent; padding: 1rem 3rem;
+    }
+    .logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 1.8rem; color: white; text-decoration: none;
+      position: relative;
+    }
+    .logo::before {
+      content: attr(data-text);
+      position: absolute; left: 2px; top: 0;
+      text-shadow: -2px 0 red; color: white;
+      overflow: hidden;
+      animation: glitch 1s infinite linear alternate-reverse;
+    }
+    @keyframes glitch {
+      0%   { clip: rect(0,9999px,0,0); }
+      5%   { clip: rect(0,9999px,5px,0); }
+      10%  { clip: rect(0,9999px,10px,0); }
+      15%  { clip: rect(0,9999px,5px,0); }
+      20%  { clip: rect(0,9999px,0,0); }
+      100% { clip: rect(0,9999px,0,0); }
+    }
+    .nav-links {
+      display: flex; flex-direction: column;
+      align-items: flex-start;
+      margin-left: auto; /* push column to the right */
+    }
+    .nav-links .menu-title {
+      color: white; font-size: 0.95rem;
+      font-weight: bold; margin-bottom: 0.5rem;
+    }
+    .nav-links a {
+      color: white; text-decoration: none;
+      font-size: 0.95rem; font-weight: bold;
+      margin: 0.25rem 0; transition: 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+    }
 
-  /* Process Section */
-  .process {
-    max-width: 1000px; margin: 0 auto;
-  }
-  .steps {
-    display: flex; flex-wrap: wrap;
-    justify-content: center; gap: 2rem;
-  }
-  .step {
-    background: #1a1a1a; border-radius: 10px;
-    padding: 2rem; flex: 1 1 200px; max-width: 220px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    text-align: center;
-  }
-  .step .circle {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: #00ffe5; color: #101010;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1rem; font-weight: bold;
-  }
-  .step h3 {
-    font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffe5;
-  }
-  .step p {
-    font-size: 0.9rem; color: #ccc; line-height: 1.5;
-  }
+    /* Features Section */
+    .features {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .feature-card {
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 2rem;
+      flex: 1 1 250px; max-width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .feature-card .icon {
+      font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
+    }
+    .feature-card h3 {
+      font-size: 1.4rem; color: #00ffe5; margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
+    }
 
-  /* Form Section */
-  .form-wrapper {
-    max-width: 700px; margin: 0 auto;
-    background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  }
-  .form-wrapper form {
-    display: flex; flex-direction: column; gap: 1.5rem;
-  }
-  .form-wrapper label {
-    font-size: 0.9rem; color: #ccc; text-align: left;
-    display: flex; flex-direction: column;
-  }
-  .form-wrapper input,
-  .form-wrapper textarea {
-    margin-top: 0.5rem; padding: 0.8rem; font-size: 1rem;
-    width: 100%; background: #1a1a1a; border: 1px solid #444;
-    color: #fff; border-radius: 4px;
-  }
-  .form-wrapper button {
-    padding: 1rem; background: #00ffe5; color: #101010;
-    font-weight: bold; border: none; cursor: pointer;
-    border-radius: 4px;
-  }
-  .form-wrapper button:hover {
-    background-color: #00ffe510; color: #00ffe5;
-    box-shadow: 0 0 10px #00ffe5;
-  }
+    /* Process Section */
+    .process {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .steps {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2rem;
+    }
+    .step {
+      background: #1a1a1a; border-radius: 10px;
+      padding: 2rem; flex: 1 1 200px; max-width: 220px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .step .circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #00ffe5; color: #101010;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-weight: bold;
+    }
+    .step h3 {
+      font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffe5;
+    }
+    .step p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
+    }
 
-  /* FAQ Section */
-  .faq {
-    max-width: 800px; margin: 0 auto; text-align: left;
-  }
-  details {
-    background: #1a1a1a; border-radius: 8px;
-    padding: 1rem 1.5rem; margin-bottom: 1rem;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-  }
-  summary {
-    font-size: 1rem; color: #00ffe5; cursor: pointer;
-    outline: none;
-  }
-  details p {
-    margin-top: 0.5rem; font-size: 0.9rem;
-    color: #ccc; line-height: 1.5;
-  }
+    /* Form Section */
+    .form-wrapper {
+      max-width: 700px; margin: 0 auto;
+      background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .form-wrapper form {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .form-wrapper label {
+      font-size: 0.9rem; color: #ccc; text-align: left;
+      display: flex; flex-direction: column;
+    }
+    .form-wrapper input,
+    .form-wrapper textarea {
+      margin-top: 0.5rem; padding: 0.8rem; font-size: 1rem;
+      width: 100%; background: #1a1a1a; border: 1px solid #444;
+      color: #fff; border-radius: 4px;
+    }
+    .form-wrapper button {
+      padding: 1rem; background: #00ffe5; color: #101010;
+      font-weight: bold; border: none; cursor: pointer;
+      border-radius: 4px;
+    }
+    .form-wrapper button:hover {
+      background-color: #00ffe510; color: #00ffe5;
+      box-shadow: 0 0 10px #00ffe5;
+    }
 
-  /* Testimonials */
-  .testimonials {
-    max-width: 1000px; margin: 0 auto;
-  }
-  .testimonial {
-    background: #1a1a1a; border-radius: 10px;
-    padding: 2rem; margin-bottom: 2rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-  }
-  .testimonial p {
-    font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;
-    color: #ccc;
-  }
-  .testimonial .author {
-    font-weight: bold; color: #00ffe5;
-  }
-  .testimonial .role {
-    font-size: 0.9rem; color: #888;
-  }
+    /* FAQ Section */
+    .faq {
+      max-width: 800px; margin: 0 auto; text-align: left;
+    }
+    details {
+      background: #1a1a1a; border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 1rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    }
+    summary {
+      font-size: 1rem; color: #00ffe5; cursor: pointer;
+      outline: none;
+    }
+    details p {
+      margin-top: 0.5rem; font-size: 0.9rem;
+      color: #ccc; line-height: 1.5;
+    }
 
-  /* Footer */
-  .footer {
-    padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 8px rgba(255,255,255,0.1);
-    font-size: 0.8rem; color: #aaa;
-  }
-  .footer nav {
-    margin-top: 1rem;
-  }
-  .footer a {
-    margin: 0 0.5rem; color: #00ffe5; text-decoration: none;
-  }
-  .footer a:hover {
-    text-decoration: underline;
-  }
+    /* Testimonials */
+    .testimonials {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .testimonial {
+      background: #1a1a1a; border-radius: 10px;
+      padding: 2rem; margin-bottom: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .testimonial p {
+      font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;
+      color: #ccc;
+    }
+    .testimonial .author {
+      font-weight: bold; color: #00ffe5;
+    }
+    .testimonial .role {
+      font-size: 0.9rem; color: #888;
+    }
 
-  @media (max-width: 768px) {
-    .benefit-list { flex-direction: column; }
-    .features { flex-direction: column; align-items: center; }
-    .steps    { flex-direction: column; align-items: center; }
-    .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
-  }
- </style>
+    /* Footer */
+    .footer {
+      padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      font-size: 0.8rem; color: #aaa;
+    }
+    .footer nav {
+      margin-top: 1rem;
+    }
+    .footer a {
+      margin: 0 0.5rem; color: #00ffe5; text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .benefit-list { flex-direction: column; }
+      .features { flex-direction: column; align-items: center; }
+      .steps    { flex-direction: column; align-items: center; }
+      .nav-links { align-items: center; }
+    }
+  </style>
 </head>
 <body>
- <div class="banner-wrapper">
-  <div class="navbar">
-   <a class="logo glitch" data-text="YGP" href="index.html">YGP</a>
-   <div class="nav-links">
-    <a href="index.html">HOME</a>
-    <a href="artist.html" class="active">ARTIST</a>
-    <a href="https://yourghostproject.github.io/creator.html">CONTENT CREATOR</a>
-   </div>
-  </div>
-  <video autoplay class="banner-video" loop muted playsinline>
-   <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
-  </video>
-  <div class="banner-overlay"></div>
-  <div class="banner-content">
-   <h1>Own Your Sound</h1>
-   <p>Never license overused instrumentals again – get a fully custom beat that's yours forever.</p>
-   <a class="btn-primary" href="#form">Get Your Custom Beat – £149</a>
-   <ul class="benefit-list">
-    <li><span>🎵</span>Exclusive sound</li>
-    <li><span>📂</span>Stems included</li>
-    <li><span>🔒</span>Full ownership</li>
-    <li><span>⏰</span>Ready in 72h</li>
-   </ul>
-  </div>
- </div>
-
- <!-- Features / Benefits Section -->
- <section class="section" id="features">
-  <h2>What You Get</h2>
-  <div class="features">
-   <div class="feature-card">
-    <div class="icon">🎵</div>
-    <h3>Exclusive Sound</h3>
-    <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
-   </div>
-   <div class="feature-card">
-    <div class="icon">📂</div>
-    <h3>All Stems Included</h3>
-    <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
-   </div>
-   <div class="feature-card">
-    <div class="icon">🔒</div>
-    <h3>100% Ownership</h3>
-    <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
-   </div>
-   <div class="feature-card">
-    <div class="icon">🔄</div>
-    <h3>Fast Turnaround</h3>
-    <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
-   </div>
-  </div>
- </section>
-
- <!-- Process / Formula Section -->
- <section class="section" id="process">
-  <h2>The Ghost Formula</h2>
-  <div class="process">
-   <div class="steps">
-    <div class="step">
-     <div class="circle">1</div>
-     <h3>Submit Your Brief</h3>
-     <p>Tell us who you are, share a few references and describe the mood or story you want to tell.</p>
+  <div class="banner-wrapper">
+    <div class="navbar">
+      <a class="logo glitch" data-text="YGP" href="index.html">YGP</a>
+      <div class="nav-links">
+        <div class="menu-title">MENU</div>
+        <a href="artist.html" class="active">ARTIST</a>
+        <a href="https://yourghostproject.github.io/creator.html">CONTENT CREATOR</a>
+      </div>
     </div>
-    <div class="step">
-     <div class="circle">2</div>
-     <h3>Secure Your Spot</h3>
-     <p>Receive a confirmation email and pay 50% upfront to get us started.</p>
+    <video autoplay class="banner-video" loop muted playsinline>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
+    </video>
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Own Your Sound</h1>
+      <p>Never license overused instrumentals again – get a fully custom beat that's yours forever.</p>
+      <a class="btn-primary" href="#form">Get Your Custom Beat – £149</a>
+      <ul class="benefit-list">
+        <li><span>🎵</span>Exclusive sound</li>
+        <li><span>📂</span>Stems included</li>
+        <li><span>🔒</span>Full ownership</li>
+        <li><span>⏰</span>Ready in 72h</li>
+      </ul>
     </div>
-    <div class="step">
-     <div class="circle">3</div>
-     <h3>Receive & Refine</h3>
-     <p>Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect.</p>
+  </div>
+
+  <!-- Features / Benefits Section -->
+  <section class="section" id="features">
+    <h2>What You Get</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">🎵</div>
+        <h3>Exclusive Sound</h3>
+        <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📂</div>
+        <h3>All Stems Included</h3>
+        <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>100% Ownership</h3>
+        <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔄</div>
+        <h3>Fast Turnaround</h3>
+        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
+      </div>
     </div>
-    <div class="step">
-     <div class="circle">4</div>
-     <h3>Own It</h3>
-     <p>Pay the balance, receive all stems and full ownership rights. Your music, your way.</p>
+  </section>
+
+  <!-- Process / Formula Section -->
+  <section class="section" id="process">
+    <h2>The Ghost Formula</h2>
+    <div class="process">
+      <div class="steps">
+        <div class="step">
+          <div class="circle">1</div>
+          <h3>Submit Your Brief</h3>
+          <p>Tell us who you are, share a few references and describe the mood or story you want to tell.</p>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <h3>Secure Your Spot</h3>
+          <p>Receive a confirmation email and pay 50% upfront to get us started.</p>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <h3>Receive & Refine</h3>
+          <p>Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect.</p>
+        </div>
+        <div class="step">
+          <div class="circle">4</div>
+          <h3>Own It</h3>
+          <p>Pay the balance, receive all stems and full ownership rights. Your music, your way.</p>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
- </section>
+  </section>
 
- <!-- Start Form Section -->
- <section class="section" id="form">
-  <h2>Start Your Track</h2>
-  <div class="form-wrapper">
-   <form action="https://formspree.io/f/yourformid" method="POST">
-    <label>
-     Artist Name
-     <input name="artistname" placeholder="Your artist name" required type="text"/>
-    </label>
-    <label>
-     Reference Links
-     <textarea name="references" placeholder="Paste 2–3 YouTube / Spotify links" required rows="3"></textarea>
-    </label>
-    <label>
-     Mood & Vibe
-     <textarea name="mood" placeholder="Tell us the mood, vibe, story or keywords" required rows="4"></textarea>
-    </label>
-    <label>
-     Email
-     <input name="email" placeholder="Your email (to receive the beat)" required type="email"/>
-    </label>
-    <button type="submit">🔒 Send Brief</button>
-   </form>
-  </div>
- </section>
+  <!-- Start Form Section -->
+  <section class="section" id="form">
+    <h2>Start Your Track</h2>
+    <div class="form-wrapper">
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <label>
+          Artist Name
+          <input name="artistname" placeholder="Your artist name" required type="text"/>
+        </label>
+        <label>
+          Reference Links
+          <textarea name="references" placeholder="Paste 2–3 YouTube / Spotify links" required rows="3"></textarea>
+        </label>
+        <label>
+          Mood & Vibe
+          <textarea name="mood" placeholder="Tell us the mood, vibe, story or keywords" required rows="4"></textarea>
+        </label>
+        <label>
+          Email
+          <input name="email" placeholder="Your email (to receive the beat)" required type="email"/>
+        </label>
+        <button type="submit">🔒 Send Brief</button>
+      </form>
+    </div>
+  </section>
 
- <!-- FAQ Section -->
- <section class="section" id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq">
-   <details>
-    <summary>How much does a custom beat cost?</summary>
-    <p>The total price is £149: pay 50% upfront to start, and the remaining balance after you approve the final beat.</p>
-   </details>
-   <details>
-    <summary>How long does it take?</summary>
-    <p>Your custom beat will be delivered within 72 hours. If revisions are requested, please allow a little extra time.</p>
-   </details>
-   <details>
-    <summary>Can I request specific samples?</summary>
-    <p>Yes – share any samples or influences in your brief. We’ll use them creatively, but you’re responsible for any sample clearance.</p>
-   </details>
-   <details>
-    <summary>What if I’m not satisfied?</summary>
-    <p>We include two free revisions. If you’re still unhappy, we’ll work with you to find a solution or offer a refund.</p>
-   </details>
-  </div>
- </section>
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>How much does a custom beat cost?</summary>
+        <p>The total price is £149: pay 50% upfront to start, and the remaining balance after you approve the final beat.</p>
+      </details>
+      <details>
+        <summary>How long does it take?</summary>
+        <p>Your custom beat will be delivered within 72 hours. If revisions are requested, please allow a little extra time.</p>
+      </details>
+      <details>
+        <summary>Can I request specific samples?</summary>
+        <p>Yes – share any samples or influences in your brief. We’ll use them creatively, but you’re responsible for any sample clearance.</p>
+      </details>
+      <details>
+        <summary>What if I’m not satisfied?</summary>
+        <p>We include two free revisions. If you’re still unhappy, we’ll work with you to find a solution or offer a refund.</p>
+      </details>
+    </div>
+  </section>
 
- <!-- Testimonials Section -->
- <section class="section" id="testimonials">
-  <h2>What Artists Say</h2>
-  <div class="testimonials">
-   <div class="testimonial">
-    <p>“I’ve never felt more heard as an artist. My custom beat captured the exact mood I was going for and elevated my song to another level.”</p>
-    <div class="author">– Léo M.</div>
-    <div class="role">Indie Rapper, Paris</div>
-   </div>
-   <div class="testimonial">
-    <p>“The turnaround time was incredible. Within 3 days I had a beat that sounded like it was made just for me, and the stems gave me full creative control.”</p>
-    <div class="author">– Sarah A.</div>
-    <div class="role">Singer/Songwriter, London</div>
-   </div>
-   <div class="testimonial">
-    <p>“I used to license beats that everyone else used. This service changed everything – owning my sound feels empowering and professional.”</p>
-    <div class="author">– Marcel G.</div>
-    <div class="role">Trap Artist, Berlin</div>
-   </div>
-  </div>
- </section>
+  <!-- Testimonials Section -->
+  <section class="section" id="testimonials">
+    <h2>What Artists Say</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>“I’ve never felt more heard as an artist. My custom beat captured the exact mood I was going for and elevated my song to another level.”</p>
+        <div class="author">– Léo M.</div>
+        <div class="role">Indie Rapper, Paris</div>
+      </div>
+      <div class="testimonial">
+        <p>“The turnaround time was incredible. Within 3 days I had a beat that sounded like it was made just for me, and the stems gave me full creative control.”</p>
+        <div class="author">– Sarah A.</div>
+        <div class="role">Singer/Songwriter, London</div>
+      </div>
+      <div class="testimonial">
+        <p>“I used to license beats that everyone else used. This service changed everything – owning my sound feels empowering and professional.”</p>
+        <div class="author">– Marcel G.</div>
+        <div class="role">Trap Artist, Berlin</div>
+      </div>
+    </div>
+  </section>
 
- <!-- Footer -->
- <div class="footer">
-  <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
-  <nav>
-   <a href="mailto:yourghostproject@gmail.com">Email</a>
-   <a href="https://www.tiktok.com/@yourghostproject" target="_blank">TikTok</a>
-   <a href="index.html">Home</a>
-  </nav>
- </div>
+  <!-- Footer -->
+  <div class="footer">
+    <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
+    <nav>
+      <a href="mailto:yourghostproject@gmail.com">Email</a>
+      <a href="https://www.tiktok.com/@yourghostproject" target="_blank">TikTok</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
 </body>
 </html>

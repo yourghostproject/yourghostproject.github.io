@@ -23,10 +23,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      z-index: 100;
       padding: 1rem 3rem;
       background: transparent;
     }
@@ -35,7 +32,10 @@
       font-size: 1.8rem;
       color: white;
       text-decoration: none;
-      position: relative;
+      position: absolute;
+      top: 1rem;
+      left: 3rem;
+      z-index: 101;
     }
     .logo::before {
       content: attr(data-text);
@@ -56,28 +56,33 @@
       100% { clip: rect(0,9999px,0,0); }
     }
 
-    /* Menu toggle icon */
+    /* Menu Toggle Icon */
     .menu-toggle {
-      font-family: sans-serif; /* ensure the hamburger glyph displays */
-      font-size: 2rem;
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      font-size: 2.5rem;
       background: none;
       border: none;
       color: white;
       cursor: pointer;
-      z-index: 11;
+      z-index: 101;
+      font-family: sans-serif;
+      line-height: 1;
     }
 
     /* Hidden nav-links by default */
     .nav-links {
       display: none;
       position: absolute;
-      top: 60px;
+      top: 4rem;
       right: 3rem;
       flex-direction: column;
       background-color: #1a1a1a;
       border-radius: 8px;
       padding: 1rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      z-index: 100;
     }
     .navbar.open .nav-links {
       display: flex;

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Content Creator | Your Ghost Project</title>
   <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <style>
     html { scroll-behavior: smooth; }
@@ -16,7 +17,7 @@
       text-align: center;
     }
 
-    /* Navigation bar and logo */
+    /* Navigation Bar */
     .navbar {
       position: absolute;
       top: 0;
@@ -26,6 +27,7 @@
       padding: 1rem 0;
       background: transparent;
     }
+    /* Logo glitch style */
     .logo-mixed {
       position: absolute;
       top: 1rem;
@@ -47,6 +49,8 @@
       text-shadow: -2px 0 #9d00ff;
       animation: glitch 1s infinite linear alternate-reverse;
     }
+
+    /* Glitch animation */
     @keyframes glitch {
       0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
       25%  { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
@@ -54,6 +58,8 @@
       75%  { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
+
+    /* Hamburger icon */
     .menu-toggle {
       position: absolute;
       top: 1rem;
@@ -78,6 +84,8 @@
       margin: 3px 0;
       border-radius: 1px;
     }
+
+    /* Hidden menu */
     .nav-links {
       display: none;
       position: absolute;
@@ -107,7 +115,7 @@
       text-shadow: 0 0 8px #00ffe5;
     }
 
-    /* Banner styles */
+    /* Banner */
     .banner-wrapper {
       position: relative;
       width: 100%;
@@ -130,51 +138,40 @@
     }
     .banner-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
       z-index: 1;
     }
     .banner-content {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
       z-index: 2;
       max-width: 800px;
       padding: 0 2rem;
     }
     .banner-content h1 {
-      margin: 0;
-      font-size: 3rem;
-      color: #fff;
+      margin: 0; font-size: 3rem; color: #fff;
     }
     .banner-content p {
-      margin-top: 0.5rem;
-      font-size: 1.4rem;
-      line-height: 1.5;
-      color: #ccc;
+      margin-top: 0.5rem; font-size: 1.4rem;
+      line-height: 1.5; color: #ccc;
     }
     .benefit-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      padding: 0;
-      margin-top: 1rem;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      list-style: none; padding: 0; margin-top: 1rem;
     }
     .benefit-list li {
-      margin: 0.5rem 1rem;
-      font-size: 0.9rem;
-      color: #00ffe5;
-      display: flex;
-      align-items: center;
+      margin: 0.5rem 1rem; font-size: 0.9rem; color: #00ffe5;
+      display: flex; align-items: center;
     }
-    .benefit-list li span {
-      margin-right: 0.5rem;
-    }
+    .benefit-list li span { margin-right: 0.5rem; }
+
+    /* Global */
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .section { padding: 4rem 1rem; }
+
     .btn-primary {
       display: inline-block;
       margin-top: 1.5rem;
@@ -191,168 +188,49 @@
     .btn-primary:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00ffe5;
-      color: #ffffff;
     }
 
-    /* Trust signals */
-    .trust-signals {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: #00ffe5;
-    }
-    .trust-signals span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Features section */
+    /* Features & Pricing cards */
     .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
     }
-    .feature-card {
+    .feature-card, .pricing-card {
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
       padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 280px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
-    .feature-card:hover {
+    .feature-card:hover, .pricing-card:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00ffe5;
     }
     .feature-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #00ffe5;
+      font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
     }
-    .feature-card h3 {
-      font-size: 1.4rem;
-      color: #00ffe5;
-      margin-bottom: 0.5rem;
+    .feature-card h3, .pricing-card h3 {
+      font-size: 1.4rem; color: #00ffe5; margin-bottom: 0.5rem;
     }
-    .feature-card p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
+    .feature-card p, .pricing-card p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
-
-    /* Audio samples for creators */
-    .audio-section {
-      max-width: 800px;
-      margin: 0 auto 4rem auto;
-    }
-    .audio-player {
-      margin-top: 1rem;
-    }
-    .audio-player .track-list {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 0.5rem;
-    }
-    .audio-player .track-list button {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #00ffe5;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .audio-player .track-list button:hover {
+    /* Badge for pricing card */
+    .pricing-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
       background: #00ffe5;
       color: #101010;
-    }
-
-    /* Process steps */
-    .process {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-    }
-    .step {
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .step:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffe5;
-    }
-    .step .circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #00ffe5;
-      color: #101010;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
+      border-radius: 12px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.7rem;
       font-weight: bold;
-    }
-    .step h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: #00ffe5;
-    }
-    .step p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
-    }
-
-    /* Pricing cards */
-    .pricing {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .pricing-card {
-      background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .pricing-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffe5;
-    }
-    .pricing-card h3 {
-      font-size: 1.4rem;
-      color: #00ffe5;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-card p.subtitle {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 1rem;
     }
     .pricing-card ul {
       list-style: none;
@@ -371,25 +249,42 @@
       color: #888;
       font-size: 0.8rem;
     }
-    .pricing-card .badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #00ffe5;
-      color: #101010;
-      padding: 0.2rem 0.5rem;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: bold;
+
+    /* Process */
+    .process {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .steps {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    }
+    .step {
+      background: #1a1a1a; border-radius: 10px; padding: 2rem;
+      flex: 1 1 200px; max-width: 220px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
+    }
+    .step .circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #00ffe5; color: #101010;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-weight: bold;
+    }
+    .step h3 {
+      font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffe5;
+    }
+    .step p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
     /* Form */
     .form-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #1a1a1a;
-      padding: 3rem 2rem;
-      border-radius: 10px;
+      max-width: 700px; margin: 0 auto;
+      background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -398,113 +293,74 @@
       box-shadow: 0 0 15px #00ffe5;
     }
     .form-wrapper form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
     }
     .form-wrapper label {
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
+      font-size: 0.9rem; color: #ccc; text-align: left;
+      display: flex; flex-direction: column;
     }
     .form-wrapper input,
     .form-wrapper textarea,
     .form-wrapper select {
-      margin-top: 0.5rem;
-      padding: 0.8rem;
-      font-size: 1rem;
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #fff;
-      border-radius: 4px;
+      margin-top: 0.5rem; padding: 0.8rem; font-size: 1rem;
+      width: 100%; background: #1a1a1a; border: 1px solid #444;
+      color: #fff; border-radius: 4px;
     }
     .form-wrapper button {
-      padding: 1rem;
-      background: #00ffe5;
-      color: #101010;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
+      padding: 1rem; background: #00ffe5; color: #101010;
+      font-weight: bold; border: none; cursor: pointer; border-radius: 4px;
       transition: background-color 0.3s, box-shadow 0.3s;
     }
     .form-wrapper button:hover {
-      background-color: #00ffe510;
-      color: #00ffe5;
+      background-color: #00ffe510; color: #00ffe5;
       box-shadow: 0 0 10px #00ffe5;
     }
 
     /* FAQ */
     .faq {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
+      max-width: 800px; margin: 0 auto; text-align: left;
     }
     details {
-      background: #1a1a1a;
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 1rem;
+      background: #1a1a1a; border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 1rem;
       box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     }
     summary {
-      font-size: 1rem;
-      color: #00ffe5;
-      cursor: pointer;
-      outline: none;
+      font-size: 1rem; color: #00ffe5; cursor: pointer; outline: none;
     }
     details p {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
+      margin-top: 0.5rem; font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
     /* Testimonials */
     .testimonials {
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 1000px; margin: 0 auto;
     }
     .testimonial {
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      background: #1a1a1a; border-radius: 10px; padding: 2rem; margin-bottom: 2rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     .testimonial p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      color: #ccc;
+      font-size: 1rem; line-length: 1.6; margin-bottom: 1rem; color: #ccc;
     }
     .testimonial .author {
-      font-weight: bold;
-      color: #00ffe5;
+      font-weight: bold; color: #00ffe5;
     }
     .testimonial .role {
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.9rem; color: #888;
     }
 
     /* Footer */
     .footer {
-      padding: 2rem 1rem;
-      border-top: 2px solid rgba(255,255,255,0.1);
+      padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
-      font-size: 0.8rem;
-      color: #aaa;
+      font-size: 0.8rem; color: #aaa;
     }
     .footer nav {
       margin-top: 1rem;
     }
     .footer a {
-      margin: 0 0.5rem;
-      color: #00ffe5;
-      text-decoration: none;
+      margin: 0 0.5rem; color: #00ffe5; text-decoration: none;
     }
     .footer a:hover {
       text-decoration: underline;
@@ -544,15 +400,9 @@
         <li><span>🔒</span>Full ownership</li>
         <li><span>⚡</span>Ready in 72h</li>
       </ul>
-      <div class="trust-signals">
-        <span>✅ Secured payment</span>
-        <span>🔁 2 revisions included</span>
-        <span>💯 100% ownership</span>
-      </div>
     </div>
   </div>
 
-  <!-- Features -->
   <section class="section" id="features">
     <h2>What You Get</h2>
     <div class="features">
@@ -572,31 +422,13 @@
         <p>Full copyright transfer – your signature sound is yours forever with no hidden licensing terms or future royalty payments.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">⚡</div>
+        <div the icon="">⚡</div>
         <h3>Fast Turnaround</h3>
         <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
       </div>
     </div>
   </section>
 
-  <!-- Audio samples for content creators -->
-  <section class="section audio-section" id="samples">
-    <h2>Listen to Samples</h2>
-    <p>Preview our intro, loop and outro examples to experience your future signature sound.</p>
-    <div class="audio-player">
-      <audio id="creator-player" controls style="width: 100%;">
-        <source src="creator_intro.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-      <div class="track-list">
-        <button type="button" onclick="setCreatorTrack('creator_intro.mp3')">Intro</button>
-        <button type="button" onclick="setCreatorTrack('creator_loop.mp3')">Loop</button>
-        <button type="button" onclick="setCreatorTrack('creator_outro.mp3')">Outro</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
   <section class="section" id="process">
     <h2>The Ghost Formula</h2>
     <div class="process">
@@ -625,56 +457,53 @@
     </div>
   </section>
 
-  <!-- Pricing packages -->
+  <!-- Pricing Packages Section -->
   <section class="section" id="pricing">
     <h2>Pricing Packages</h2>
-    <div class="pricing">
-      <div class="pricing-cards">
-        <div class="pricing-card">
-          <h3>🎵 STARTER LOOP – £99</h3>
-          <p class="subtitle">Perfect for new podcasters & small creators</p>
-          <ul>
-            <li>Custom beat loop (60s)</li>
-            <li>MP3 + WAV files</li>
-            <li>100% ownership, no royalties</li>
-            <li>72h delivery, 1 revision</li>
-          </ul>
-          <small>Ideal for: New podcasters, small YouTube channels</small>
-        </div>
-        <div class="pricing-card">
-          <div class="badge">Most Popular</div>
-          <h3>🔥 THE GHOST PACK – £149</h3>
-          <p class="subtitle">Complete audio identity for established creators</p>
-          <ul>
-            <li>Custom Intro + Loop + Outro (full episode suite)</li>
-            <li>All stems included (ready to mix and arrange in your content)</li>
-            <li>100% ownership, no royalties</li>
-            <li>72h delivery, 2 revisions</li>
-          </ul>
-          <small>Ideal for: Established podcasters, streamers, educators</small>
-        </div>
-        <div class="pricing-card">
-          <h3>⚡ LAST MINUTE GHOST – +£50</h3>
-          <p class="subtitle">When you need it yesterday</p>
-          <ul>
-            <li>Choose either Starter Loop OR Ghost Pack above</li>
-            <li>24h delivery instead of 72h</li>
-            <li>Same quality, same revisions, rush priority</li>
-          </ul>
-          <small>Perfect for: Urgent launches, tight deadlines</small>
-        </div>
+    <div class="features">
+      <div class="pricing-card">
+        <h3>🎵 STARTER LOOP - £99</h3>
+        <p>Perfect for new podcasters & small creators</p>
+        <ul>
+          <li>Custom beat loop (60s)</li>
+          <li>MP3 + WAV files</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 1 revision</li>
+        </ul>
+        <small>Ideal for: New podcasters, small YouTube channels</small>
+      </div>
+      <div class="pricing-card">
+        <div class="badge">Most Popular</div>
+        <h3>🔥 THE GHOST PACK - £149</h3>
+        <p>Complete audio identity for established creators</p>
+        <ul>
+          <li>Custom Intro + Loop + Outro (full episode suite)</li>
+          <li>All stems included (ready to mix and arrange in your content)</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 2 revisions</li>
+        </ul>
+        <small>Ideal for: Established podcasters, streamers, educators</small>
+      </div>
+      <div class="pricing-card">
+        <h3>⚡ LAST MINUTE GHOST - +£50</h3>
+        <p>When you need it yesterday</p>
+        <ul>
+          <li>Choose either Starter Loop OR Ghost Pack above</li>
+          <li>24h delivery instead of 72h</li>
+          <li>Same quality, same revisions, rush priority</li>
+        </ul>
+        <small>Perfect for: Urgent launches, tight deadlines</small>
       </div>
     </div>
   </section>
 
-  <!-- Form section -->
   <section class="section" id="form">
     <h2>Start Your Signature Sound</h2>
     <div class="form-wrapper">
       <form action="https://formspree.io/f/yourformid" method="POST">
         <label>
           Creator Name/Channel
-          <input name="creatorname" placeholder="Your name or channel name" required type="text" />
+          <input name="creatorname" placeholder="Your name or channel name" required type="text"/>
         </label>
         <label>
           Content Links
@@ -683,10 +512,10 @@
         <label>
           Package Selection
           <select name="package" required>
-            <option value="starter">Starter Loop – £99</option>
-            <option value="ghost">Ghost Pack – £149</option>
-            <option value="starter_rush">Starter Loop + Rush (24h) – £149</option>
-            <option value="ghost_rush">Ghost Pack + Rush (24h) – £199</option>
+            <option value="starter">Starter Loop - £99</option>
+            <option value="ghost">Ghost Pack - £149</option>
+            <option value="starter_rush">Starter Loop + Rush (24h) - £149</option>
+            <option value="ghost_rush">Ghost Pack + Rush (24h) - £199</option>
           </select>
         </label>
         <label>
@@ -695,14 +524,13 @@
         </label>
         <label>
           Email
-          <input name="email" placeholder="Your email (to receive the pack)" required type="email" />
+          <input name="email" placeholder="Your email (to receive the pack)" required type="email"/>
         </label>
         <button type="submit">🔒 Send Brief</button>
       </form>
     </div>
   </section>
 
-  <!-- FAQ section -->
   <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
@@ -725,7 +553,6 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
   <section class="section" id="testimonials">
     <h2>What Content Creators Say</h2>
     <div class="testimonials">
@@ -747,7 +574,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
     <nav>
@@ -759,21 +585,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const toggle = document.querySelector('.menu-toggle');
-      if (toggle) {
-        toggle.addEventListener('click', function() {
-          document.querySelector('.navbar').classList.toggle('open');
-        });
-      }
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.navbar').classList.toggle('open');
+      });
     });
-    // Audio track switching for creator player
-    function setCreatorTrack(src) {
-      const player = document.getElementById('creator-player');
-      player.pause();
-      player.src = src;
-      player.load();
-      player.play();
-    }
   </script>
 </body>
 </html>

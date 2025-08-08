@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Content Creator | Your Ghost Project</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -16,144 +17,578 @@
       text-align: center;
     }
 
+    /* Navigation Bar */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 0;
+      background: transparent;
+    }
+    /* Logo glitch style */
+    .logo-mixed {
+      position: absolute;
+      top: 1rem;
+      left: 3rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffe5;
+      text-decoration: none;
+      text-shadow: 0 0 8px #00ffe5, 0 0 12px #9d00ff;
+      z-index: 101;
+    }
+    .logo-mixed::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: inherit;
+      text-shadow: -2px 0 #9d00ff;
+      animation: glitch 1s infinite linear alternate-reverse;
+    }
+
+    /* Glitch animation */
+    @keyframes glitch {
+      0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      25%  { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+      50%  { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+      75%  { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+    }
+
+    /* Hamburger icon */
+    .menu-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0;
+    }
+    .menu-toggle .bar {
+      width: 20px;
+      height: 2px;
+      background-color: #101010;
+      margin: 3px 0;
+      border-radius: 1px;
+    }
+
+    /* Hidden menu */
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 3rem;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      z-index: 100;
+    }
+    .navbar.open .nav-links {
+      display: flex;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      transition: 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+    }
+
+    /* Banner */
     .banner-wrapper {
       position: relative;
       width: 100%;
-      height: 270px;
+      height: 400px;
       overflow: hidden;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+      border-bottom: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
+    .banner-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #00ffe5;
+    }
     .banner-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 55%;
       opacity: 0.3;
-      transition: 0.3s ease;
     }
-
-    .banner-wrapper:hover .banner-video {
-      opacity: 0.45;
-    }
-
-    .site-title {
+    .banner-overlay {
       position: absolute;
-      top: 10px;
-      left: 20px;
-      font-size: 1.2rem;
-      color: white;
-      font-weight: bold;
-      z-index: 2;
-      animation: glitch 1s infinite;
-      line-height: 1.2;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
     }
-
-    .site-title span { display: block; }
-
-    .contact-links {
+    .banner-content {
       position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 1.2rem;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
       z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
     }
+    .banner-content h1 {
+      margin: 0; font-size: 3rem; color: #fff;
+    }
+    .banner-content p {
+      margin-top: 0.5rem; font-size: 1.4rem;
+      line-height: 1.5; color: #ccc;
+    }
+    .benefit-list {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      list-style: none; padding: 0; margin-top: 1rem;
+    }
+    .benefit-list li {
+      margin: 0.5rem 1rem; font-size: 0.9rem; color: #00ffe5;
+      display: flex; align-items: center;
+    }
+    .benefit-list li span { margin-right: 0.5rem; }
 
-    .contact-links a {
-      margin-left: 15px;
+    /* Global */
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .section { padding: 4rem 1rem; }
+
+    .btn-primary {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      color: #101010;
+      background-color: #00ffe5;
+      border: none;
+      border-radius: 8px;
       text-decoration: none;
-      color: white;
-      animation: subtle-glitch 2s infinite;
-    }
-
-    .banner-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #f2f2f2;
-      font-size: 1rem;
-      line-height: 1.6;
-      padding: 0 1rem;
-      text-shadow: 0 0 8px #000000cc;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: 0.3s ease;
-    }
-
-    .banner-wrapper:hover .banner-main {
-      color: #00ffe5;
-      font-size: 2.2rem;
-      text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
-    }
-
-    .banner-main {
-      font-size: 1.8rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .banner-sub {
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-
-    .footer {
-      border-top: 2px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-      margin-top: 3rem;
-      padding: 1rem;
-      font-size: 0.8rem;
-      color: #aaa;
-    }
-
-    .footer-logo {
-      margin-top: 1rem;
       font-weight: bold;
-      font-size: 1.2rem;
-      animation: glitch 1s infinite;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
     }
 
-    @keyframes glitch {
-      0% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
-      25% { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
-      50% { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
-      75% { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
-      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+    /* Features & Pricing cards */
+    .features {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .feature-card, .pricing-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .feature-card:hover, .pricing-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
+    }
+    .feature-card .icon {
+      font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
+    }
+    .feature-card h3, .pricing-card h3 {
+      font-size: 1.4rem; color: #00ffe5; margin-bottom: 0.5rem;
+    }
+    .feature-card p, .pricing-card p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
+    }
+    /* Badge for pricing card */
+    .pricing-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #00ffe5;
+      color: #101010;
+      border-radius: 12px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+    }
+    .pricing-card ul li {
+      margin-bottom: 0.5rem;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .pricing-card small {
+      display: block;
+      margin-top: 1rem;
+      color: #888;
+      font-size: 0.8rem;
     }
 
-    @keyframes subtle-glitch {
-      0%, 100% { text-shadow: 1px 1px #00ffe5, -1px -1px #9d00ff; }
-      50% { text-shadow: -1px 1px #00ffe5, 1px -1px #9d00ff; }
+    /* Process */
+    .process {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .steps {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    }
+    .step {
+      background: #1a1a1a; border-radius: 10px; padding: 2rem;
+      flex: 1 1 200px; max-width: 220px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffe5;
+    }
+    .step .circle {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #00ffe5; color: #101010;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-weight: bold;
+    }
+    .step h3 {
+      font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffe5;
+    }
+    .step p {
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
+    }
+
+    /* Form */
+    .form-wrapper {
+      max-width: 700px; margin: 0 auto;
+      background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .form-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px #00ffe5;
+    }
+    .form-wrapper form {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .form-wrapper label {
+      font-size: 0.9rem; color: #ccc; text-align: left;
+      display: flex; flex-direction: column;
+    }
+    .form-wrapper input,
+    .form-wrapper textarea,
+    .form-wrapper select {
+      margin-top: 0.5rem; padding: 0.8rem; font-size: 1rem;
+      width: 100%; background: #1a1a1a; border: 1px solid #444;
+      color: #fff; border-radius: 4px;
+    }
+    .form-wrapper button {
+      padding: 1rem; background: #00ffe5; color: #101010;
+      font-weight: bold; border: none; cursor: pointer; border-radius: 4px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .form-wrapper button:hover {
+      background-color: #00ffe510; color: #00ffe5;
+      box-shadow: 0 0 10px #00ffe5;
+    }
+
+    /* FAQ */
+    .faq {
+      max-width: 800px; margin: 0 auto; text-align: left;
+    }
+    details {
+      background: #1a1a1a; border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 1rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    }
+    summary {
+      font-size: 1rem; color: #00ffe5; cursor: pointer; outline: none;
+    }
+    details p {
+      margin-top: 0.5rem; font-size: 0.9rem; color: #ccc; line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      max-width: 1000px; margin: 0 auto;
+    }
+    .testimonial {
+      background: #1a1a1a; border-radius: 10px; padding: 2rem; margin-bottom: 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+    .testimonial p {
+      font-size: 1rem; line-length: 1.6; margin-bottom: 1rem; color: #ccc;
+    }
+    .testimonial .author {
+      font-weight: bold; color: #00ffe5;
+    }
+    .testimonial .role {
+      font-size: 0.9rem; color: #888;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      font-size: 0.8rem; color: #aaa;
+    }
+    .footer nav {
+      margin-top: 1rem;
+    }
+    .footer a {
+      margin: 0 0.5rem; color: #00ffe5; text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 1rem; }
     }
   </style>
 </head>
 <body>
   <div class="banner-wrapper">
-    <video class="banner-video" autoplay muted loop playsinline>
-      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4">
+    <div class="navbar">
+      <a href="index.html" class="logo-mixed glitch" data-text="YGP">YGP</a>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="artist.html">ARTIST</a>
+        <a href="creator.html" class="active">CONTENT CREATOR</a>
+      </div>
+    </div>
+    <video autoplay class="banner-video" loop muted playsinline>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
     </video>
-    <div class="site-title">
-      <span>YOUR</span>
-      <span>GHOST</span>
-      <span>PROJECT</span>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:yourghostproject@gmail.com" title="Email">📧</a>
-      <a href="https://www.tiktok.com/@yourghostproject" target="_blank" title="TikTok">🎵</a>
-    </div>
-    <div class="banner-text">
-      <div class="banner-main">CONTENT CREATOR</div>
-      <div class="banner-sub">Buyout only. Yours forever.<br>Delivered in 72h.</div>
+    <div class="banner-overlay"></div>
+    <div class="banner-content">
+      <h1>Stop Sounding Like Everyone Else.</h1>
+      <p>Say goodbye to copyright strikes and generic music—get your sound built for your content.</p>
+      <a class="btn-primary" href="#form">GET YOUR GHOST SIGNATURE PACK</a>
+      <ul class="benefit-list">
+        <li><span>🎵</span>Signature sound</li>
+        <li><span>📂</span>Stems included</li>
+        <li><span>🔒</span>Full ownership</li>
+        <li><span>⚡</span>Ready in 72h</li>
+      </ul>
     </div>
   </div>
 
+  <section class="section" id="features">
+    <h2>What You Get</h2>
+    <div class="features">
+      <div class="feature-card">
+        <div class="icon">🎵</div>
+        <h3>Signature Audio Identity</h3>
+        <p>Create a unique sonic brand for your content – custom intro, loop, and outro that no other creator will ever have.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📂</div>
+        <h3>All Stems Included</h3>
+        <p>Get full multi-track stems and project files for complete control over mixing, timing, and arrangement in your content.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>100% Ownership</h3>
+        <p>Full copyright transfer – your signature sound is yours forever with no hidden licensing terms or future royalty payments.</p>
+      </div>
+      <div class="feature-card">
+        <div the icon="">⚡</div>
+        <h3>Fast Turnaround</h3>
+        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <h2>The Ghost Formula</h2>
+    <div class="process">
+      <div class="steps">
+        <div class="step">
+          <div class="circle">1</div>
+          <h3>Submit Your Brief</h3>
+          <p>Tell us about your content, share a few audio references, and describe the vibe or energy you want your signature sound to have.</p>
+        </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <h3>Secure Your Spot</h3>
+          <p>Choose your package, receive confirmation email, and pay 50% upfront to get us started on your custom audio identity.</p>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <h3>Receive & Refine</h3>
+          <p>Your signature soundpack arrives within 72 hours (or 24h if rush); request up to two revisions until it perfectly matches your brand.</p>
+        </div>
+        <div class="step">
+          <div class="circle">4</div>
+          <h3>Own It</h3>
+          <p>Pay the balance, receive all stems and full ownership rights. Your signature sound, your content, your way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Packages Section -->
+  <section class="section" id="pricing">
+    <h2>Pricing Packages</h2>
+    <div class="features">
+      <div class="pricing-card">
+        <h3>🎵 STARTER LOOP - £99</h3>
+        <p>Perfect for new podcasters & small creators</p>
+        <ul>
+          <li>Custom beat loop (60s)</li>
+          <li>MP3 + WAV files</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 1 revision</li>
+        </ul>
+        <small>Ideal for: New podcasters, small YouTube channels</small>
+      </div>
+      <div class="pricing-card">
+        <div class="badge">Most Popular</div>
+        <h3>🔥 THE GHOST PACK - £149</h3>
+        <p>Complete audio identity for established creators</p>
+        <ul>
+          <li>Custom Intro + Loop + Outro (full episode suite)</li>
+          <li>All stems included (ready to mix and arrange in your content)</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 2 revisions</li>
+        </ul>
+        <small>Ideal for: Established podcasters, streamers, educators</small>
+      </div>
+      <div class="pricing-card">
+        <h3>⚡ LAST MINUTE GHOST - +£50</h3>
+        <p>When you need it yesterday</p>
+        <ul>
+          <li>Choose either Starter Loop OR Ghost Pack above</li>
+          <li>24h delivery instead of 72h</li>
+          <li>Same quality, same revisions, rush priority</li>
+        </ul>
+        <small>Perfect for: Urgent launches, tight deadlines</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="form">
+    <h2>Start Your Signature Sound</h2>
+    <div class="form-wrapper">
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <label>
+          Creator Name/Channel
+          <input name="creatorname" placeholder="Your name or channel name" required type="text"/>
+        </label>
+        <label>
+          Content Links
+          <textarea name="links" placeholder="Paste 2-3 YouTube/Spotify/Twitch links" required rows="3"></textarea>
+        </label>
+        <label>
+          Package Selection
+          <select name="package" required>
+            <option value="starter">Starter Loop - £99</option>
+            <option value="ghost">Ghost Pack - £149</option>
+            <option value="starter_rush">Starter Loop + Rush (24h) - £149</option>
+            <option value="ghost_rush">Ghost Pack + Rush (24h) - £199</option>
+          </select>
+        </label>
+        <label>
+          Content Vibe & Style
+          <textarea name="vibe" placeholder="Tell us about your content style, target audience, and desired mood" required rows="4"></textarea>
+        </label>
+        <label>
+          Email
+          <input name="email" placeholder="Your email (to receive the pack)" required type="email"/>
+        </label>
+        <button type="submit">🔒 Send Brief</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <details>
+        <summary>How much does a signature soundpack cost?</summary>
+        <p>Starter Loop is £99, Ghost Pack is £149. Add £50 for 24h rush delivery. Pay 50% upfront, 50% on approval.</p>
+      </details>
+      <details>
+        <summary>Can I use this on all platforms?</summary>
+        <p>Yes – your pack works on YouTube, Twitch, Spotify podcasts, Instagram, TikTok, and any platform without copyright issues.</p>
+      </details>
+      <details>
+        <summary>What's included in each package?</summary>
+        <p>Starter Loop includes a custom 60s loop. Ghost Pack includes custom intro, loop, outro, plus all stems for full control.</p>
+      </details>
+      <details>
+        <summary>What if I need it faster?</summary>
+        <p>Add our Last Minute Ghost option (+£50) for 24h delivery instead of 72h standard.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <h2>What Content Creators Say</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>“Finally, a signature sound that's actually mine. No more worrying about copyright strikes or sounding like everyone else.”</p>
+        <div class="author">– Alex K.</div>
+        <div class="role">Podcast Host, Tech Talk Weekly</div>
+      </div>
+      <div class="testimonial">
+        <p>“The intro/outro combo gave my content such a professional edge. My audience immediately noticed the upgrade.”</p>
+        <div class="author">– Maria S.</div>
+        <div class="role">YouTube Educator, 85K subscribers</div>
+      </div>
+      <div class="testimonial">
+        <p>“Worth every penny. Having full ownership and stems means I can adapt the sound as my content evolves.”</p>
+        <div class="author">– Jamie L.</div>
+        <div class="role">Twitch Streamer & Course Creator</div>
+      </div>
+    </div>
+  </section>
+
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
-    <div class="footer-logo">Your Ghost Project</div>
+    <nav>
+      <a href="mailto:yourghostproject@gmail.com">Email</a>
+      <a href="https://www.tiktok.com/@yourghostproject" target="_blank">TikTok</a>
+      <a href="index.html">Home</a>
+    </nav>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.navbar').classList.toggle('open');
+      });
+    });
+  </script>
 </body>
 </html>

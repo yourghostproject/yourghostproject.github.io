@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artist | Your Ghost Project</title>
   <link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <style>
     html { scroll-behavior: smooth; }
@@ -16,7 +17,7 @@
       text-align: center;
     }
 
-    /* Navigation bar */
+    /* Navigation Bar */
     .navbar {
       position: absolute;
       top: 0;
@@ -26,7 +27,7 @@
       padding: 1rem 0;
       background: transparent;
     }
-    /* Glitch logo top-left */
+    /* Nouveau style de logo YGP glitché */
     .logo-mixed {
       position: absolute;
       top: 1rem;
@@ -49,7 +50,7 @@
       animation: glitch 1s infinite linear alternate-reverse;
     }
 
-    /* Glitch animation */
+    /* Animation de glitch */
     @keyframes glitch {
       0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
       25%  { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
@@ -58,7 +59,7 @@
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
-    /* Hamburger menu */
+    /* Bouton hamburger */
     .menu-toggle {
       position: absolute;
       top: 1rem;
@@ -83,7 +84,8 @@
       margin: 3px 0;
       border-radius: 1px;
     }
-    /* Hidden nav links */
+
+    /* Menu déroulant */
     .nav-links {
       display: none;
       position: absolute;
@@ -113,7 +115,7 @@
       text-shadow: 0 0 8px #00ffe5;
     }
 
-    /* Banner */
+    /* Bannière */
     .banner-wrapper {
       position: relative;
       width: 100%;
@@ -153,7 +155,8 @@
       margin: 0; font-size: 3rem; color: #fff;
     }
     .banner-content p {
-      margin-top: 0.5rem; font-size: 1.4rem; line-height: 1.5; color: #ccc;
+      margin-top: 0.5rem; font-size: 1.4rem;
+      line-height: 1.5; color: #ccc;
     }
     .benefit-list {
       display: flex; flex-wrap: wrap; justify-content: center;
@@ -165,7 +168,10 @@
     }
     .benefit-list li span { margin-right: 0.5rem; }
 
-    /* CTA button */
+    /* Global */
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .section { padding: 4rem 1rem; }
+
     .btn-primary {
       display: inline-block;
       margin-top: 1.5rem;
@@ -182,22 +188,20 @@
     .btn-primary:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00ffe5;
-      color: #ffffff;
     }
 
-    /* Features section with icons */
+    /* Cartes de fonctionnalité */
     .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem; max-width: 1200px; margin: 0 auto;
     }
     .feature-card {
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
       padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 280px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -207,63 +211,25 @@
       box-shadow: 0 0 15px #00ffe5;
     }
     .feature-card .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #00ffe5;
+      font-size: 2.5rem; margin-bottom: 1rem; color: #00ffe5;
     }
     .feature-card h3 {
-      font-size: 1.4rem;
-      color: #00ffe5;
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem; color: #00ffe5; margin-bottom: 0.5rem;
     }
     .feature-card p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Audio player styles */
-    .audio-section {
-      max-width: 800px;
-      margin: 0 auto 4rem auto;
-    }
-    .audio-player {
-      margin-top: 1rem;
-    }
-    .audio-player .track-list {
-      margin-top: 0.5rem;
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-    .audio-player .track-list button {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #00ffe5;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .audio-player .track-list button:hover {
-      background: #00ffe5;
-      color: #101010;
-    }
-
-    /* Process steps */
+    /* Processus */
     .process {
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 1000px; margin: 0 auto;
     }
     .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
     }
     .step {
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 2rem;
+      background: #1a1a1a; border-radius: 10px; padding: 2rem;
+      flex: 1 1 200px; max-width: 220px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -273,35 +239,22 @@
       box-shadow: 0 0 15px #00ffe5;
     }
     .step .circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #00ffe5;
-      color: #101010;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-weight: bold;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #00ffe5; color: #101010;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; font-weight: bold;
     }
     .step h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: #00ffe5;
+      font-size: 1.2rem; margin-bottom: 0.5rem; color: #00ffe5;
     }
     .step p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
+      font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Form styles */
+    /* Formulaire */
     .form-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      background: #1a1a1a;
-      padding: 3rem 2rem;
-      border-radius: 10px;
+      max-width: 700px; margin: 0 auto;
+      background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -310,128 +263,73 @@
       box-shadow: 0 0 15px #00ffe5;
     }
     .form-wrapper form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
     }
     .form-wrapper label {
-      font-size: 0.9rem;
-      color: #ccc;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
+      font-size: 0.9rem; color: #ccc; text-align: left;
+      display: flex; flex-direction: column;
     }
     .form-wrapper input,
     .form-wrapper textarea {
-      margin-top: 0.5rem;
-      padding: 0.8rem;
-      font-size: 1rem;
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #fff;
-      border-radius: 4px;
+      margin-top: 0.5rem; padding: 0.8rem; font-size: 1rem;
+      width: 100%; background: #1a1a1a; border: 1px solid #444;
+      color: #fff; border-radius: 4px;
     }
     .form-wrapper button {
-      padding: 1rem;
-      background: #00ffe5;
-      color: #101010;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
+      padding: 1rem; background: #00ffe5; color: #101010;
+      font-weight: bold; border: none; cursor: pointer; border-radius: 4px;
       transition: background-color 0.3s, box-shadow 0.3s;
     }
     .form-wrapper button:hover {
-      background-color: #00ffe510;
-      color: #00ffe5;
+      background-color: #00ffe510; color: #00ffe5;
       box-shadow: 0 0 10px #00ffe5;
-    }
-
-    /* Trust signals */
-    .trust-signals {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: #00ffe5;
-    }
-    .trust-signals span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     /* FAQ */
     .faq {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: left;
+      max-width: 800px; margin: 0 auto; text-align: left;
     }
     details {
-      background: #1a1a1a;
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 1rem;
+      background: #1a1a1a; border-radius: 8px;
+      padding: 1rem 1.5rem; margin-bottom: 1rem;
       box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     }
     summary {
-      font-size: 1rem;
-      color: #00ffe5;
-      cursor: pointer;
-      outline: none;
+      font-size: 1rem; color: #00ffe5; cursor: pointer; outline: none;
     }
     details p {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.5;
+      margin-top: 0.5rem; font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Testimonials */
+    /* Témoignages */
     .testimonials {
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 1000px; margin: 0 auto;
     }
     .testimonial {
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      background: #1a1a1a; border-radius: 10px; padding: 2rem; margin-bottom: 2rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     .testimonial p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      color: #ccc;
+      font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; color: #ccc;
     }
     .testimonial .author {
-      font-weight: bold;
-      color: #00ffe5;
+      font-weight: bold; color: #00ffe5;
     }
     .testimonial .role {
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.9rem; color: #888;
     }
 
-    /* Footer */
+    /* Pied de page */
     .footer {
-      padding: 2rem 1rem;
-      border-top: 2px solid rgba(255,255,255,0.1);
+      padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
-      font-size: 0.8rem;
-      color: #aaa;
+      font-size: 0.8rem; color: #aaa;
     }
     .footer nav {
       margin-top: 1rem;
     }
     .footer a {
-      margin: 0 0.5rem;
-      color: #00ffe5;
-      text-decoration: none;
+      margin: 0 0.5rem; color: #00ffe5; text-decoration: none;
     }
     .footer a:hover {
       text-decoration: underline;
@@ -454,7 +352,7 @@
       <div class="nav-links">
         <a href="index.html">HOME</a>
         <a href="artist.html" class="active">ARTIST</a>
-        <a href="creator.html">CONTENT CREATOR</a>
+        <a href="https://yourghostproject.github.io/creator.html">CONTENT CREATOR</a>
       </div>
     </div>
     <video autoplay class="banner-video" loop muted playsinline>
@@ -466,17 +364,11 @@
       <p>Never license overused instrumentals again. Get a fully custom beat that's yours forever.</p>
       <a class="btn-primary" href="#form">Get Your Custom Beat – £149</a>
       <ul class="benefit-list">
-        <li><span>🎵</span>Exclusive sound</li>
-        <li><span>📂</span>Stems included</li>
-        <li><span>🔒</span>Full ownership</li>
-        <li><span>⚡</span>Ready in 72h</li>
+        <li><span></span>Exclusive sound</li>
+        <li><span></span>Stems included</li>
+        <li><span></span>Full ownership</li>
+        <li><span>⏰</span>Ready in 72h</li>
       </ul>
-      <!-- Trust signals under CTA -->
-      <div class="trust-signals">
-        <span>✅ Secured payment</span>
-        <span>🔁 2 revisions included</span>
-        <span>💯 100% ownership</span>
-      </div>
     </div>
   </div>
 
@@ -484,41 +376,24 @@
     <h2>What You Get</h2>
     <div class="features">
       <div class="feature-card">
-        <div class="icon">🎵</div>
+        <div class="icon"></div>
         <h3>Exclusive Sound</h3>
         <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">📂</div>
+        <div class="icon"></div>
         <h3>All Stems Included</h3>
         <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">🔒</div>
+        <div class="icon"></div>
         <h3>100% Ownership</h3>
         <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">⚡</div>
+        <div class="icon"></div>
         <h3>Fast Turnaround</h3>
         <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Audio sample section -->
-  <section class="section audio-section" id="samples">
-    <h2>Listen to Samples</h2>
-    <p>Preview a selection of our custom beats to feel the quality of your future track.</p>
-    <div class="audio-player">
-      <audio id="beat-player" controls style="width: 100%;">
-        <source src="sample1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-      <div class="track-list">
-        <button type="button" onclick="setTrack('sample1.mp3')">Track 1</button>
-        <button type="button" onclick="setTrack('sample2.mp3')">Track 2</button>
-        <button type="button" onclick="setTrack('sample3.mp3')">Track 3</button>
       </div>
     </div>
   </section>
@@ -557,7 +432,7 @@
       <form action="https://formspree.io/f/yourformid" method="POST">
         <label>
           Artist Name
-          <input name="artistname" placeholder="Your artist name" required type="text" />
+          <input name="artistname" placeholder="Your artist name" required type="text"/>
         </label>
         <label>
           Reference Links
@@ -569,7 +444,7 @@
         </label>
         <label>
           Email
-          <input name="email" placeholder="Your email (to receive the beat)" required type="email" />
+          <input name="email" placeholder="Your email (to receive the beat)" required type="email"/>
         </label>
         <button type="submit">Send Brief</button>
       </form>
@@ -630,20 +505,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-          document.querySelector('.navbar').classList.toggle('open');
-        });
-      }
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.navbar').classList.toggle('open');
+      });
     });
-    function setTrack(src) {
-      const player = document.getElementById('beat-player');
-      player.pause();
-      player.src = src;
-      player.load();
-      player.play();
-    }
   </script>
 </body>
 </html>

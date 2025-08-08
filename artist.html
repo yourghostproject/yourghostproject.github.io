@@ -27,35 +27,39 @@
       padding: 1rem 0;
       background: transparent;
     }
-    .logo {
+    /* Nouveau style de logo YGP glitché */
+    .logo-mixed {
       position: absolute;
       top: 1rem;
       left: 3rem;
       font-family: 'Share Tech Mono', monospace;
-      font-size: 1.8rem;
-      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffe5;
       text-decoration: none;
+      text-shadow: 0 0 8px #00ffe5, 0 0 12px #9d00ff;
       z-index: 101;
     }
-    .logo::before {
+    .logo-mixed::before {
       content: attr(data-text);
       position: absolute;
       left: 2px;
       top: 0;
-      text-shadow: -2px 0 red;
-      color: white;
+      color: inherit;
+      text-shadow: -2px 0 #9d00ff;
       animation: glitch 1s infinite linear alternate-reverse;
     }
+
+    /* Animation de glitch */
     @keyframes glitch {
-      0%   { clip: rect(0,9999px,0,0); }
-      5%   { clip: rect(0,9999px,5px,0); }
-      10%  { clip: rect(0,9999px,10px,0); }
-      15%  { clip: rect(0,9999px,5px,0); }
-      20%  { clip: rect(0,9999px,0,0); }
-      100% { clip: rect(0,9999px,0,0); }
+      0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      25%  { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+      50%  { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+      75%  { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
 
-    /* Hamburger icon */
+    /* Bouton hamburger */
     .menu-toggle {
       position: absolute;
       top: 1rem;
@@ -81,7 +85,7 @@
       border-radius: 1px;
     }
 
-    /* Hidden menu */
+    /* Menu déroulant */
     .nav-links {
       display: none;
       position: absolute;
@@ -111,7 +115,7 @@
       text-shadow: 0 0 8px #00ffe5;
     }
 
-    /* Banner */
+    /* Bannière */
     .banner-wrapper {
       position: relative;
       width: 100%;
@@ -186,7 +190,7 @@
       box-shadow: 0 0 15px #00ffe5;
     }
 
-    /* Features */
+    /* Cartes de fonctionnalité */
     .features {
       display: flex; flex-wrap: wrap; justify-content: center;
       gap: 2rem; max-width: 1200px; margin: 0 auto;
@@ -216,7 +220,7 @@
       font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Process */
+    /* Processus */
     .process {
       max-width: 1000px; margin: 0 auto;
     }
@@ -247,7 +251,7 @@
       font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Form */
+    /* Formulaire */
     .form-wrapper {
       max-width: 700px; margin: 0 auto;
       background: #1a1a1a; padding: 3rem 2rem; border-radius: 10px;
@@ -291,14 +295,13 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     }
     summary {
-      font-size: 1rem; color: #00ffe5; cursor:
-pointer; outline: none;
+      font-size: 1rem; color: #00ffe5; cursor: pointer; outline: none;
     }
     details p {
       margin-top: 0.5rem; font-size: 0.9rem; color: #ccc; line-height: 1.5;
     }
 
-    /* Testimonials */
+    /* Témoignages */
     .testimonials {
       max-width: 1000px; margin: 0 auto;
     }
@@ -316,7 +319,7 @@ pointer; outline: none;
       font-size: 0.9rem; color: #888;
     }
 
-    /* Footer */
+    /* Pied de page */
     .footer {
       padding: 2rem 1rem; border-top: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
@@ -340,7 +343,7 @@ pointer; outline: none;
 <body>
   <div class="banner-wrapper">
     <div class="navbar">
-      <a class="logo glitch" data-text="YGP" href="index.html">YGP</a>
+      <a href="index.html" class="logo-mixed glitch" data-text="YGP">YGP</a>
       <button class="menu-toggle" aria-label="Toggle menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -358,12 +361,12 @@ pointer; outline: none;
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <h1>Own Your Sound</h1>
-      <p>Never license overused instrumentals again.Get a fully custom beat that's yours forever.</p>
+      <p>Never license overused instrumentals again. Get a fully custom beat that's yours forever.</p>
       <a class="btn-primary" href="#form">Get Your Custom Beat – £149</a>
       <ul class="benefit-list">
-        <li><span>🎵</span>Exclusive sound</li>
-        <li><span>📂</span>Stems included</li>
-        <li><span>🔒</span>Full ownership</li>
+        <li><span></span>Exclusive sound</li>
+        <li><span></span>Stems included</li>
+        <li><span></span>Full ownership</li>
         <li><span>⏰</span>Ready in 72h</li>
       </ul>
     </div>
@@ -373,22 +376,22 @@ pointer; outline: none;
     <h2>What You Get</h2>
     <div class="features">
       <div class="feature-card">
-        <div class="icon">🎵</div>
+        <div class="icon"></div>
         <h3>Exclusive Sound</h3>
         <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">📂</div>
+        <div class="icon"></div>
         <h3>All Stems Included</h3>
         <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">🔒</div>
+        <div class="icon"></div>
         <h3>100% Ownership</h3>
         <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
       </div>
       <div class="feature-card">
-        <div class="icon">🔄</div>
+        <div class="icon"></div>
         <h3>Fast Turnaround</h3>
         <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
       </div>
@@ -443,7 +446,7 @@ pointer; outline: none;
           Email
           <input name="email" placeholder="Your email (to receive the beat)" required type="email"/>
         </label>
-        <button type="submit">🔒 Send Brief</button>
+        <button type="submit">Send Brief</button>
       </form>
     </div>
   </section>

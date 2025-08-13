@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Artist | Your Ghost Project</title>
-  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -15,7 +16,6 @@
       color: #f2f2f2;
       text-align: center;
     }
-
     /* Navigation bar */
     .navbar {
       position: absolute;
@@ -48,7 +48,6 @@
       text-shadow: -2px 0 #9d00ff;
       animation: glitch 1s infinite linear alternate-reverse;
     }
-
     /* Glitch animation */
     @keyframes glitch {
       0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
@@ -57,7 +56,6 @@
       75%  { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
       100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
     }
-
     /* Hamburger menu */
     .menu-toggle {
       position: absolute;
@@ -112,7 +110,6 @@
       color: #00ffe5;
       text-shadow: 0 0 8px #00ffe5;
     }
-
     /* Banner */
     .banner-wrapper {
       position: relative;
@@ -150,21 +147,34 @@
       padding: 0 2rem;
     }
     .banner-content h1 {
-      margin: 0; font-size: 3rem; color: #fff;
+      margin: 0;
+      font-size: 3rem;
+      color: #fff;
     }
     .banner-content p {
-      margin-top: 0.5rem; font-size: 1.4rem; line-height: 1.5; color: #ccc;
+      margin-top: 0.5rem;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: #ccc;
     }
     .benefit-list {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      list-style: none; padding: 0; margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
     }
     .benefit-list li {
-      margin: 0.5rem 1rem; font-size: 0.9rem; color: #00ffe5;
-      display: flex; align-items: center;
+      margin: 0.5rem 1rem;
+      font-size: 0.9rem;
+      color: #00ffe5;
+      display: flex;
+      align-items: center;
     }
-    .benefit-list li span { margin-right: 0.5rem; }
-
+    .benefit-list li span {
+      margin-right: 0.5rem;
+    }
     /* CTA button */
     .btn-primary {
       display: inline-block;
@@ -184,8 +194,7 @@
       box-shadow: 0 0 15px #00ffe5;
       color: #ffffff;
     }
-
-    /* Features section with icons */
+    /* Features section */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -221,49 +230,23 @@
       color: #ccc;
       line-height: 1.5;
     }
-
-    /* Audio player styles */
-    .audio-section {
-      max-width: 800px;
-      margin: 0 auto 4rem auto;
-    }
-    .audio-player {
-      margin-top: 1rem;
-    }
-    .audio-player .track-list {
-      margin-top: 0.5rem;
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-    .audio-player .track-list button {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #00ffe5;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .audio-player .track-list button:hover {
-      background: #00ffe5;
-      color: #101010;
-    }
-
-    /* Process steps */
+    /* Process section */
     .process {
       max-width: 1000px;
       margin: 0 auto;
     }
     .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
     }
     .step {
       background: #1a1a1a;
       border-radius: 10px;
       padding: 2rem;
+      flex: 1 1 200px;
+      max-width: 220px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -294,8 +277,7 @@
       color: #ccc;
       line-height: 1.5;
     }
-
-    /* Form styles */
+    /* Form */
     .form-wrapper {
       max-width: 700px;
       margin: 0 auto;
@@ -347,23 +329,6 @@
       color: #00ffe5;
       box-shadow: 0 0 10px #00ffe5;
     }
-
-    /* Trust signals */
-    .trust-signals {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: #00ffe5;
-    }
-    .trust-signals span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     /* FAQ */
     .faq {
       max-width: 800px;
@@ -389,7 +354,6 @@
       color: #ccc;
       line-height: 1.5;
     }
-
     /* Testimonials */
     .testimonials {
       max-width: 1000px;
@@ -416,7 +380,6 @@
       font-size: 0.9rem;
       color: #888;
     }
-
     /* Footer */
     .footer {
       padding: 2rem 1rem;
@@ -436,7 +399,6 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
     @media (max-width: 768px) {
       .navbar { padding: 1rem; }
     }
@@ -458,7 +420,7 @@
       </div>
     </div>
     <video autoplay class="banner-video" loop muted playsinline>
-      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4" />
     </video>
     <div class="banner-overlay"></div>
     <div class="banner-content">
@@ -471,12 +433,6 @@
         <li><span>🔒</span>Full ownership</li>
         <li><span>⏰</span>Ready in 72h</li>
       </ul>
-      <!-- Trust signals under CTA -->
-      <div class="trust-signals">
-        <span>✅ Secured payment</span>
-        <span>🔁 2 revisions included</span>
-        <span>💯 100% ownership</span>
-      </div>
     </div>
   </div>
 
@@ -506,23 +462,6 @@
     </div>
   </section>
 
-  <!-- Audio sample section -->
-  <section class="section audio-section" id="samples">
-    <h2>Listen to Samples</h2>
-    <p>Preview a selection of our custom beats to feel the quality of your future track.</p>
-    <div class="audio-player">
-      <audio id="beat-player" controls style="width: 100%;">
-        <source src="sample1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-      <div class="track-list">
-        <button type="button" onclick="setTrack('sample1.mp3')">Track 1</button>
-        <button type="button" onclick="setTrack('sample2.mp3')">Track 2</button>
-        <button type="button" onclick="setTrack('sample3.mp3')">Track 3</button>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="process">
     <h2>The Ghost Formula</h2>
     <div class="process">
@@ -539,7 +478,7 @@
         </div>
         <div class="step">
           <div class="circle">3</div>
-          <h3>Receive & Refine</h3>
+          <h3>Receive &amp; Refine</h3>
           <p>Your custom beat arrives within 72 hours; request up to two revisions until it’s perfect.</p>
         </div>
         <div class="step">
@@ -564,7 +503,7 @@
           <textarea name="references" placeholder="Paste 2–3 YouTube / Spotify links" required rows="3"></textarea>
         </label>
         <label>
-          Mood & Vibe
+          Mood &amp; Vibe
           <textarea name="mood" placeholder="Tell us the mood, vibe, story or keywords" required rows="4"></textarea>
         </label>
         <label>
@@ -602,18 +541,18 @@
     <h2>What Artists Say</h2>
     <div class="testimonials">
       <div class="testimonial">
-        <p>“I’ve never felt more heard as an artist. My custom beat captured the exact mood I was going for and elevated my song to another level.”</p>
-        <div class="author">– Léo M.</div>
+        <p>They really listened. My beat captured the mood I wanted and took my song to the next level.</p>
+        <div class="author">Léo M.</div>
         <div class="role">Indie Rapper, Paris</div>
       </div>
       <div class="testimonial">
-        <p>“The turnaround time was incredible. Within 3 days I had a beat that sounded like it was made just for me, and the stems gave me full creative control.”</p>
-        <div class="author">– Sarah A.</div>
+        <p>The turnaround was incredible — in just a few days I had a beat that felt tailor‑made for me, and the stems gave me complete creative control.</p>
+        <div class="author">Sarah A.</div>
         <div class="role">Singer/Songwriter, London</div>
       </div>
       <div class="testimonial">
-        <p>“I used to license beats that everyone else used. This service changed everything – owning my sound feels empowering and professional.”</p>
-        <div class="author">– Marcel G.</div>
+        <p>I used to license beats everyone else used. Working with Your Ghost Project changed everything — owning my own sound is powerful and professional.</p>
+        <div class="author">Marcel G.</div>
         <div class="role">Trap Artist, Berlin</div>
       </div>
     </div>
@@ -637,13 +576,6 @@
         });
       }
     });
-    function setTrack(src) {
-      const player = document.getElementById('beat-player');
-      player.pause();
-      player.src = src;
-      player.load();
-      player.play();
-    }
   </script>
 </body>
 </html>

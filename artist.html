@@ -105,6 +105,11 @@
       margin: 0.5rem 0;
       transition: 0.3s;
     }
+
+    /* Utility class for vertical spacing between sections */
+    .section-gap {
+      margin-top: 1.5rem;
+    }
     .nav-links a:hover,
     .nav-links a.active {
       color: #00ffe5;
@@ -436,35 +441,11 @@
     </div>
   </div>
 
-  <section class="section" id="features">
-    <h2>What You Get</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="icon">🎵</div>
-        <h3>Exclusive Sound</h3>
-        <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📂</div>
-        <h3>All Stems Included</h3>
-        <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🔒</div>
-        <h3>100% Ownership</h3>
-        <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⚡</div>
-        <h3>Fast Turnaround</h3>
-        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Features section moved below the form; see new placement later -->
 
   <section class="section" id="process">
-    <h2>The Ghost Formula</h2>
-    <div class="process">
+    <h2>Our Creative Process</h2>
+    <div class="process section-gap">
       <div class="steps">
         <div class="step">
           <div class="circle">1</div>
@@ -492,8 +473,13 @@
 
   <section class="section" id="form">
     <h2>Start Your Track</h2>
-    <div class="form-wrapper">
-      <form action="https://formspree.io/f/yourformid" method="POST">
+    <div class="form-wrapper section-gap">
+      <form action="https://formsubmit.co/yourghostproject@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Brief — Your Ghost Project">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://yourghostproject.github.io/thank-you.html">
         <label>
           Artist Name
           <input name="artistname" placeholder="Your artist name" required type="text" />
@@ -515,9 +501,36 @@
     </div>
   </section>
 
+  <!-- Reinserted Features section placed after the form -->
+  <section class="section" id="features">
+    <h2>What You Get</h2>
+    <div class="features section-gap">
+      <div class="feature-card">
+        <div class="icon">🎵</div>
+        <h3>Exclusive Sound</h3>
+        <p>Receive an original beat crafted specifically for you – never resold or leased to anyone else.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📂</div>
+        <h3>All Stems Included</h3>
+        <p>Get full multi-track stems and project files for complete control over the mix and arrangement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>100% Ownership</h3>
+        <p>Full copyright transfer – the music is yours forever with no hidden licensing terms.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Turnaround</h3>
+        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
-    <div class="faq">
+    <div class="faq section-gap">
       <details>
         <summary>How much does a custom beat cost?</summary>
         <p>The total price is £149: pay 50% upfront to start, and the remaining balance after you approve the final beat.</p>
@@ -539,20 +552,20 @@
 
   <section class="section" id="testimonials">
     <h2>What Artists Say</h2>
-    <div class="testimonials">
+    <div class="testimonials section-gap">
       <div class="testimonial">
-        <p>They really listened. My beat captured the mood I wanted and took my song to the next level.</p>
-        <div class="author">Léo M.</div>
-        <div class="role">Indie Rapper, Paris</div>
+        <p>Bro… you nailed it. I just told you the vibe and you somehow made EXACTLY what was in my head. Been looping it all week in the studio.</p>
+        <div class="author">Kenny B.</div>
+        <div class="role">Rapper, Manchester</div>
       </div>
       <div class="testimonial">
-        <p>The turnaround was incredible — in just a few days I had a beat that felt tailor‑made for me, and the stems gave me complete creative control.</p>
-        <div class="author">Sarah A.</div>
-        <div class="role">Singer/Songwriter, London</div>
+        <p>Didn’t expect much tbh, but damn… the track SLAPS. My listeners legit asked where I got it from. Worth every penny.</p>
+        <div class="author">Maya L.</div>
+        <div class="role">Podcaster, New York</div>
       </div>
       <div class="testimonial">
-        <p>I used to license beats everyone else used. Working with Your Ghost Project changed everything — owning my own sound is powerful and professional.</p>
-        <div class="author">Marcel G.</div>
+        <p>I’m done with BeatStars beats everyone’s using. This one feels like MY sound. Even my mate said it sounds ‘expensive’ lol.</p>
+        <div class="author">Dre M.</div>
         <div class="role">Trap Artist, Berlin</div>
       </div>
     </div>

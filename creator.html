@@ -414,6 +414,72 @@
       font-size: 0.9rem;
       color: #888;
     }
+
+    /* Success and error messages for form submissions */
+    .ygp-success {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 2rem;
+      color: #00ffe5;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .ygp-success p {
+      margin: 0.5rem 0;
+      color: #ccc;
+    }
+    .ygp-error {
+      margin-top: 1rem;
+      color: #ff6666;
+      font-size: 0.9rem;
+    }
+
+    /* Subtitle emphasis for package descriptions */
+    .subtitle-strong {
+      font-weight: 700;
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      line-height: 1.25;
+    }
+
+    /* Mobile responsiveness tweaks */
+    @media (max-width: 640px) {
+      .banner-wrapper {
+        max-height: 40vh;
+      }
+      .banner-content {
+        padding: 1.25rem 1rem;
+      }
+      .btn-primary,
+      .form-wrapper button {
+        width: 100%;
+        min-height: 44px;
+      }
+      .section-gap {
+        margin-top: 1.25rem;
+      }
+      h1 {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+        line-height: 1.2;
+      }
+      h2 {
+        font-size: clamp(1rem, 3.5vw, 1.25rem);
+      }
+      p,
+      li {
+        font-size: clamp(0.95rem, 3vw, 1.05rem);
+        line-height: 1.5;
+      }
+      .form-wrapper form {
+        gap: 1rem;
+      }
+      .form-wrapper input,
+      .form-wrapper textarea,
+      .form-wrapper select {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
+      .navbar { padding: 1rem; }
+    }
     /* Footer */
     .footer {
       padding: 2rem 1rem;
@@ -508,14 +574,14 @@
       <!-- Starter Loop -->
       <div class="pricing-card" data-package="starter">
         <h3>🎵 STARTER LOOP – £99</h3>
-        <p>Your signature background sound</p>
+        <p class="subtitle-strong">Your signature background sound</p>
         <ul>
           <li>Custom beat loop engineered to flow endlessly without breaks</li>
           <li>MP3 + WAV files</li>
           <li>100% ownership, no royalties</li>
           <li>72h delivery, 1 revision</li>
-          <li>Ideal for: Interviews, podcasts, livestreams, video intros/outros</li>
         </ul>
+        <small>Ideal for: Interviews, podcasts, livestreams, video intros/outros</small>
       </div>
       <!-- Ghost Pack -->
       <div class="pricing-card" data-package="ghost">
@@ -535,14 +601,13 @@
 
   <!-- Form Section -->
   <section class="section" id="form">
-    <h2>Start Your Signature Sound</h2>
+    <h2>Tell us what you need</h2>
     <div class="form-wrapper section-gap">
-      <form action="https://formsubmit.co/yourghostproject@gmail.com" method="POST">
+      <form action="https://formsubmit.co/yourghostproject@gmail.com" method="POST" data-ygp>
         <input type="hidden" name="_subject" value="New Brief — Your Ghost Project">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="_honey" style="display:none">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://yourghostproject.github.io/thank-you.html">
         <label>
           Creator Name/Channel
           <input name="creatorname" placeholder="Your name or channel name" required type="text" />
@@ -673,6 +738,34 @@
             formSection.scrollIntoView({ behavior: 'smooth' });
           }
         });
+      });
+    });
+  </script>
+
+  <!-- Form submission handler to avoid 404 and show inline success message -->
+  <script>
+    document.querySelectorAll('form[data-ygp]').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('[type="submit"]');
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+        }
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          if (!res.ok && res.status !== 0) throw new Error('Network');
+          form.innerHTML = `\n            <div class="ygp-success">\n              <p><strong>Thanks for reaching out.</strong></p>\n              <p>We will send you a confirmation email today.<br/>— The Ghost team</p>\n            </div>`;
+        } catch (err) {
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = 'Send Brief';
+          }
+          const msg = form.querySelector('.ygp-error') || document.createElement('div');
+          msg.className = 'ygp-error';
+          msg.textContent = 'Something went wrong. Please email us: yourghostproject@gmail.com';
+          form.appendChild(msg);
+        }
       });
     });
   </script>

@@ -157,7 +157,7 @@
     }
     .banner-sub {
       /* Slightly larger font for emphasis */
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       color: #cccccc;
     }
 
@@ -180,7 +180,7 @@
       transform: translateY(10px);
       animation: fadeInUp 1.2s ease-out forwards;
     /* Increase font size slightly */
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     }
     @keyframes fadeInUp {
       to {
@@ -194,6 +194,58 @@
       font-weight: bold;
       color: #00ffe5;
       min-height: 2rem;
+    }
+
+    /* Success and error message classes reused from other pages */
+    .ygp-success {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 2rem;
+      color: #00ffe5;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .ygp-success p {
+      margin: 0.5rem 0;
+      color: #ccc;
+    }
+    .ygp-error {
+      margin-top: 1rem;
+      color: #ff6666;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile responsiveness tweaks */
+    @media (max-width: 640px) {
+      .banner-wrapper {
+        max-height: 40vh;
+      }
+      .banner-text {
+        padding: 1.25rem 1rem;
+      }
+      .banner-main {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+      }
+      .banner-sub {
+        font-size: clamp(1rem, 4.5vw, 1.3rem);
+      }
+      #typed-intro {
+        font-size: clamp(0.95rem, 3.5vw, 1.3rem);
+        line-height: 1.5;
+      }
+      .typed-container {
+        margin-top: 1.5rem;
+      }
+      /* Ensure buttons inside offers stack on smaller devices */
+      .offers {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      .offer h3 {
+        margin-top: 0.5rem;
+      }
     }
 
     /* Offers section */

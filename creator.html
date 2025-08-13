@@ -106,6 +106,11 @@
       color: #00ffe5;
       text-shadow: 0 0 8px #00ffe5;
     }
+
+    /* Utility class for vertical spacing between sections */
+    .section-gap {
+      margin-top: 1.5rem;
+    }
     /* Banner styles */
     .banner-wrapper {
       position: relative;
@@ -465,36 +470,12 @@
     </div>
   </div>
 
-  <section class="section" id="features">
-    <h2>What You Get</h2>
-    <div class="features">
-      <div class="feature-card">
-        <div class="icon">🎵</div>
-        <h3>Signature Audio Identity</h3>
-        <p>Create a unique sonic brand for your content – custom intro, loop, and outro that no other creator will ever have.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📂</div>
-        <h3>All Stems Included</h3>
-        <p>Get full multi-track stems and project files for complete control over mixing, timing, and arrangement in your content.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🔒</div>
-        <h3>100% Ownership</h3>
-        <p>Full copyright transfer – your signature sound is yours forever with no hidden licensing terms or future royalty payments.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⚡</div>
-        <h3>Fast Turnaround</h3>
-        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Features section moved below the form -->
 
   <!-- Process section -->
   <section class="section" id="process">
-    <h2>The Ghost Formula</h2>
-    <div class="process">
+    <h2>Our Creative Process</h2>
+    <div class="process section-gap">
       <div class="steps">
         <div class="step">
           <div class="circle">1</div>
@@ -555,8 +536,13 @@
   <!-- Form Section -->
   <section class="section" id="form">
     <h2>Start Your Signature Sound</h2>
-    <div class="form-wrapper">
-      <form action="https://formspree.io/f/yourformid" method="POST">
+    <div class="form-wrapper section-gap">
+      <form action="https://formsubmit.co/yourghostproject@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Brief — Your Ghost Project">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://yourghostproject.github.io/thank-you.html">
         <label>
           Creator Name/Channel
           <input name="creatorname" placeholder="Your name or channel name" required type="text" />
@@ -585,10 +571,37 @@
     </div>
   </section>
 
+  <!-- Reinserted Features section placed after the form -->
+  <section class="section" id="features">
+    <h2>What You Get</h2>
+    <div class="features section-gap">
+      <div class="feature-card">
+        <div class="icon">🎵</div>
+        <h3>Signature Audio Identity</h3>
+        <p>Create a unique sonic brand for your content – custom intro, loop, and outro that no other creator will ever have.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📂</div>
+        <h3>All Stems Included</h3>
+        <p>Get full multi-track stems and project files for complete control over mixing, timing, and arrangement in your content.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔒</div>
+        <h3>100% Ownership</h3>
+        <p>Full copyright transfer – your signature sound is yours forever with no hidden licensing terms or future royalty payments.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Turnaround</h3>
+        <p>Delivery within 72 hours and up to two revisions. Pay half upfront and the balance on approval.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
-    <div class="faq">
+    <div class="faq section-gap">
       <details>
         <summary>How much does a signature soundpack cost?</summary>
         <p>Starter Loop is £99, Ghost Pack is £149. Pay 50% upfront and 50% on approval.</p>
@@ -611,19 +624,19 @@
   <!-- Testimonials Section -->
   <section class="section" id="testimonials">
     <h2>What Content Creators Say</h2>
-    <div class="testimonials">
+    <div class="testimonials section-gap">
       <div class="testimonial">
-        <p>Finally a signature sound that’s actually mine. No more copyright strikes or blending in.</p>
+        <p>The loop just fits. I can talk for an hour and it never gets in the way — it’s like it was made for my show.</p>
         <div class="author">Alex K.</div>
-        <div class="role">Podcast Host, Tech Talk Weekly</div>
+        <div class="role">Host, Tech Talk Weekly</div>
       </div>
       <div class="testimonial">
-        <p>The intro/outro combo gave my content such a professional edge. My audience noticed the upgrade right away.</p>
+        <p>That intro and outro made my videos feel like a proper brand. Even my subscribers commented on how clean it sounds.</p>
         <div class="author">Maria S.</div>
-        <div class="role">YouTube Educator, 85K subscribers</div>
+        <div class="role">YouTube Educator, 85K subs</div>
       </div>
       <div class="testimonial">
-        <p>Worth every penny. Having full ownership and stems means I can adapt the sound as my content evolves.</p>
+        <p>Having full ownership is a game changer. I can reuse the track anywhere without worrying about copyright stuff.</p>
         <div class="author">Jamie L.</div>
         <div class="role">Twitch Streamer &amp; Course Creator</div>
       </div>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Creator | Your Ghost Project</title>
-  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -15,7 +16,6 @@
       color: #f2f2f2;
       text-align: center;
     }
-
     /* Navigation bar and logo */
     .navbar {
       position: absolute;
@@ -106,7 +106,6 @@
       color: #00ffe5;
       text-shadow: 0 0 8px #00ffe5;
     }
-
     /* Banner styles */
     .banner-wrapper {
       position: relative;
@@ -193,24 +192,7 @@
       box-shadow: 0 0 15px #00ffe5;
       color: #ffffff;
     }
-
-    /* Trust signals */
-    .trust-signals {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: #00ffe5;
-    }
-    .trust-signals span {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Features section */
+    /* Features & Pricing cards */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -218,7 +200,7 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    .feature-card {
+    .feature-card, .pricing-card {
       background: #1a1a1a;
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
@@ -226,8 +208,9 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
     }
-    .feature-card:hover {
+    .feature-card:hover, .pricing-card:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px #00ffe5;
     }
@@ -236,59 +219,62 @@
       margin-bottom: 1rem;
       color: #00ffe5;
     }
-    .feature-card h3 {
+    .feature-card h3, .pricing-card h3 {
       font-size: 1.4rem;
       color: #00ffe5;
       margin-bottom: 0.5rem;
     }
-    .feature-card p {
+    .feature-card p, .pricing-card p {
       font-size: 0.9rem;
       color: #ccc;
       line-height: 1.5;
     }
-
-    /* Audio samples for creators */
-    .audio-section {
-      max-width: 800px;
-      margin: 0 auto 4rem auto;
-    }
-    .audio-player {
-      margin-top: 1rem;
-    }
-    .audio-player .track-list {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 0.5rem;
-    }
-    .audio-player .track-list button {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #00ffe5;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .audio-player .track-list button:hover {
+    /* Badge for pricing */
+    .pricing-card .badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
       background: #00ffe5;
       color: #101010;
+      border-radius: 12px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: bold;
     }
-
-    /* Process steps */
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+    }
+    .pricing-card ul li {
+      margin-bottom: 0.5rem;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+    .pricing-card small {
+      display: block;
+      margin-top: 1rem;
+      color: #888;
+      font-size: 0.8rem;
+    }
+    /* Process */
     .process {
       max-width: 1000px;
       margin: 0 auto;
     }
     .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 2rem;
     }
     .step {
       background: #1a1a1a;
       border-radius: 10px;
       padding: 2rem;
+      flex: 1 1 200px;
+      max-width: 220px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
@@ -319,70 +305,6 @@
       color: #ccc;
       line-height: 1.5;
     }
-
-    /* Pricing cards */
-    .pricing {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .pricing-card {
-      background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 2rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .pricing-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffe5;
-    }
-    .pricing-card h3 {
-      font-size: 1.4rem;
-      color: #00ffe5;
-      margin-bottom: 0.5rem;
-    }
-    .pricing-card p.subtitle {
-      font-size: 1rem;
-      color: #ccc;
-      margin-bottom: 1rem;
-    }
-    .pricing-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-      text-align: left;
-    }
-    .pricing-card ul li {
-      margin-bottom: 0.5rem;
-      color: #ccc;
-      font-size: 0.9rem;
-    }
-    .pricing-card small {
-      display: block;
-      margin-top: 1rem;
-      color: #888;
-      font-size: 0.8rem;
-    }
-    .pricing-card .badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: #00ffe5;
-      color: #101010;
-      padding: 0.2rem 0.5rem;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-
     /* Form */
     .form-wrapper {
       max-width: 700px;
@@ -436,7 +358,6 @@
       color: #00ffe5;
       box-shadow: 0 0 10px #00ffe5;
     }
-
     /* FAQ */
     .faq {
       max-width: 800px;
@@ -462,7 +383,6 @@
       color: #ccc;
       line-height: 1.5;
     }
-
     /* Testimonials */
     .testimonials {
       max-width: 1000px;
@@ -489,7 +409,6 @@
       font-size: 0.9rem;
       color: #888;
     }
-
     /* Footer */
     .footer {
       padding: 2rem 1rem;
@@ -509,7 +428,6 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
     @media (max-width: 768px) {
       .navbar { padding: 1rem; }
     }
@@ -531,30 +449,22 @@
       </div>
     </div>
     <video autoplay class="banner-video" loop muted playsinline>
-      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4"/>
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4" />
     </video>
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <!-- Updated tagline and subheading for content creators -->
       <h1>Your Content. Your Sound.</h1>
       <p>Custom audio built exclusively for your brand.</p>
-      <!-- Scroll to pricing section when clicking the main CTA -->
-      <a class="btn-primary" href="#pricing">GET YOUR GHOST SIGNATURE PACK</a>
+      <a class="btn-primary" href="#packages">GET YOUR GHOST SIGNATURE PACK</a>
       <ul class="benefit-list">
         <li><span>🎵</span>Signature sound</li>
         <li><span>📂</span>Stems included</li>
         <li><span>🔒</span>Full ownership</li>
         <li><span>⚡</span>Ready in 72h</li>
       </ul>
-      <div class="trust-signals">
-        <span>✅ Secured payment</span>
-        <span>🔁 2 revisions included</span>
-        <span>💯 100% ownership</span>
-      </div>
     </div>
   </div>
 
-  <!-- Features -->
   <section class="section" id="features">
     <h2>What You Get</h2>
     <div class="features">
@@ -581,24 +491,7 @@
     </div>
   </section>
 
-  <!-- Audio samples for content creators -->
-  <section class="section audio-section" id="samples">
-    <h2>Listen to Samples</h2>
-    <p>Preview our intro, loop and outro examples to experience your future signature sound.</p>
-    <div class="audio-player">
-      <audio id="creator-player" controls style="width: 100%;">
-        <source src="creator_intro.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-      <div class="track-list">
-        <button type="button" onclick="setCreatorTrack('creator_intro.mp3')">Intro</button>
-        <button type="button" onclick="setCreatorTrack('creator_loop.mp3')">Loop</button>
-        <button type="button" onclick="setCreatorTrack('creator_outro.mp3')">Outro</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
+  <!-- Process section -->
   <section class="section" id="process">
     <h2>The Ghost Formula</h2>
     <div class="process">
@@ -615,8 +508,8 @@
         </div>
         <div class="step">
           <div class="circle">3</div>
-          <h3>Receive & Refine</h3>
-          <p>Your signature soundpack arrives within 72 hours (or 24h if rush); request up to two revisions until it perfectly matches your brand.</p>
+          <h3>Receive &amp; Refine</h3>
+          <p>Your signature soundpack arrives within 72 hours; request up to two revisions until it perfectly matches your brand.</p>
         </div>
         <div class="step">
           <div class="circle">4</div>
@@ -627,40 +520,39 @@
     </div>
   </section>
 
-  <!-- Pricing packages -->
-  <section class="section" id="pricing">
+  <!-- Pricing Packages Section -->
+  <section class="section" id="packages">
     <h2>Choose your package</h2>
-    <div class="pricing">
-      <div class="pricing-cards">
-        <div class="pricing-card" data-package="starter">
-          <h3>🎵 STARTER LOOP – £99</h3>
-          <p class="subtitle">Perfect for new podcasters & small creators</p>
-          <ul>
-            <li>Custom beat loop (60s)</li>
-            <li>MP3 + WAV files</li>
-            <li>100% ownership, no royalties</li>
-            <li>72h delivery, 1 revision</li>
-          </ul>
-          <small>Ideal for: New podcasters, small YouTube channels</small>
-        </div>
-        <div class="pricing-card" data-package="ghost">
-          <div class="badge">Most Popular</div>
-          <h3>🔥 THE GHOST PACK – £149</h3>
-          <p class="subtitle">Complete audio identity for established creators</p>
-          <ul>
-            <li>Custom Intro + Loop + Outro (full episode suite)</li>
-            <li>All stems included (ready to mix and arrange in your content)</li>
-            <li>100% ownership, no royalties</li>
-            <li>72h delivery, 2 revisions</li>
-          </ul>
-          <small>Ideal for: Established podcasters, streamers, educators</small>
-        </div>
-        <!-- Removed the rush package card -->
+    <div class="features">
+      <!-- Starter Loop -->
+      <div class="pricing-card" data-package="starter">
+        <h3>🎵 STARTER LOOP – £99</h3>
+        <p>Your signature background sound</p>
+        <ul>
+          <li>Custom beat loop engineered to flow endlessly without breaks</li>
+          <li>MP3 + WAV files</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 1 revision</li>
+          <li>Ideal for: Interviews, podcasts, livestreams, video intros/outros</li>
+        </ul>
+      </div>
+      <!-- Ghost Pack -->
+      <div class="pricing-card" data-package="ghost">
+        <div class="badge">Most Popular</div>
+        <h3>🔥 THE GHOST PACK – £149</h3>
+        <p>Complete audio identity for established creators</p>
+        <ul>
+          <li>Custom Intro + Loop + Outro (full episode suite)</li>
+          <li>All stems included (ready to mix and arrange in your content)</li>
+          <li>100% ownership, no royalties</li>
+          <li>72h delivery, 2 revisions</li>
+        </ul>
+        <small>Ideal for: Established podcasters, streamers, educators</small>
       </div>
     </div>
   </section>
 
-  <!-- Form section -->
+  <!-- Form Section -->
   <section class="section" id="form">
     <h2>Start Your Signature Sound</h2>
     <div class="form-wrapper">
@@ -681,7 +573,7 @@
           </select>
         </label>
         <label>
-          Content Vibe & Style
+          Content Vibe &amp; Style
           <textarea name="vibe" placeholder="Tell us about your content style, target audience, and desired mood" required rows="4"></textarea>
         </label>
         <label>
@@ -693,13 +585,13 @@
     </div>
   </section>
 
-  <!-- FAQ section -->
+  <!-- FAQ Section -->
   <section class="section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq">
       <details>
         <summary>How much does a signature soundpack cost?</summary>
-        <p>Starter Loop is £99, Ghost Pack is £149. Add £50 for 24h rush delivery. Pay 50% upfront, 50% on approval.</p>
+        <p>Starter Loop is £99, Ghost Pack is £149. Pay 50% upfront and 50% on approval.</p>
       </details>
       <details>
         <summary>Can I use this on all platforms?</summary>
@@ -711,34 +603,33 @@
       </details>
       <details>
         <summary>What if I need it faster?</summary>
-        <p>Add our Last Minute Ghost option (+£50) for 24h delivery instead of 72h standard.</p>
+        <p>For expedited delivery please contact us and we'll do our best to accommodate your deadline.</p>
       </details>
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials Section -->
   <section class="section" id="testimonials">
     <h2>What Content Creators Say</h2>
     <div class="testimonials">
       <div class="testimonial">
-        <p>“Finally, a signature sound that's actually mine. No more worrying about copyright strikes or sounding like everyone else.”</p>
-        <div class="author">– Alex K.</div>
+        <p>Finally a signature sound that’s actually mine. No more copyright strikes or blending in.</p>
+        <div class="author">Alex K.</div>
         <div class="role">Podcast Host, Tech Talk Weekly</div>
       </div>
       <div class="testimonial">
-        <p>“The intro/outro combo gave my content such a professional edge. My audience immediately noticed the upgrade.”</p>
-        <div class="author">– Maria S.</div>
+        <p>The intro/outro combo gave my content such a professional edge. My audience noticed the upgrade right away.</p>
+        <div class="author">Maria S.</div>
         <div class="role">YouTube Educator, 85K subscribers</div>
       </div>
       <div class="testimonial">
-        <p>“Worth every penny. Having full ownership and stems means I can adapt the sound as my content evolves.”</p>
-        <div class="author">– Jamie L.</div>
-        <div class="role">Twitch Streamer & Course Creator</div>
+        <p>Worth every penny. Having full ownership and stems means I can adapt the sound as my content evolves.</p>
+        <div class="author">Jamie L.</div>
+        <div class="role">Twitch Streamer &amp; Course Creator</div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <div class="footer">
     <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
     <nav>
@@ -756,28 +647,19 @@
           document.querySelector('.navbar').classList.toggle('open');
         });
       }
-    });
-    // Audio track switching for creator player
-    function setCreatorTrack(src) {
-      const player = document.getElementById('creator-player');
-      player.pause();
-      player.src = src;
-      player.load();
-      player.play();
-    }
-
-    // Package card click: auto-select package and scroll to form
-    document.querySelectorAll('.pricing-card[data-package]').forEach(function(card) {
-      card.addEventListener('click', function() {
-        var pkg = this.getAttribute('data-package');
-        var select = document.querySelector('select[name="package"]');
-        if (select) {
-          select.value = pkg;
-        }
-        var formSection = document.getElementById('form');
-        if (formSection) {
-          formSection.scrollIntoView({ behavior: 'smooth' });
-        }
+      // Auto-select package on click of pricing cards
+      document.querySelectorAll('.pricing-card[data-package]').forEach(function(card) {
+        card.addEventListener('click', function() {
+          var pkg = this.getAttribute('data-package');
+          var select = document.querySelector('select[name="package"]');
+          if (select) {
+            select.value = pkg;
+          }
+          var formSection = document.getElementById('form');
+          if (formSection) {
+            formSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
       });
     });
   </script>

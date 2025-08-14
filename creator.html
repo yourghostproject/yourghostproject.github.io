@@ -499,6 +499,133 @@
     .footer a:hover {
       text-decoration: underline;
     }
+
+    /* ===== Mobile-only layout fixes ===== */
+    @media (max-width: 640px) {
+      :root {
+        --mobile-pad: 1rem;
+      }
+
+      html, body {
+        padding-top: env(safe-area-inset-top, 0);
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+        overflow-x: hidden;
+      }
+
+      .hero, .top-banner, .page-hero {
+        min-height: 48svh;
+        max-height: 58svh;
+        padding: 1.25rem var(--mobile-pad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+      }
+      .hero::after, .top-banner::after, .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65));
+        pointer-events: none;
+      }
+      .hero-media, .banner-media, .hero img, .hero video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(.75);
+      }
+
+      h1.hero-title, .hero-title {
+        font-size: clamp(1.35rem, 6.5vw, 1.9rem);
+        line-height: 1.15;
+        margin: 0;
+        padding: 0 .25rem;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-sub, .hero-lead, .lead {
+        font-size: clamp(0.98rem, 3.6vw, 1.1rem);
+        line-height: 1.45;
+        margin-top: .6rem;
+        color: rgba(230,240,255,.92);
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta, .btn, .ghost-btn, .primary-cta {
+        width: 100%;
+        min-height: 48px;
+        font-size: clamp(0.98rem, 3.6vw, 1.1rem);
+        padding: 0.85rem 1rem;
+        border-radius: 14px;
+      }
+      .cta-row, .btn-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .9rem;
+        margin-top: 1rem;
+      }
+
+      .section, .block, .card, .panel {
+        margin-top: 1.1rem !important;
+        padding: 1rem var(--mobile-pad) !important;
+      }
+      .stack > * + * { margin-top: .9rem; }
+
+      .profile-card {
+        width: 100%;
+        max-width: 88vw;
+        margin-inline: auto;
+        border-radius: 18px;
+      }
+      .profile-card .label {
+        font-size: clamp(1.2rem, 7vw, 1.6rem);
+      }
+
+      .faq h3 { font-size: clamp(1.05rem, 4vw, 1.2rem); }
+      .faq p, .faq li {
+        font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+        line-height: 1.55;
+      }
+
+      form input, form select, form textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+      form .row { display: grid; grid-template-columns: 1fr; gap: .9rem; }
+      form .actions { margin-top: 1rem; }
+      .notice, .ygp-success, .ygp-error {
+        text-align: center;
+        padding: .9rem;
+        border-radius: 12px;
+      }
+      .ygp-success {
+        background: rgba(0, 229, 255, 0.10);
+        color: #bff7ff;
+        border: 1px solid rgba(0,229,255,.25);
+      }
+      .ygp-error   {
+        background: rgba(168, 85, 247, 0.10);
+        color: #f1dcff;
+        border: 1px solid rgba(168,85,247,.25);
+      }
+
+      .site-logo { transform: none; margin: .5rem var(--mobile-pad); }
+      .menu-toggle { margin: .5rem var(--mobile-pad); }
+
+      .neon, .glow {
+        text-shadow: 0 0 .6rem rgba(0,229,255,.55), 0 0 1.2rem rgba(168,85,247,.45);
+        max-width: 100%;
+      }
+    }
     @media (max-width: 768px) {
       .navbar { padding: 1rem; }
     }
@@ -524,9 +651,9 @@
     </video>
     <div class="banner-overlay"></div>
     <div class="banner-content">
-      <h1>Your Content. Your Sound.</h1>
-      <p>Custom audio built exclusively for your brand.</p>
-      <a class="btn-primary" href="#packages">GET YOUR GHOST SIGNATURE PACK</a>
+      <h1 class="hero-title neon">Your Content. Your Sound.</h1>
+      <p class="hero-sub">Custom audio built exclusively for your brand.</p>
+      <a class="btn-primary btn primary-cta" href="#packages">GET YOUR GHOST SIGNATURE PACK</a>
       <ul class="benefit-list">
         <li><span>🎵</span>Signature sound</li>
         <li><span>📂</span>Stems included</li>
@@ -631,7 +758,7 @@
           Email
           <input name="email" placeholder="Your email (to receive the pack)" required type="email" />
         </label>
-        <button type="submit">🔒 Send Brief</button>
+        <button type="submit" class="btn primary-cta">🔒 Send Brief</button>
       </form>
     </div>
   </section>

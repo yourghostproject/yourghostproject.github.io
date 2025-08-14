@@ -500,6 +500,87 @@
       text-decoration: underline;
     }
 
+    /* ============== MOBILE ONLY (≤640px) ============== */
+    @media (max-width: 640px) {
+      html, body {
+        padding-top: env(safe-area-inset-top, 0);
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+        overflow-x: hidden;
+      }
+      .hero, .top-banner, .page-hero {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        min-height: 46svh;
+        max-height: 56svh;
+        padding: 12px 14px;
+      }
+      .hero::after, .top-banner::after, .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.7));
+        pointer-events: none;
+      }
+      .hero-media, .banner-media, .hero img, .hero video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(.8);
+        z-index: 0;
+      }
+      .site-logo {
+        justify-self: start;
+        margin: 4px 0 0 max(8px, env(safe-area-inset-left, 8px));
+        z-index: 2;
+      }
+      .hero-title {
+        z-index: 2;
+        margin: 0;
+        padding: 0 4px;
+        font-weight: 800;
+        font-size: clamp(20px, 6vw, 28px);
+        line-height: 1.18;
+        letter-spacing: .2px;
+        text-align: center;
+        word-break: normal;
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+      .hero-subline {
+        z-index: 2;
+        margin: 6px 0 2px 0;
+        font-size: clamp(13px, 3.2vw, 14px);
+        line-height: 1.2;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+      }
+      .hero .btn, .top-banner .btn, .page-hero .btn {
+        z-index: 2;
+        width: 100%;
+        max-width: 92vw;
+        min-height: 48px;
+        border-radius: 14px;
+        font-size: clamp(15px, 3.8vw, 17px);
+        padding: 12px 14px;
+        white-space: nowrap;
+      }
+      .select-profile {
+        margin-top: 14px;
+      }
+      .center-stack { display: grid; place-items: center; }
+    }
+
     /* ===== Mobile-only layout fixes ===== */
     @media (max-width: 640px) {
       :root {
@@ -634,7 +715,7 @@
 <body>
   <div class="banner-wrapper">
     <div class="navbar">
-      <a href="index.html" class="logo-mixed glitch" data-text="YGP">YGP</a>
+      <a href="index.html" class="logo-mixed glitch site-logo" data-text="YGP">YGP</a>
       <button class="menu-toggle" aria-label="Toggle menu">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -652,7 +733,7 @@
     <div class="banner-overlay"></div>
     <div class="banner-content">
       <h1 class="hero-title neon">Your Content. Your Sound.</h1>
-      <p class="hero-sub">Custom audio built exclusively for your brand.</p>
+      <p class="hero-sub hero-subline">Custom audio built exclusively for your brand.</p>
       <a class="btn-primary btn primary-cta" href="#packages">GET YOUR GHOST SIGNATURE PACK</a>
       <ul class="benefit-list">
         <li><span>🎵</span>Signature sound</li>

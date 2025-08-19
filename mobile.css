@@ -1,0 +1,120 @@
+/* ============ MOBILE FIX (≤600px) — Hero align + lisibilité ============ */
+@media (max-width: 600px) {
+  html, body {
+    padding-top: env(safe-area-inset-top, 0);
+    padding-left: env(safe-area-inset-left, 0);
+    padding-right: env(safe-area-inset-right, 0);
+    overflow-x: hidden;
+  }
+
+  /* Conteneur héros (bannière) — centre tout, limite la hauteur */
+  .banner-wrapper,
+  .hero,
+  .top-banner,
+  .page-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;              /* empile logo, titre, bouton */
+    align-items: center;                 /* centre horizontal */
+    justify-content: center;             /* centre vertical */
+    text-align: center;
+    gap: .9rem;                          /* espace entre éléments */
+    min-height: 50svh;
+    max-height: 58svh;
+    padding: 1.25rem 1rem;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  /* Overlay léger pour contraste texte si image/video derrière */
+  .banner-wrapper::after,
+  .hero::after,
+  .top-banner::after,
+  .page-hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.7));
+    pointer-events: none;
+  }
+
+  /* Media de fond en cover */
+  .hero-media, .banner-media, .hero img, .hero video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    filter: brightness(.8);
+    z-index: 0;
+  }
+
+  /* Logo YGP — plus petit, bord gauche ‘safe area’ */
+  .logo-mixed,
+  .site-logo {
+    align-self: flex-start;
+    margin: .25rem 0 0 max(8px, env(safe-area-inset-left, 8px));
+    font-size: clamp(22px, 8vw, 28px);
+    z-index: 2;
+    /* glow adouci pour éviter l’illusion de “sur-taille” */
+    text-shadow: 0 0 .35rem rgba(0,229,255,.55), 0 0 .75rem rgba(168,85,247,.35);
+  }
+
+  /* Contenu texte de la bannière */
+  .banner-content { max-width: 92vw; z-index: 2; }
+
+  /* Titre */
+  .banner-main,
+  .hero-title {
+    margin: 0;
+    padding: 0 .25rem;
+    font-size: clamp(22px, 5.8vw, 28px);
+    line-height: 1.15;
+    letter-spacing: .02em;              /* moins d’espace entre lettres */
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  /* Sous-ligne (phrase longue) — 1 seule ligne, centrée */
+  .banner-sub,
+  .hero-sub,
+  .hero-subline {
+    margin-top: .25rem;
+    font-size: clamp(14px, 3.6vw, 16px);
+    line-height: 1.3;
+    width: 100%;
+    white-space: nowrap;                 /* force une seule ligne */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+
+  /* Bouton CTA — lisible, unité tactile */
+  .btn-primary,
+  .primary-cta,
+  .banner-button,
+  .hero .btn,
+  .top-banner .btn,
+  .page-hero .btn {
+    width: 100%;
+    max-width: 92vw;
+    min-height: 48px;
+    border-radius: 14px;
+    font-size: clamp(15px, 3.8vw, 17px);
+    padding: .8rem 1rem;
+    white-space: nowrap;                 /* garde le CTA sur une ligne */
+  }
+
+  /* Ligne d’icônes (Exclusive / Stems / etc.) — recentrée et compacte */
+  .benefit-list,
+  .banner-icons,
+  .features-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem .9rem;
+    align-items: center;
+    justify-content: center;
+    margin: .6rem auto 0 auto;
+    padding: 0 1rem;
+    max-width: 94vw;
+    font-size: clamp(12px, 3.2vw, 13px);
+  }
+  .benefit-list li { display: inline-flex; align-items: center; gap: .35rem; }
+}

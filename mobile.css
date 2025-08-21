@@ -19,13 +19,15 @@
    * effects to improve the feel on touch devices.
    */
   :root {
-    --color-primary: #00e5ff;   /* electric blue accent */
+    --color-primary: #00e5ff; /* electric blue accent */
     --color-secondary: #a855f7; /* neon purple accent */
-    --color-bg: #0d0d0d;        /* deep charcoal background */
-    --color-text: #f5f5f5;      /* light text for high contrast */
+    --color-bg: #0d0d0d; /* deep charcoal background */
+    --color-text: #f5f5f5; /* light text for high contrast */
   }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
   }
@@ -43,7 +45,7 @@
     overflow-x: hidden;
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: 'Share Tech Mono', monospace;
+    font-family: "Share Tech Mono", monospace;
     /* Respect device safe areas (e.g. iPhone notch) */
     padding-top: env(safe-area-inset-top, 0);
     padding-bottom: env(safe-area-inset-bottom, 0);
@@ -74,10 +76,14 @@
     pointer-events: none; /* allow hero interactions underneath */
   }
 
-  .navbar * { pointer-events: auto; }
+  .navbar * {
+    pointer-events: auto;
+  }
 
   /* Logo styles – unify various logo classes */
-  .logo, .logo-mixed, .site-logo {
+  .logo,
+  .logo-mixed,
+  .site-logo {
     position: absolute;
     top: max(1rem, env(safe-area-inset-top, 1rem));
     left: max(1rem, env(safe-area-inset-left, 1rem));
@@ -106,7 +112,9 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition:
+      background 0.3s ease,
+      transform 0.3s ease;
     z-index: 101;
   }
   .menu-toggle .bar {
@@ -115,7 +123,9 @@
     background-color: var(--color-primary);
     margin: 3px 0;
     border-radius: 1px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
   /* Animate the hamburger into an 'X' when open */
   .navbar.open .menu-toggle .bar:nth-child(1) {
@@ -128,7 +138,8 @@
     transform: rotate(-45deg) translateY(-6px);
   }
   /* Larger tap area on hover/focus */
-  .menu-toggle:hover, .menu-toggle:focus {
+  .menu-toggle:hover,
+  .menu-toggle:focus {
     background: rgba(0, 229, 255, 0.15);
     outline: none;
   }
@@ -177,7 +188,8 @@
   }
 
   /* Provide a focus outline for accessibility */
-  a:focus-visible, button:focus-visible {
+  a:focus-visible,
+  button:focus-visible {
     outline: 3px solid var(--color-secondary);
     outline-offset: 2px;
   }
@@ -185,9 +197,12 @@
   /* ------------------------------------------------------------------
    * Hero & Banner Sections
    *
-   * Full‑screen hero blocks emphasise the headline and call‑to‑action.
-   * Background media are darkened for contrast, and a subtle gradient
-   * overlay is added. Titles scale responsively using `clamp()`.
+   * Redesigned for smaller screens: the hero adapts fluidly using
+   * `clamp()` and `svh` units so headings remain readable even on
+   * 320px devices. A dark overlay and neon text glow preserve the
+   * cyberpunk aesthetic while preventing background video from
+   * washing out copy.  Safe‑area insets keep content clear of notches
+   * and rounded corners.
    */
   .hero,
   .top-banner,
@@ -195,16 +210,23 @@
   .banner-wrapper {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    /* Allow the hero to fill the viewport but expand if text wraps */
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2.5rem 1.5rem;
     text-align: center;
     overflow: hidden;
+    /* Balanced spacing: top accounts for fixed nav + safe areas */
+    padding-inline: clamp(1rem, 4vw, 2rem);
+    padding-block-start: calc(
+      env(safe-area-inset-top) + clamp(4rem, 12vh, 8rem)
+    );
+    padding-block-end: clamp(3rem, 10vh, 6rem);
   }
-  /* Background media */
+
+  /* Video / image background */
   .hero video,
   .hero img,
   .top-banner video,
@@ -219,10 +241,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.4) contrast(1.1);
+    filter: brightness(0.35) contrast(1.1);
     z-index: 0;
   }
-  /* Dark gradient overlay */
+
+  /* Overlay to darken the footage for legible text */
   .hero::before,
   .top-banner::before,
   .page-hero::before,
@@ -230,11 +253,17 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.9));
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
     z-index: 1;
     pointer-events: none;
   }
-  /* Hero content container */
+
+  /* Text container */
   .banner-content,
   .hero-content,
   .hero-text,
@@ -244,39 +273,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    max-width: 90vw;
-    margin-top: 3rem; /* create space below the header */
+    gap: clamp(0.75rem, 2vh, 1.25rem);
+    width: min(40ch, 100%);
+    margin-inline: auto;
+    animation: bannerFade 1s ease forwards;
   }
+
   /* Main headline */
   .hero-title,
   .banner-main,
   h1.hero-title {
-    font-size: clamp(2rem, 7vw, 3.2rem);
-    font-weight: 900;
-    line-height: 1.1;
     margin: 0;
-    color: #ffffff;
+    font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+    line-height: 1.15;
+    font-weight: 800;
+    color: var(--color-text);
     text-shadow:
-      0 0 0.3rem rgba(0, 0, 0, 0.8),
-      0 0 0.8rem rgba(0, 229, 255, 0.3);
-    letter-spacing: -0.02em;
-    word-wrap: break-word;
-    hyphens: auto;
+      0 0 0.6rem rgba(0, 229, 255, 0.35),
+      0 0 1.2rem rgba(168, 85, 247, 0.25);
+    word-break: break-word;
+    /* balance line wrapping for narrow screens */
+    text-wrap: balance;
   }
-  /* Subtitle */
+
+  /* Subtitle / tagline */
   .hero-subtitle,
   .banner-sub,
   .hero-subline {
-    font-size: clamp(1rem, 4.5vw, 1.4rem);
-    line-height: 1.45;
     margin: 0;
-    padding: 0 0.5rem;
+    font-size: clamp(1rem, 4.5vw, 1.35rem);
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.85);
     text-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.7);
-    max-width: 90%;
-    word-wrap: break-word;
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  /* Subtle fade/slide animation for hero copy */
+  @keyframes bannerFade {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -305,16 +347,25 @@
     margin: 1rem auto;
     border: none;
     border-radius: 16px;
-    background-image: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    background-image: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
     color: #0d0d0d;
     font-size: clamp(1rem, 4vw, 1.2rem);
     font-weight: 600;
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
-    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3), 0 2px 6px rgba(0, 0, 0, 0.5);
+    box-shadow:
+      0 4px 20px rgba(0, 229, 255, 0.3),
+      0 2px 6px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.3s ease;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      background-position 0.3s ease;
     background-size: 200% 200%;
     background-position: 0% 50%;
   }
@@ -331,7 +382,9 @@
   .banner-button:hover,
   .banner-button:focus {
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 229, 255, 0.5), 0 3px 10px rgba(0, 0, 0, 0.6);
+    box-shadow:
+      0 6px 25px rgba(0, 229, 255, 0.5),
+      0 3px 10px rgba(0, 0, 0, 0.6);
     background-position: 100% 50%;
     outline: none;
   }
@@ -342,7 +395,9 @@
   .ghost-btn:active,
   .banner-button:active {
     transform: scale(0.97);
-    box-shadow: 0 2px 10px rgba(0, 229, 255, 0.4), 0 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow:
+      0 2px 10px rgba(0, 229, 255, 0.4),
+      0 1px 4px rgba(0, 0, 0, 0.5);
   }
 
   /* ------------------------------------------------------------------
@@ -395,7 +450,9 @@
     gap: 0.8rem;
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     box-shadow: 0 0 12px rgba(0, 229, 255, 0.08);
   }
   .offer:hover,
@@ -469,7 +526,9 @@
     background-color: #1a1a1a;
     color: #ffffff;
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
   input:focus,
   textarea:focus,

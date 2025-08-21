@@ -1,120 +1,413 @@
-/* ============ MOBILE FIX (≤600px) — Hero align + lisibilité ============ */
-@media (max-width: 600px) {
-  html, body {
+/* ========================================
+   YOUR GHOST PROJECT - MOBILE CSS v2.0
+   Optimized for all mobile devices & performance
+   ======================================== */
+
+/* ============ BASE MOBILE SETUP ============ */
+@media screen and (max-width: 768px) {
+  
+  /* Reset & Base */
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+    /* Safe area for iPhone notch/dynamic island */
     padding-top: env(safe-area-inset-top, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
     padding-left: env(safe-area-inset-left, 0);
     padding-right: env(safe-area-inset-right, 0);
-    overflow-x: hidden;
   }
 
-  /* Conteneur héros (bannière) — centre tout, limite la hauteur */
-  .banner-wrapper,
+  /* ============ HERO/BANNER SECTION ============ */
+  
   .hero,
+  .banner-wrapper,
   .top-banner,
   .page-hero {
     position: relative;
-    display: flex;
-    flex-direction: column;              /* empile logo, titre, bouton */
-    align-items: center;                 /* centre horizontal */
-    justify-content: center;             /* centre vertical */
-    text-align: center;
-    gap: .9rem;                          /* espace entre éléments */
-    min-height: 50svh;
-    max-height: 58svh;
-    padding: 1.25rem 1rem;
     width: 100vw;
-    box-sizing: border-box;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    text-align: center;
+    overflow: hidden;
   }
-
-  /* Overlay léger pour contraste texte si image/video derrière */
-  .banner-wrapper::after,
-  .hero::after,
-  .top-banner::after,
-  .page-hero::after {
+  
+  /* Background Media (Video/Image) */
+  .hero-media,
+  .banner-media,
+  .hero video,
+  .hero img,
+  .banner-wrapper video,
+  .banner-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    filter: brightness(0.7) contrast(1.1);
+  }
+  
+  /* Dark Overlay for Text Contrast */
+  .hero::before,
+  .banner-wrapper::before,
+  .top-banner::before,
+  .page-hero::before {
     content: "";
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.7));
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg, 
+      rgba(0,0,0,0.3) 0%, 
+      rgba(0,0,0,0.6) 50%, 
+      rgba(0,0,0,0.8) 100%
+    );
+    z-index: 1;
     pointer-events: none;
   }
-
-  /* Media de fond en cover */
-  .hero-media, .banner-media, .hero img, .hero video {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center 30%;
-    filter: brightness(.8);
-    z-index: 0;
-  }
-
-  /* Logo YGP — plus petit, bord gauche ‘safe area’ */
+  
+  /* ============ LOGO ============ */
+  
+  .logo,
   .logo-mixed,
-  .site-logo {
-    align-self: flex-start;
-    margin: .25rem 0 0 max(8px, env(safe-area-inset-left, 8px));
-    font-size: clamp(22px, 8vw, 28px);
-    z-index: 2;
-    /* glow adouci pour éviter l’illusion de “sur-taille” */
-    text-shadow: 0 0 .35rem rgba(0,229,255,.55), 0 0 .75rem rgba(168,85,247,.35);
-  }
-
-  /* Contenu texte de la bannière */
-  .banner-content { max-width: 92vw; z-index: 2; }
-
-  /* Titre */
-  .banner-main,
-  .hero-title {
+  .site-logo,
+  .hero .logo {
+    position: absolute;
+    top: max(1rem, env(safe-area-inset-top, 1rem));
+    left: max(1rem, env(safe-area-inset-left, 1rem));
+    z-index: 10;
+    font-size: clamp(1.2rem, 6vw, 1.8rem);
+    font-weight: bold;
+    color: #00e5ff;
+    text-shadow: 
+      0 0 0.5rem rgba(0, 229, 255, 0.8),
+      0 0 1rem rgba(168, 85, 247, 0.4);
+    letter-spacing: 0.05em;
     margin: 0;
-    padding: 0 .25rem;
-    font-size: clamp(22px, 5.8vw, 28px);
-    line-height: 1.15;
-    letter-spacing: .02em;              /* moins d’espace entre lettres */
-    word-break: normal;
-    overflow-wrap: anywhere;
+    padding: 0;
   }
-
-  /* Sous-ligne (phrase longue) — 1 seule ligne, centrée */
-  .banner-sub,
-  .hero-sub,
-  .hero-subline {
-    margin-top: .25rem;
-    font-size: clamp(14px, 3.6vw, 16px);
-    line-height: 1.3;
+  
+  /* ============ HERO CONTENT ============ */
+  
+  .banner-content,
+  .hero-content {
+    position: relative;
+    z-index: 5;
     width: 100%;
-    white-space: nowrap;                 /* force une seule ligne */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem; /* Space for logo */
   }
-
-  /* Bouton CTA — lisible, unité tactile */
+  
+  /* Main Title */
+  .hero-title,
+  .banner-main,
+  .main-headline {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 
+      0 0 0.3rem rgba(0, 0, 0, 0.8),
+      0 0 0.8rem rgba(0, 229, 255, 0.3);
+    letter-spacing: -0.02em;
+    max-width: 95%;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Subtitle */
+  .hero-subtitle,
+  .banner-sub,
+  .hero-subline {
+    font-size: clamp(0.9rem, 4vw, 1.2rem);
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    padding: 0 0.5rem;
+    text-align: center;
+    max-width: 90%;
+    white-space: normal; /* Allow text wrapping */
+    word-wrap: break-word;
+    text-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.7);
+  }
+  
+  /* ============ CTA BUTTON ============ */
+  
   .btn-primary,
   .primary-cta,
   .banner-button,
   .hero .btn,
-  .top-banner .btn,
-  .page-hero .btn {
-    width: 100%;
-    max-width: 92vw;
-    min-height: 48px;
-    border-radius: 14px;
-    font-size: clamp(15px, 3.8vw, 17px);
-    padding: .8rem 1rem;
-    white-space: nowrap;                 /* garde le CTA sur une ligne */
-  }
-
-  /* Ligne d’icônes (Exclusive / Stems / etc.) — recentrée et compacte */
-  .benefit-list,
-  .banner-icons,
-  .features-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .4rem .9rem;
+  .cta-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: .6rem auto 0 auto;
-    padding: 0 1rem;
-    max-width: 94vw;
-    font-size: clamp(12px, 3.2vw, 13px);
+    width: auto;
+    min-width: 280px;
+    max-width: 85vw;
+    min-height: 52px; /* Touch-friendly */
+    padding: 1rem 2rem;
+    margin: 0.5rem auto;
+    
+    background: linear-gradient(135deg, #00e5ff 0%, #a855f7 100%);
+    border: none;
+    border-radius: 16px;
+    
+    font-size: clamp(1rem, 4.5vw, 1.1rem);
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    
+    box-shadow: 
+      0 4px 20px rgba(0, 229, 255, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2);
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
   }
-  .benefit-list li { display: inline-flex; align-items: center; gap: .35rem; }
+  
+  .btn-primary:hover,
+  .btn-primary:active {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 25px rgba(0, 229, 255, 0.4),
+      0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Button Small Text */
+  .btn-small-text,
+  .button-subtitle {
+    display: block;
+    font-size: clamp(0.7rem, 3vw, 0.8rem);
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  /* ============ BENEFIT ICONS ROW ============ */
+  
+  .benefit-list,
+  .banner-icons,
+  .features-inline,
+  .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem 1.2rem;
+    margin: 1rem auto 0;
+    padding: 0;
+    list-style: none;
+    max-width: 90vw;
+    z-index: 5;
+    position: relative;
+  }
+  
+  .benefit-list li,
+  .banner-icons .icon-item,
+  .features-inline .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+  }
+  
+  .benefit-list li::before,
+  .features-inline .feature::before {
+    content: "●";
+    color: #00e5ff;
+    font-size: 1em;
+    text-shadow: 0 0 0.3rem rgba(0, 229, 255, 0.8);
+  }
+  
+}
+
+/* ============ SMALLER MOBILE (≤480px) ============ */
+@media screen and (max-width: 480px) {
+  
+  .hero,
+  .banner-wrapper {
+    padding: 1.5rem 0.8rem;
+    min-height: 100vh;
+  }
+  
+  .banner-content {
+    gap: 1.2rem;
+    max-width: 95vw;
+  }
+  
+  .hero-title,
+  .banner-main {
+    font-size: clamp(1.5rem, 9vw, 2.2rem);
+  }
+  
+  .hero-subtitle,
+  .banner-sub {
+    font-size: clamp(0.8rem, 4.5vw, 1rem);
+    padding: 0 0.2rem;
+  }
+  
+  .btn-primary,
+  .banner-button {
+    min-width: 250px;
+    max-width: 90vw;
+    min-height: 48px;
+    padding: 0.9rem 1.5rem;
+    font-size: clamp(0.9rem, 5vw, 1rem);
+  }
+  
+  .benefit-list {
+    gap: 0.6rem 0.8rem;
+  }
+  
+  .benefit-list li {
+    font-size: clamp(0.7rem, 4vw, 0.8rem);
+  }
+  
+  .logo,
+  .logo-mixed {
+    font-size: clamp(1rem, 7vw, 1.4rem);
+    top: max(0.8rem, env(safe-area-inset-top, 0.8rem));
+    left: max(0.8rem, env(safe-area-inset-left, 0.8rem));
+  }
+}
+
+/* ============ LANDSCAPE ORIENTATION ============ */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  
+  .hero,
+  .banner-wrapper {
+    min-height: 100vh;
+    padding: 1rem;
+  }
+  
+  .banner-content {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
+  .hero-title,
+  .banner-main {
+    font-size: clamp(1.3rem, 6vw, 2rem);
+  }
+  
+  .benefit-list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+}
+
+/* ============ PERFORMANCE OPTIMIZATIONS ============ */
+@media screen and (max-width: 768px) {
+  
+  /* GPU Acceleration for smooth animations */
+  .hero,
+  .banner-wrapper,
+  .btn-primary,
+  .logo {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Optimize text rendering */
+  .hero-title,
+  .banner-main,
+  .hero-subtitle {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Hide scrollbar but allow scrolling */
+  .benefit-list::-webkit-scrollbar {
+    display: none;
+  }
+  .benefit-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ============ ACCESSIBILITY ============ */
+@media screen and (max-width: 768px) {
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .hero-title, .banner-main {
+      text-shadow: 
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000;
+    }
+    
+    .btn-primary {
+      border: 2px solid #fff;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary {
+      transition: none;
+    }
+    
+    .hero-media, .banner-media {
+      animation: none;
+    }
+  }
+  
+  /* Focus states for accessibility */
+  .btn-primary:focus,
+  .btn-primary:focus-visible {
+    outline: 3px solid rgba(0, 229, 255, 0.8);
+    outline-offset: 2px;
+  }
 }

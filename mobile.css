@@ -1,413 +1,547 @@
-/* ========================================
-   YOUR GHOST PROJECT - MOBILE CSS v2.0
-   Optimized for all mobile devices & performance
-   ======================================== */
+/*
+ * Your Ghost Project – Mobile Redesign (2025)
+ *
+ * This stylesheet completely re‑imagines the mobile experience for the
+ * Your Ghost Project website. It delivers a premium, app‑like feel by
+ * combining a dark cyberpunk aesthetic with neon accent colours and
+ * generous spacing. The focus is on clarity and conversion – clear
+ * navigation, prominent calls to action and polished micro‑interactions
+ * guide users smoothly through the site. All rules are scoped within a
+ * max‑width media query to ensure desktop styles remain unaffected.
+ */
 
-/* ============ BASE MOBILE SETUP ============ */
 @media screen and (max-width: 768px) {
-  
-  /* Reset & Base */
-  * {
+  /* ------------------------------------------------------------------
+   * Variables & Base Reset
+   *
+   * Define colour variables for easy theming and set up sensible
+   * defaults. We also reset the box model and remove tap highlight
+   * effects to improve the feel on touch devices.
+   */
+  :root {
+    --color-primary: #00e5ff;   /* electric blue accent */
+    --color-secondary: #a855f7; /* neon purple accent */
+    --color-bg: #0d0d0d;        /* deep charcoal background */
+    --color-text: #f5f5f5;      /* light text for high contrast */
+  }
+
+  *, *::before, *::after {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
   }
-  
+
   body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
     width: 100vw;
-    position: relative;
-    /* Safe area for iPhone notch/dynamic island */
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Share Tech Mono', monospace;
+    /* Respect device safe areas (e.g. iPhone notch) */
     padding-top: env(safe-area-inset-top, 0);
     padding-bottom: env(safe-area-inset-bottom, 0);
     padding-left: env(safe-area-inset-left, 0);
     padding-right: env(safe-area-inset-right, 0);
   }
 
-  /* ============ HERO/BANNER SECTION ============ */
-  
-  .hero,
-  .banner-wrapper,
-  .top-banner,
-  .page-hero {
-    position: relative;
-    width: 100vw;
-    min-height: 100vh;
-    max-height: 100vh;
+  /* ------------------------------------------------------------------
+   * Navigation & Header
+   *
+   * A fixed header houses the logo and the hamburger toggle. When the
+   * `.navbar` element receives the `.open` class (via existing JS),
+   * the off‑canvas menu slides in from the right. Bar animations on
+   * the toggle provide visual feedback. Accessibility is improved
+   * through large tap targets and focus styles.
+   */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    z-index: 100;
+    background: transparent;
+    pointer-events: none; /* allow hero interactions underneath */
+  }
+
+  .navbar * { pointer-events: auto; }
+
+  /* Logo styles – unify various logo classes */
+  .logo, .logo-mixed, .site-logo {
+    position: absolute;
+    top: max(1rem, env(safe-area-inset-top, 1rem));
+    left: max(1rem, env(safe-area-inset-left, 1rem));
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+    text-shadow:
+      0 0 0.3rem rgba(0, 229, 255, 0.7),
+      0 0 0.8rem rgba(168, 85, 247, 0.4);
+    z-index: 101;
+  }
+
+  /* Hamburger / menu toggle */
+  .menu-toggle {
+    position: absolute;
+    top: max(1rem, env(safe-area-inset-top, 1rem));
+    right: max(1rem, env(safe-area-inset-right, 1rem));
+    width: 48px;
+    height: 48px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    align-items: center;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    z-index: 101;
+  }
+  .menu-toggle .bar {
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-primary);
+    margin: 3px 0;
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  /* Animate the hamburger into an 'X' when open */
+  .navbar.open .menu-toggle .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(6px);
+  }
+  .navbar.open .menu-toggle .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .navbar.open .menu-toggle .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-6px);
+  }
+  /* Larger tap area on hover/focus */
+  .menu-toggle:hover, .menu-toggle:focus {
+    background: rgba(0, 229, 255, 0.15);
+    outline: none;
+  }
+  .menu-toggle:active {
+    transform: scale(0.95);
+  }
+
+  /* Off‑canvas navigation links */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70vw;
+    max-width: 280px;
+    padding-top: calc(3rem + env(safe-area-inset-top));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgba(13, 13, 13, 0.95);
+    backdrop-filter: blur(6px);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.8);
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    z-index: 99;
+  }
+  .navbar.open .nav-links {
+    transform: translateX(0);
+  }
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    color: var(--color-text);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: var(--color-primary);
+    outline: none;
+  }
+
+  /* Provide a focus outline for accessibility */
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+
+  /* ------------------------------------------------------------------
+   * Hero & Banner Sections
+   *
+   * Full‑screen hero blocks emphasise the headline and call‑to‑action.
+   * Background media are darkened for contrast, and a subtle gradient
+   * overlay is added. Titles scale responsively using `clamp()`.
+   */
+  .hero,
+  .top-banner,
+  .page-hero,
+  .banner-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
     text-align: center;
     overflow: hidden;
   }
-  
-  /* Background Media (Video/Image) */
-  .hero-media,
-  .banner-media,
+  /* Background media */
   .hero video,
   .hero img,
+  .top-banner video,
+  .top-banner img,
   .banner-wrapper video,
-  .banner-wrapper img {
+  .banner-wrapper img,
+  .page-hero video,
+  .page-hero img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    filter: brightness(0.4) contrast(1.1);
     z-index: 0;
-    filter: brightness(0.7) contrast(1.1);
   }
-  
-  /* Dark Overlay for Text Contrast */
+  /* Dark gradient overlay */
   .hero::before,
-  .banner-wrapper::before,
   .top-banner::before,
-  .page-hero::before {
+  .page-hero::before,
+  .banner-wrapper::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      180deg, 
-      rgba(0,0,0,0.3) 0%, 
-      rgba(0,0,0,0.6) 50%, 
-      rgba(0,0,0,0.8) 100%
-    );
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.75) 60%, rgba(0,0,0,0.9));
     z-index: 1;
     pointer-events: none;
   }
-  
-  /* ============ LOGO ============ */
-  
-  .logo,
-  .logo-mixed,
-  .site-logo,
-  .hero .logo {
-    position: absolute;
-    top: max(1rem, env(safe-area-inset-top, 1rem));
-    left: max(1rem, env(safe-area-inset-left, 1rem));
-    z-index: 10;
-    font-size: clamp(1.2rem, 6vw, 1.8rem);
-    font-weight: bold;
-    color: #00e5ff;
-    text-shadow: 
-      0 0 0.5rem rgba(0, 229, 255, 0.8),
-      0 0 1rem rgba(168, 85, 247, 0.4);
-    letter-spacing: 0.05em;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* ============ HERO CONTENT ============ */
-  
+  /* Hero content container */
   .banner-content,
-  .hero-content {
+  .hero-content,
+  .hero-text,
+  .banner-text {
     position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 90vw;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
-    margin-top: 3rem; /* Space for logo */
+    gap: 1rem;
+    width: 100%;
+    max-width: 90vw;
+    margin-top: 3rem; /* create space below the header */
   }
-  
-  /* Main Title */
+  /* Main headline */
   .hero-title,
   .banner-main,
-  .main-headline {
-    font-size: clamp(1.8rem, 8vw, 3rem);
+  h1.hero-title {
+    font-size: clamp(2rem, 7vw, 3.2rem);
     font-weight: 900;
     line-height: 1.1;
     margin: 0;
-    padding: 0;
     color: #ffffff;
-    text-align: center;
-    text-shadow: 
+    text-shadow:
       0 0 0.3rem rgba(0, 0, 0, 0.8),
       0 0 0.8rem rgba(0, 229, 255, 0.3);
     letter-spacing: -0.02em;
-    max-width: 95%;
     word-wrap: break-word;
     hyphens: auto;
   }
-  
   /* Subtitle */
   .hero-subtitle,
   .banner-sub,
   .hero-subline {
-    font-size: clamp(0.9rem, 4vw, 1.2rem);
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+    line-height: 1.45;
     margin: 0;
     padding: 0 0.5rem;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.7);
     max-width: 90%;
-    white-space: normal; /* Allow text wrapping */
     word-wrap: break-word;
-    text-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.7);
   }
-  
-  /* ============ CTA BUTTON ============ */
-  
+
+  /* ------------------------------------------------------------------
+   * Buttons & Call‑to‑Action
+   *
+   * All interactive buttons share a unified style: large tap area,
+   * gradient background, subtle shadow and clear hover/active/focus
+   * states. The `.btn` class and its variations (.btn-primary,
+   * .cta, .primary-cta) are consolidated here.
+   */
+  .btn,
   .btn-primary,
   .primary-cta,
+  .cta,
+  .ghost-btn,
   .banner-button,
-  .hero .btn,
-  .cta-button {
+  .cta-button,
+  .hero .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: auto;
+    min-height: 52px; /* ensures at least 44px content area + padding */
     min-width: 280px;
     max-width: 85vw;
-    min-height: 52px; /* Touch-friendly */
     padding: 1rem 2rem;
-    margin: 0.5rem auto;
-    
-    background: linear-gradient(135deg, #00e5ff 0%, #a855f7 100%);
+    margin: 1rem auto;
     border: none;
     border-radius: 16px;
-    
-    font-size: clamp(1rem, 4.5vw, 1.1rem);
+    background-image: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #0d0d0d;
+    font-size: clamp(1rem, 4vw, 1.2rem);
     font-weight: 600;
-    color: #000;
+    text-align: center;
     text-decoration: none;
-    text-align: center;
     white-space: nowrap;
-    
-    box-shadow: 
-      0 4px 20px rgba(0, 229, 255, 0.3),
-      0 2px 8px rgba(0, 0, 0, 0.2);
-    
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3), 0 2px 6px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    position: relative;
-    z-index: 5;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.3s ease;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
   }
-  
+  .btn:hover,
+  .btn:focus,
   .btn-primary:hover,
-  .btn-primary:active {
-    transform: translateY(-2px);
-    box-shadow: 
-      0 6px 25px rgba(0, 229, 255, 0.4),
-      0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Button Small Text */
-  .btn-small-text,
-  .button-subtitle {
-    display: block;
-    font-size: clamp(0.7rem, 3vw, 0.8rem);
-    color: rgba(255, 255, 255, 0.8);
-    margin-top: 0.5rem;
-    text-align: center;
-    line-height: 1.2;
-  }
-  
-  /* ============ BENEFIT ICONS ROW ============ */
-  
-  .benefit-list,
-  .banner-icons,
-  .features-inline,
-  .hero-features {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem 1.2rem;
-    margin: 1rem auto 0;
-    padding: 0;
-    list-style: none;
-    max-width: 90vw;
-    z-index: 5;
-    position: relative;
-  }
-  
-  .benefit-list li,
-  .banner-icons .icon-item,
-  .features-inline .feature {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: clamp(0.8rem, 3.5vw, 0.9rem);
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.8);
-    white-space: nowrap;
-  }
-  
-  .benefit-list li::before,
-  .features-inline .feature::before {
-    content: "●";
-    color: #00e5ff;
-    font-size: 1em;
-    text-shadow: 0 0 0.3rem rgba(0, 229, 255, 0.8);
-  }
-  
-}
-
-/* ============ SMALLER MOBILE (≤480px) ============ */
-@media screen and (max-width: 480px) {
-  
-  .hero,
-  .banner-wrapper {
-    padding: 1.5rem 0.8rem;
-    min-height: 100vh;
-  }
-  
-  .banner-content {
-    gap: 1.2rem;
-    max-width: 95vw;
-  }
-  
-  .hero-title,
-  .banner-main {
-    font-size: clamp(1.5rem, 9vw, 2.2rem);
-  }
-  
-  .hero-subtitle,
-  .banner-sub {
-    font-size: clamp(0.8rem, 4.5vw, 1rem);
-    padding: 0 0.2rem;
-  }
-  
-  .btn-primary,
-  .banner-button {
-    min-width: 250px;
-    max-width: 90vw;
-    min-height: 48px;
-    padding: 0.9rem 1.5rem;
-    font-size: clamp(0.9rem, 5vw, 1rem);
-  }
-  
-  .benefit-list {
-    gap: 0.6rem 0.8rem;
-  }
-  
-  .benefit-list li {
-    font-size: clamp(0.7rem, 4vw, 0.8rem);
-  }
-  
-  .logo,
-  .logo-mixed {
-    font-size: clamp(1rem, 7vw, 1.4rem);
-    top: max(0.8rem, env(safe-area-inset-top, 0.8rem));
-    left: max(0.8rem, env(safe-area-inset-left, 0.8rem));
-  }
-}
-
-/* ============ LANDSCAPE ORIENTATION ============ */
-@media screen and (max-width: 768px) and (orientation: landscape) {
-  
-  .hero,
-  .banner-wrapper {
-    min-height: 100vh;
-    padding: 1rem;
-  }
-  
-  .banner-content {
-    margin-top: 1rem;
-    gap: 1rem;
-  }
-  
-  .hero-title,
-  .banner-main {
-    font-size: clamp(1.3rem, 6vw, 2rem);
-  }
-  
-  .benefit-list {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-}
-
-/* ============ PERFORMANCE OPTIMIZATIONS ============ */
-@media screen and (max-width: 768px) {
-  
-  /* GPU Acceleration for smooth animations */
-  .hero,
-  .banner-wrapper,
-  .btn-primary,
-  .logo {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  
-  /* Optimize text rendering */
-  .hero-title,
-  .banner-main,
-  .hero-subtitle {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  /* Prevent zoom on input focus */
-  input, select, textarea {
-    font-size: 16px !important;
-  }
-  
-  /* Hide scrollbar but allow scrolling */
-  .benefit-list::-webkit-scrollbar {
-    display: none;
-  }
-  .benefit-list {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-}
-
-/* ============ ACCESSIBILITY ============ */
-@media screen and (max-width: 768px) {
-  
-  /* High contrast mode support */
-  @media (prefers-contrast: high) {
-    .hero-title, .banner-main {
-      text-shadow: 
-        2px 2px 0 #000,
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000;
-    }
-    
-    .btn-primary {
-      border: 2px solid #fff;
-    }
-  }
-  
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    .btn-primary {
-      transition: none;
-    }
-    
-    .hero-media, .banner-media {
-      animation: none;
-    }
-  }
-  
-  /* Focus states for accessibility */
   .btn-primary:focus,
-  .btn-primary:focus-visible {
-    outline: 3px solid rgba(0, 229, 255, 0.8);
-    outline-offset: 2px;
+  .primary-cta:hover,
+  .primary-cta:focus,
+  .cta:hover,
+  .cta:focus,
+  .ghost-btn:hover,
+  .ghost-btn:focus,
+  .banner-button:hover,
+  .banner-button:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 229, 255, 0.5), 0 3px 10px rgba(0, 0, 0, 0.6);
+    background-position: 100% 50%;
+    outline: none;
+  }
+  .btn:active,
+  .btn-primary:active,
+  .primary-cta:active,
+  .cta:active,
+  .ghost-btn:active,
+  .banner-button:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 10px rgba(0, 229, 255, 0.4), 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ------------------------------------------------------------------
+   * Section & Layout Helpers
+   *
+   * These classes ensure generous spacing and clean layout for
+   * content sections, cards and feature lists. Flexbox and grid are
+   * used to stack elements vertically on mobile.
+   */
+  .section,
+  .block,
+  .panel,
+  .container,
+  .content-wrapper {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cards,
+  .offers,
+  .features,
+  .pricing,
+  .listings,
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .offer,
+  .card,
+  .feature,
+  .pricing-tier {
+    width: 100%;
+    background: linear-gradient(135deg, #141414, #1f1f1f);
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.08);
+  }
+  .offer:hover,
+  .card:hover,
+  .pricing-tier:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
+  }
+  .offer h3,
+  .card-title,
+  .feature-title,
+  .pricing-tier h3 {
+    margin: 0;
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 0 0 0.4rem rgba(0, 229, 255, 0.3);
+  }
+  .offer p,
+  .card-text,
+  .feature-description {
+    margin: 0;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Benefit or bullet lists */
+  .benefit-list,
+  .feature-list,
+  ul.benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .benefit-list li,
+  .feature-list li,
+  ul.benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+  }
+  .benefit-list li span,
+  .feature-list li span,
+  ul.benefits li span {
+    margin-right: 0.25rem;
+  }
+
+  /* ------------------------------------------------------------------
+   * Form Elements
+   *
+   * Input fields and text areas are styled to match the dark theme with
+   * clear focus states. Forms stack vertically to improve readability
+   * on smaller screens.
+   */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.4);
+    outline: none;
+  }
+  textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  /* Spacing helpers for success and error messages */
+  .ygp-success {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 1.5rem;
+    color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    text-align: center;
+  }
+  .ygp-success p {
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .ygp-error {
+    margin-top: 0.5rem;
+    color: #ff6666;
+    font-size: 0.9rem;
+  }
+
+  /* ------------------------------------------------------------------
+   * Footer
+   *
+   * A lightweight footer sits at the bottom of the page with subtle
+   * separators and a small brand mark.
+   */
+  .footer {
+    margin-top: 3rem;
+    padding: 2rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .footer-logo {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    text-shadow: 0 0 0.4rem rgba(0, 229, 255, 0.5);
+  }
+
+  /* ------------------------------------------------------------------
+   * Micro‑Interactions
+   *
+   * Add a simple fade‑in animation that can be applied via the
+   * `.fade-in` utility class. Elements begin slightly offset and
+   * transparent, then animate into place. Use this on sections or
+   * elements that should animate as they scroll into view (e.g. via
+   * intersection observer if script is added later).
+   */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }

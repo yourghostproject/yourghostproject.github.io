@@ -7,8 +7,6 @@
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <!-- Mobile styles -->
-  <link rel="stylesheet" href="mobile.css" />
   <style>
     html { scroll-behavior: smooth; }
     body {
@@ -713,6 +711,9 @@
       .navbar { padding: 1rem; }
     }
   </style>
+</style>
+  <!-- Mobile styles: load after all other CSS for proper override on mobile -->
+  <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)" />
 </head>
 <body>
   <div class="banner-wrapper">

@@ -1,124 +1,666 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Ghost Project — Home</title>
-  <link rel="icon" href="favicon.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Ghost Project</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <!-- Google font for monospace feel -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --bg:#0a0d12; --bg-2:#0f141f; --text:#e8f0ff; --muted:#b9c5db;
-      --neon:#00fff5; --neon-soft:rgba(0,255,245,.15);
-      --card:rgba(255,255,255,.03); --border:rgba(255,255,255,.08);
-      --pad: clamp(16px, 3.6vw, 36px); --radius:18px; --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --max: 1200px;
+    /* Base styles */
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      background-color: #101010;
+      color: #f2f2f2;
+      text-align: center;
     }
-    html{scroll-behavior:smooth;}
-    body{margin:0; font-family:"Share Tech Mono", system-ui, monospace; color:var(--text);
-      background: radial-gradient(1200px 600px at 50% -10%, var(--neon-soft), transparent 60%), var(--bg);}
-    a{color:var(--text); text-decoration:none}
-    img,video{display:block; max-width:100%; height:auto}
-    .container{max-width:var(--max); margin-inline:auto; padding-inline:var(--pad)}
-    .nav-row{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .navbar{position:sticky; top:0; z-index:50; background:rgba(10,13,18,.6); backdrop-filter:blur(8px); border-bottom:1px solid var(--border)}
-    .site-logo{position:relative; font-weight:900; letter-spacing:.6px; font-size:22px; color:#8ee; text-shadow:0 0 12px rgba(0,255,245,.6)}
-    .logo-mixed::before,.logo-mixed::after{content:attr(data-text); position:absolute; left:0; top:0; mix-blend-mode:screen; opacity:.6}
-    .logo-mixed::before{transform:translate(-1px,0); color:#0ff}
-    .logo-mixed::after{transform:translate(1px,0); color:#f0f}
-    .nav-links{display:flex; gap:10px}
-    .nav-links a{padding:10px 14px; border-radius:12px; color:#b9c5db}
-    .nav-links a:hover,.nav-links a.active{color:#fff; background:var(--card); border:1px solid var(--border)}
-    .menu-toggle{display:none; width:42px; height:42px; border-radius:12px; border:1px solid var(--border); background:#0c1220}
-    .menu-toggle span{display:block; width:22px; height:2px; background:#e8f0ff; margin:5px auto}
-    .top-banner{position:relative; overflow:hidden; border-bottom:1px solid var(--border)}
-    .banner-video{width:100%; height:clamp(320px, 56vw, 520px); object-fit:cover; opacity:.9; filter:contrast(1.05) saturate(1.05) brightness(.9)}
-    .banner-overlay{position:absolute; inset:0; background:
-      radial-gradient(800px 400px at 50% 0%, rgba(0,255,245,.20), transparent 60%),
-      linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65))}
-    .banner-text{position:absolute; inset:0; display:grid; place-items:center; text-align:center; padding: clamp(16px, 3vw, 40px)}
-    .hero-title{font-size: clamp(28px, 5.6vw, 54px); margin:0 0 12px; line-height:1.06; text-shadow:0 0 12px rgba(0,255,245,.45)}
-    .hero-sub{margin:0; color:var(--muted); font-size: clamp(14px, 2.6vw, 18px)}
-    .intro{background:linear-gradient(180deg, transparent, rgba(255,255,255,.02)); border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-      padding-block: clamp(24px, 6vw, 56px); text-align:center; color:var(--muted)}
-    .intro p{max-width:850px; margin:0 auto 10px; line-height:1.8}
-    .kicker{display:inline-block; color:var(--neon); letter-spacing:.18em; font-size:12px; text-transform:uppercase}
-    .offers{padding-block: clamp(28px, 7vw, 64px)}
-    .grid-2{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: clamp(16px, 2.6vw, 28px)}
-    .profile-card{position:relative; overflow:hidden; border-radius: var(--radius); border:1px solid var(--border); background:var(--card); box-shadow:var(--shadow); min-height: 220px; display:block;}
-    .profile-card video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.85) saturate(1.1)}
-    .profile-title{position:relative; z-index:2; display:inline-block; margin:16px; padding:8px 12px; border-radius:999px; border:1px solid var(--border);
-      background:rgba(10,13,18,.7); color:var(--neon); font-weight:800; letter-spacing:.2em; text-shadow:0 0 10px rgba(0,255,245,.55)}
-    .profile-card::after{content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.55))}
-    footer{border-top:1px solid var(--border); background:#0a0f18; color:#b9c5db}
-    .foot{display:grid; gap:10px; grid-template-columns: 1fr auto; align-items:center; padding-block: 22px}
-    @media (prefers-reduced-motion: reduce){ .banner-video,.profile-card video{ animation:none } }
-  </style>
+
+    /* Banner wrapper holds the video background and text */
+    .banner-wrapper {
+      position: relative;
+      width: 100%;
+      height: 270px;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    }
+    .banner-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      opacity: 0.3;
+      transition: opacity 0.3s ease;
+    }
+    .banner-wrapper:hover .banner-video {
+      opacity: 0.45;
+    }
+
+    /* Navigation bar copied from artist/creator pages */
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 0;
+      background: transparent;
+    }
+    /* Glitch logo top-left */
+    .logo-mixed {
+      position: absolute;
+      top: 1rem;
+      left: 3rem;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ffe5;
+      text-decoration: none;
+      text-shadow: 0 0 8px #00ffe5, 0 0 12px #9d00ff;
+      z-index: 101;
+    }
+    .logo-mixed::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      top: 0;
+      color: inherit;
+      text-shadow: -2px 0 #9d00ff;
+      animation: glitch 1s infinite linear alternate-reverse;
+    }
+    @keyframes glitch {
+      0%   { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+      25%  { text-shadow: -2px 2px #00ffe5, 2px -2px #9d00ff; }
+      50%  { text-shadow: 2px -2px #00ffe5, -2px 2px #9d00ff; }
+      75%  { text-shadow: -2px -2px #00ffe5, 2px 2px #9d00ff; }
+      100% { text-shadow: 2px 2px #00ffe5, -2px -2px #9d00ff; }
+    }
+
+    /* Hamburger menu */
+    .menu-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 3rem;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 101;
+      padding: 0;
+    }
+    .menu-toggle .bar {
+      width: 20px;
+      height: 2px;
+      background-color: #101010;
+      margin: 3px 0;
+      border-radius: 1px;
+    }
+    /* Hidden navigation links */
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 3rem;
+      flex-direction: column;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      z-index: 100;
+    }
+    .navbar.open .nav-links {
+      display: flex;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      transition: 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #00ffe5;
+      text-shadow: 0 0 8px #00ffe5;
+    }
+
+    /* Banner text */
+    .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #f2f2f2;
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0 1rem;
+      text-shadow: 0 0 8px #000000cc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+    .banner-main {
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .banner-sub {
+      /* Slightly larger font for emphasis */
+      font-size: 1.3rem;
+      color: #cccccc;
+    }
+
+    /* Typed section */
+    .typed-container {
+      margin-top: 2.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #f2f2f2;
+      font-family: 'Share Tech Mono', monospace;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      line-height: 1.6;
+      min-height: 6rem;
+    }
+    #typed-intro {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1.2s ease-out forwards;
+    /* Increase font size slightly */
+    font-size: 1.3rem;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .section-title {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #00ffe5;
+      min-height: 2rem;
+    }
+
+    /* Success and error message classes reused from other pages */
+    .ygp-success {
+      background: #1a1a1a;
+      border-radius: 8px;
+      padding: 2rem;
+      color: #00ffe5;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+    .ygp-success p {
+      margin: 0.5rem 0;
+      color: #ccc;
+    }
+    .ygp-error {
+      margin-top: 1rem;
+      color: #ff6666;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile responsiveness tweaks */
+    @media (max-width: 640px) {
+      .banner-wrapper {
+        max-height: 40vh;
+      }
+      .banner-text {
+        padding: 1.25rem 1rem;
+      }
+      .banner-main {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+      }
+      .banner-sub {
+        font-size: clamp(1rem, 4.5vw, 1.3rem);
+      }
+      #typed-intro {
+        font-size: clamp(0.95rem, 3.5vw, 1.3rem);
+        line-height: 1.5;
+      }
+      .typed-container {
+        margin-top: 1.5rem;
+      }
+      /* Ensure buttons inside offers stack on smaller devices */
+      .offers {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      .offer h3 {
+        margin-top: 0.5rem;
+      }
+    }
+
+    /* Offers section */
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .offers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1.5rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .offer {
+      flex: 1 1 280px;
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      border: 1px solid #2d2d2d;
+      border-radius: 10px;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+    .offer h3 {
+      font-size: 2rem;
+      color: #00ffe5;
+      z-index: 2;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      text-shadow: 0 0 6px rgba(0, 255, 229, 0.4);
+    }
+    .offer:hover {
+      transform: translateY(-5px);
+      border-color: #00ffe5;
+      box-shadow: 0 0 25px #00ffe580;
+    }
+    .offer:hover h3 {
+      color: #ffffff;
+      text-shadow: 0 0 15px #00ffe5, 0 0 8px #ffffff;
+    }
+    .offer:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 20px #00ffe5;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .video-preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .video-preview video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 10px;
+      opacity: 0.25;
+      transition: opacity 0.3s ease;
+    }
+    .offer:hover .video-preview video {
+      opacity: 0.5;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+      margin-top: 3rem;
+      padding: 1rem;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .footer-logo {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      animation: glitch 1s infinite;
+    }
+
+    /* ============== MOBILE ONLY (≤640px) ============== */
+    @media (max-width: 640px) {
+      html, body {
+        padding-top: env(safe-area-inset-top, 0);
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+        overflow-x: hidden;
+      }
+
+      /* HERO / TOP BANNER WRAPPERS */
+      .hero, .top-banner, .page-hero {
+        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        min-height: 46svh;
+        max-height: 56svh;
+        padding: 12px 14px;
+      }
+
+      /* Dark overlay to increase contrast on busy photos */
+      .hero::after, .top-banner::after, .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.7));
+        pointer-events: none;
+      }
+
+      /* Background media */
+      .hero-media, .banner-media, .hero img, .hero video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(.8);
+        z-index: 0;
+      }
+
+      /* YGP logo: push closer to the left edge */
+      .site-logo {
+        justify-self: start;
+        margin: 4px 0 0 max(8px, env(safe-area-inset-left, 8px));
+        z-index: 2;
+      }
+
+      /* MAIN HEADLINE — center text, avoid column feel */
+      .hero-title {
+        z-index: 2;
+        margin: 0;
+        padding: 0 4px;
+        font-weight: 800;
+        font-size: clamp(20px, 6vw, 28px);
+        line-height: 1.18;
+        letter-spacing: .2px;
+        text-align: center;
+        word-break: normal;
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+
+      /* Sub line (Buyout only …) — one line at the bottom edge of the banner */
+      .hero-subline {
+        z-index: 2;
+        margin: 6px 0 2px 0;
+        font-size: clamp(13px, 3.2vw, 14px);
+        line-height: 1.2;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* CTA inside hero: full width, single-line text */
+      .hero .btn, .top-banner .btn, .page-hero .btn {
+        z-index: 2;
+        width: 100%;
+        max-width: 92vw;
+        min-height: 48px;
+        border-radius: 14px;
+        font-size: clamp(15px, 3.8vw, 17px);
+        padding: 12px 14px;
+        white-space: nowrap;
+      }
+
+      /* HOME: “Select your profile” appears sooner / higher */
+      .select-profile {
+        margin-top: 14px;
+      }
+
+      /* Utility for any long headings that were centered visually but weren’t actually centered */
+      .center-stack { display: grid; place-items: center; }
+    }
+
+    /* ===== Mobile-only layout fixes ===== */
+    @media (max-width: 640px) {
+      :root {
+        --mobile-pad: 1rem;
+      }
+
+      html, body {
+        /* for iOS notch and browser UI */
+        padding-top: env(safe-area-inset-top, 0);
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+        overflow-x: hidden;
+      }
+
+      /* HERO / TOP BANNERS (all pages) */
+      .hero, .top-banner, .page-hero {
+        /* cap height, make readable, avoid giant crops */
+        min-height: 48svh;
+        max-height: 58svh;
+        padding: 1.25rem var(--mobile-pad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+      }
+      .hero::after, .top-banner::after, .page-hero::after {
+        /* dark overlay to improve text contrast on photos */
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.65));
+        pointer-events: none;
+      }
+      .hero-media, .banner-media, .hero img, .hero video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(.75);
+      }
+
+      /* TITLES / COPY */
+      h1.hero-title, .hero-title {
+        font-size: clamp(1.35rem, 6.5vw, 1.9rem);
+        line-height: 1.15;
+        margin: 0;
+        padding: 0 .25rem;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        hyphens: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-sub, .hero-lead, .lead {
+        font-size: clamp(0.98rem, 3.6vw, 1.1rem);
+        line-height: 1.45;
+        margin-top: .6rem;
+        color: rgba(230,240,255,.92);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* BUTTONS / CTAs */
+      .cta, .btn, .ghost-btn, .primary-cta {
+        width: 100%;
+        min-height: 48px; /* bigger tap target */
+        font-size: clamp(0.98rem, 3.6vw, 1.1rem);
+        padding: 0.85rem 1rem;
+        border-radius: 14px;
+      }
+      .cta-row, .btn-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .9rem;
+        margin-top: 1rem;
+      }
+
+      /* SECTIONS / SPACING */
+      .section, .block, .card, .panel {
+        margin-top: 1.1rem !important;
+        padding: 1rem var(--mobile-pad) !important;
+      }
+      .stack > * + * { margin-top: .9rem; }
+
+      /* CARDS WITH IMAGE TITLES (your “profile” cards on Home) */
+      .profile-card {
+        width: 100%;
+        max-width: 88vw;
+        margin-inline: auto;
+        border-radius: 18px;
+      }
+      .profile-card .label {
+        font-size: clamp(1.2rem, 7vw, 1.6rem);
+      }
+
+      /* FAQ / long text lists */
+      .faq h3 { font-size: clamp(1.05rem, 4vw, 1.2rem); }
+      .faq p, .faq li {
+        font-size: clamp(0.95rem, 3.4vw, 1.05rem);
+        line-height: 1.55;
+      }
+
+      /* FORMS */
+      form input, form select, form textarea {
+        width: 100%;
+        font-size: 16px; /* avoid iOS zoom */
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+      form .row { display: grid; grid-template-columns: 1fr; gap: .9rem; }
+      form .actions { margin-top: 1rem; }
+      .notice, .ygp-success, .ygp-error {
+        text-align: center;
+        padding: .9rem;
+        border-radius: 12px;
+      }
+      .ygp-success {
+        background: rgba(0, 229, 255, 0.10);
+        color: #bff7ff;
+        border: 1px solid rgba(0,229,255,.25);
+      }
+      .ygp-error   {
+        background: rgba(168, 85, 247, 0.10);
+        color: #f1dcff;
+        border: 1px solid rgba(168,85,247,.25);
+      }
+
+      /* NAV / LOGO (avoid overlap) */
+      .site-logo { transform: none; margin: .5rem var(--mobile-pad); }
+      .menu-toggle { margin: .5rem var(--mobile-pad); }
+
+      /* Prevent horizontal scrolling due to neon text shadows */
+      .neon, .glow {
+        text-shadow: 0 0 .6rem rgba(0,229,255,.55), 0 0 1.2rem rgba(168,85,247,.45);
+        max-width: 100%;
+      }
+    }
+
+</style>
+  <!-- Mobile styles: load after all other CSS for proper override on mobile -->
   <link rel="stylesheet" href="mobile.css" media="only screen and (max-width: 768px)" />
 </head>
 <body>
-  <header class="navbar">
-    <div class="container nav-row">
-      <a class="site-logo logo-mixed" data-text="YGP" href="index.html">YGP</a>
-      <button class="menu-toggle" aria-label="Open menu" id="menuBtn"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="navLinks">
-        <a class="active" href="index.html">HOME</a>
+  <div class="banner-wrapper hero top-banner">
+    <!-- Navigation bar with logo and hamburger menu -->
+    <div class="navbar">
+      <a href="index.html" class="logo-mixed glitch site-logo" data-text="YGP">YGP</a>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="nav-links">
+        <a href="index.html" class="active">HOME</a>
         <a href="artist.html">ARTIST</a>
         <a href="creator.html">CONTENT CREATOR</a>
-      </nav>
+      </div>
     </div>
-  </header>
-
-  <section class="top-banner">
+    <!-- Video background -->
     <video class="banner-video" autoplay muted loop playsinline>
-      <source src="banner_ghost.mp4" type="video/mp4" />
+      <source src="https://yourghostproject.github.io/banner_ghost.mp4" type="video/mp4" />
     </video>
-    <div class="banner-overlay"></div>
-    <div class="banner-text container">
-      <h1 class="hero-title">Signature Urban Beats for Artists & Content Creators</h1>
-      <p class="hero-sub">Buyout only. Yours forever. Delivered in 72h.</p>
+    <!-- Main hero text -->
+    <div class="banner-text">
+      <div class="banner-main hero-title neon">Signature Urban Beats for Artists &amp; Content Creators</div>
+      <div class="banner-sub hero-sub hero-subline">Buyout only. Yours forever. Delivered in 72h.</div>
     </div>
-  </section>
+  </div>
 
-  <section class="intro">
-    <div class="container">
-      <span class="kicker">What you get</span>
-      <p>We craft original, hand-made Hip-Hop, Drill & Trap beats so you never worry about licensing again.</p>
-      <p>Send up to 3 references; receive your custom track within 72 hours, with 2 revisions included.</p>
-      <p class="kicker" style="margin-top:8px">Select your profile</p>
-    </div>
-  </section>
+  <!-- Typed intro and profile selection -->
+  <div class="typed-container">
+    <p id="typed-intro">We help Creators break free from licensing and generic royalty-free music by crafting original, hand-made Hip-Hop, Drill, and Trap beats. Send us up to 3 references, and we’ll deliver your custom track within 72 hours, with 2 revisions included.</p>
+    <p class="section-title select-profile" id="typed-who"></p>
+  </div>
 
-  <section class="offers">
-    <div class="container grid-2">
-      <a class="profile-card" href="artist.html" aria-label="Artist">
-        <video autoplay muted loop playsinline>
-          <source src="artist-preview.mp4" type="video/mp4" />
-        </video>
-        <span class="profile-title">ARTIST</span>
+  <!-- Offer selection -->
+  <div class="container">
+    <div class="offers">
+      <a href="artist.html" class="offer profile-card">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="https://yourghostproject.github.io/artist-preview.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h3 class="label neon">ARTIST</h3>
       </a>
-      <a class="profile-card" href="creator.html" aria-label="Content Creator">
-        <video autoplay muted loop playsinline>
-          <source src="creator-preview.mp4" type="video/mp4" />
-        </video>
-        <span class="profile-title">CONTENT CREATOR</span>
+      <a href="creator.html" class="offer profile-card">
+        <div class="video-preview">
+          <video muted loop autoplay playsinline>
+            <source src="https://yourghostproject.github.io/creator-preview.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <h3 class="label neon">CONTENT CREATOR</h3>
       </a>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    <div class="container foot">
-      <small>© 2025 Your Ghost Project — Exclusive custom beats. No royalties.</small>
-      <small>TikTok • YouTube • Instagram</small>
-    </div>
-  </footer>
+  <div class="footer">
+    <div>© All rights reserved — Your Ghost Project | yourghostproject@gmail.com</div>
+    <div class="footer-logo">Your Ghost Project</div>
+  </div>
 
   <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('navLinks');
-    btn?.addEventListener('click', () => {
-      nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', nav.classList.contains('open'));
+    // Typed effect for profile selector
+    function typeEffect(element, text, speed) {
+      let i = 0;
+      function typeChar() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeChar, speed);
+        }
+      }
+      typeChar();
+    }
+    window.onload = () => {
+      const target = document.getElementById("typed-who");
+      typeEffect(target, "Select your profile", 100);
+    };
+    // Toggle the navigation menu when the hamburger icon is clicked
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          document.querySelector('.navbar').classList.toggle('open');
+        });
+      }
     });
   </script>
 </body>
